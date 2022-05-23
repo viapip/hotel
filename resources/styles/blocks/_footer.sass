@@ -1,0 +1,52 @@
+.footer
+  background: $black
+  padding-top: 75px
+  padding-bottom: 61px
+  &__top
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    border-bottom: 1px solid #464646
+    padding-bottom: 71px
+    margin-bottom: 63px
+  &__bottom
+    display: flex
+    align-items: center
+    justify-content: space-between
+    color: $white
+    +ralewayReg13
+  &__powered
+    +ralewayMed13
+    img
+      max-width: 107px
+      margin: 0 16px
+
+@media (max-width: 992px)
+  .footer
+    &__top
+      flex-direction: column
+    &__logo
+      margin-bottom: 63px
+      svg
+        width: 100%
+    &__bottom
+      flex-wrap: wrap
+    &__powered
+      order: -1
+      width: 100%
+      margin-bottom: 50px
+
+@media (max-width: 575px)
+  .footer
+    &__logo
+      align-self: center
+    &__bottom
+      flex-direction: column
+      text-align: center
+    &__created
+      margin-bottom: 50px
+      order: -1
+    &__powered
+      max-width: 219px
+      img
+        margin-right: 0

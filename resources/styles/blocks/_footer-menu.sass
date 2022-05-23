@@ -1,0 +1,55 @@
+.footer-menu
+  display: flex
+  align-items: flex-start
+  &__col
+    display: flex
+    flex-direction: column
+    &:nth-child(1)
+      margin-right: 100px
+    &:nth-child(2)
+      margin-right: 70px
+    &--contact
+      position: relative
+      margin-top: -5px
+    .footer-menu__item
+        margin-bottom: 19px
+        +ralewayLight16
+        &:last-of-type
+          margin-bottom: 30px
+        svg
+          margin-right: 21px
+
+  &__item
+    +ralewayReg16
+    color: $white
+    margin-bottom: 25px
+    &:last-of-type
+      margin-bottom: 0
+    &:hover
+      color: $white
+  &__col-title
+    color: #A18F88
+    +ralewaySB12
+    text-transform: uppercase
+    margin-bottom: 23px
+  &__social
+    a
+      &:not(:last-of-type)
+        margin-right: 30px
+
+@media (max-width: 575px)
+  .footer-menu
+    flex-direction: column
+    &__col
+      &:nth-child(1)
+        margin-right: 0
+      &:nth-child(2)
+        margin-right: 0
+      &--contact
+        margin-top: 65px
+      .footer-menu__item
+        font-size: 16px
+        &:last-of-type
+          margin-bottom: 19px
+    &__col-title
+      display: none

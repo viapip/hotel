@@ -1,0 +1,34 @@
+.contact-form
+  &__line
+    display: flex
+    align-items: center
+    margin-bottom: 60px
+    .form-group
+      width: 100%
+      &:first-child
+        margin-right: 10px
+  .form-group
+    width: 100%
+  .form-term
+    margin-bottom: 52px
+    &:last-child
+      margin-bottom: 71px
+  button
+    margin-right: auto
+
+@media (max-width: 575px)
+  .contact-form
+    display: flex
+    flex-direction: column
+    &__line
+      flex-direction: column
+      margin-bottom: 0
+      .form-group
+        &:first-child
+          margin-right: 0
+    .form-group
+      margin-bottom: 30px
+    .form-term
+      margin-bottom: 30px
+    button
+      margin-left: auto

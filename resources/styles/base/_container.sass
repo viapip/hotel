@@ -1,0 +1,21 @@
+.container
+  max-width: 1410px
+  margin: 0 auto
+.container--sm
+  max-width: 930px
+
+
+@media (max-width: 768px)
+  .container
+    max-width: 700px
+    &--sm
+      max-width: 484px
+    &--content-sm
+      max-width: 460px
+
+@media (max-width: 575px)
+  .container
+    padding-left: 16px
+    padding-right: 16px
+  .container--footer
+    max-width: 255px

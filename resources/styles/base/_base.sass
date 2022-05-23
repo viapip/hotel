@@ -1,0 +1,27 @@
+a
+  text-decoration: none
+
+img
+  width: 100%
+
+ul
+  list-style: none
+  padding-left: 0
+
+li
+  position: relative
+  &:before
+    content: '•'
+    font-size: 10pt
+    margin-right: 10px
+    position: absolute
+    top: 3px
+    left: -15px
+
+strong
+  display: block
+
+@media (max-width: 575px)
+  .image-wrapper-full-width
+    margin-left: -16px
+    margin-right: -16px

@@ -1,0 +1,29 @@
+.policy
+  margin-bottom: 200px
+  &__title
+    +ralewayMed18
+    color: $dark
+    margin-bottom: 60px
+  ul
+    margin-left: 24px
+  p, ul
+    +ralewayReg16
+    color: $dark
+    &:not(:last-child)
+      margin-bottom: 60px
+  strong
+    +ralewayBold12
+    color: $dark
+    margin-bottom: 10px
+    text-transform: uppercase
+
+@media (max-width: 991px)
+  .policy
+    &__title
+      font-size: 18px
+@media (max-width: 575px)
+  .policy
+    margin-bottom: 100px
+    p, ul
+      &:not(:last-child)
+        margin-bottom: 40px
