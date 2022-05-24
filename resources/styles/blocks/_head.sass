@@ -1,0 +1,70 @@
+.head
+  display: flex
+  justify-content: center
+  align-items: center
+  min-height: 125px
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16)
+  background: rgba(255, 255, 255, 0.02)
+  backdrop-filter: blur(7px)
+  &__left
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+  &__right
+    display: flex
+    justify-content: flex-end
+    align-self: stretch
+    width: 100%
+    a
+      display: flex
+      align-items: center
+      justify-content: center
+      max-width: 255px
+      width: 100%
+      height: 100%
+      border-left: 1px solid rgba(255, 255, 255, 0.16)
+      color: $white
+      +italiana20
+  &__language
+    background: transparent
+    border: none
+    color: $white
+    margin-right: 65px
+    &--mobile
+      display: none
+    +italiana20
+
+@media (max-width: 992px)
+  .head
+    min-height: 63px
+    &__language
+      margin-right: 36px
+      font-size: 13px
+    &__logotype
+      svg
+        max-width: 160px
+    &__right
+      a
+        max-width: 135px
+        font-size: 13px
+    &__phone
+      svg
+        max-width: 13px
+
+@media (max-width: 575px)
+  .head
+    min-height: 89px
+    &__language
+      display: none
+      &--mobile
+        display: block
+    &__logotype
+      svg
+        max-width: 160px
+    &__right
+      a
+        display: none
+    &__phone
+      display: none
+

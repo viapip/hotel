@@ -1,0 +1,33 @@
+.button
+  +italiana18
+  color: $dark
+  padding: 30px 105px
+  border: 1px solid #A18F88
+  display: inline-block
+  background: transparent
+  &--dark
+    background: $dark
+    border-color: $dark
+    color: $white
+
+.button-blur
+  background: rgba(255, 255, 255, 0.02)
+  backdrop-filter: blur(7px)
+  padding: 25px 105px
+  +italiana18
+  color: $white
+  display: inline-block
+  text-align: center
+  border: 1px solid #A18F88
+  &:hover
+    color: $white
+
+
+
+@media (max-width: 992px)
+  .button
+    padding: 25px 105px
+
+@media (max-width: 575px)
+  .button
+    line-height: 1

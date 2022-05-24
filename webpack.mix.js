@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,7 +10,24 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix
+    .js('resources/js/app.js', 'public/js')
+    .vue()
+    .sass('resources/styles/style.sass', 'public/css');
+    // .browserSync({
+    //     watch: true,
+    //     files: [
+    //         'public/js/*',
+    //         'public/css/*',
+    //         // 'public/**/*.+(html|php)',
+    //         // 'resources/views/**/*.php'
+    //     ],
+    //     open: "http://127.0.0.1:8000",
+    //     injectChanges: true,
+    //     // browser: "google chrome",
+    //     reloadDelay: 1000,
+    //     proxy: {
+    //         target: "http://127.0.0.1:8000",
+    //         ws: true,
+    //     },
+    // })

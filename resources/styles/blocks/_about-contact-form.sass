@@ -1,0 +1,35 @@
+.about-contact-form
+  display: flex
+  flex-direction: column
+  &__line
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-bottom: 60px
+    .required
+      &:first-child
+        margin-right: 10px
+  .form-term
+    margin-top: 65px
+    margin-bottom: 52px
+  button
+    font-size: 20px
+    padding: 30px 84px
+    line-height: .9
+    margin-right: auto
+
+@media (max-width: 575px)
+  .about-contact-form
+    &__line
+      flex-direction: column
+      margin-bottom: 0
+      .required
+        &:first-child
+          margin-right: 0
+    .form-text
+      margin-bottom: 30px
+    .form-term
+      margin-top: 0
+      margin-bottom: 30px
+    button
+      margin-left: auto
