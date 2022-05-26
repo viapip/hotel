@@ -97,7 +97,7 @@
         <div class="dropdown-menu__wrapper">
             <ul :class="['dropdown-menu__list']">
                 <li v-for="(link, index) of links" :key="index" >
-                    <button :class="link.class" @click="$router.push(link.link), toggleActive()">
+                    <button :class="link.class" @click="$router.push(link.link), toggleActive(), scrollToTop()">
                          <span>{{ link.title }}</span>
                     </button>
                 </li>
@@ -179,6 +179,9 @@ export default {
         }
     },
     methods: {
+        scrollToTop() {
+            window.scrollTo(0,0);
+        },
         handlerLinksAnimation(bool) {
             let counter = 125
             this.links.forEach(item => {
