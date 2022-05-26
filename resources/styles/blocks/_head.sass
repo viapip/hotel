@@ -4,13 +4,13 @@
     align-items: center
     min-height: 125px
     border-bottom: 1px solid rgba(255, 255, 255, 0.16)
-    background-color: rgba(0, 0, 0, 0.02)
+    background-color: rgba(66,68,84, 0.02)
     backdrop-filter: blur(7px)
     position: fixed
     width: 100%
     top: 0
     z-index: 99
-    transition: background-color 3s linear
+    transition: background-color 1s linear
     &__left
         display: flex
         justify-content: flex-start
@@ -46,7 +46,7 @@
 body.openMenu
     .head
         padding-right: 17px
-        background-color: #424454
+        background-color: rgba(66,68,84, 1) !important
         transition: background-color .75s linear
 @media (max-width: 992px)
     .head

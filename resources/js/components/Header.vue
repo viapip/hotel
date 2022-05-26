@@ -1,6 +1,6 @@
 <template>
 
-    <div class="head">
+    <div class="head" :style="{backgroundColor:`rgba(66,68,84,` + fillOpacity + ')'}">
         <div class="head__left">
             <button :class="[{'active' : isActive}, 'menu']" @click="toggleActive">
                 <span class="menu__burger">
@@ -151,10 +151,13 @@
 </template>
 
 <script>
+import {debounce} from "lodash";
+
 export default {
     name: "Header",
     data() {
         return {
+            fillOpacity: 0,
             isActive: false,
             isUpWords: false,
             links: [
@@ -196,7 +199,26 @@ export default {
                 }, 1000)
             }
         },
+        handleScroll(e) {
+            const heightFirstScreen = document.querySelector('header').clientHeight
+            const scroll = window.scrollY
+            if (scroll < heightFirstScreen) {
+                const opacity =  Math.round(scroll/(heightFirstScreen * 0.01))/100
+                this.fillOpacity =  opacity
+                console.log(opacity)
+            } else {
+                this.fillOpacity = 1
+            }
 
+        },
+
+    },
+    mounted() {
+        this.debounceHandleScroll = debounce(this.handleScroll, 100)
+        window.addEventListener('scroll', this.debounceHandleScroll)
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.debounceHandleScroll)
     }
 }
 </script>
