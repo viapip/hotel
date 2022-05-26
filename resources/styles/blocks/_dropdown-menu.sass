@@ -98,3 +98,33 @@ body.openMenu
 
 //@keyframes hideWords
 
+@media (max-width: 992px)
+    .dropdown-menu
+        height: calc(100vh - 62px)
+
+@media (max-width: 699px)
+    .dropdown-menu
+        &__wrapper
+            flex-direction: column
+            //justify-content: initial
+            align-items: flex-start
+
+
+@media (max-width: 575px)
+    .dropdown-menu
+        height: calc(100vh - 88px)
+        &__wrapper
+            padding: 20px
+        &__list
+            li
+                &:not(:last-of-type)
+                    margin-bottom: 25px
+                button
+                    @include italiana20
+                    font-size: 22px
+        &__contact-title
+            display: none
+        &__contact-list
+            & > li
+                a
+                    font-size: 14px

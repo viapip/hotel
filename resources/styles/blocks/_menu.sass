@@ -5,6 +5,8 @@
     align-items: center
     margin-left: 65px
     margin-right: 65px
+    //width: 88px
+    //position: relative
     &__burger
         display: flex
         flex-direction: column
@@ -27,6 +29,7 @@
         +italiana20
         color: $white
         font-size: 20px
+
 .menu.active
     .menu__burger
         span
@@ -44,5 +47,10 @@
         margin-right: 0
         margin-left: 30px
 
-        span
+        &__title
             display: none
+
+    body.openMenu
+        .menu
+            &__title
+                display: block

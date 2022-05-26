@@ -7,7 +7,9 @@
                 <span class="menu__burger-item"/>
                 <span class="menu__burger-item"/>
                 </span>
-                <span class="menu__title">Menu</span>
+                <transition>
+                    <span  class="menu__title">{{menuMessage}}</span>
+                </transition>
             </button>
             <button class="head__language">En</button>
             <a href="#" class="head__phone">
@@ -168,6 +170,11 @@ export default {
                 {link: '/rooms', title:'Gallery', class: []},
                 {link: '/contact', title:'Contact', class: []},
             ]
+        }
+    },
+    computed: {
+        menuMessage: function () {
+            return this.isActive? 'Close' : 'Menu'
         }
     },
     methods: {
