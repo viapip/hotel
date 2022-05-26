@@ -198,7 +198,7 @@ export default {
             if (this.isActive) {
                 setTimeout(() => {
                     this.handlerLinksAnimation(true)
-                }, 200)
+                }, 450)
             }
             else {
                 setTimeout( () => {
