@@ -75,9 +75,9 @@
                 </div>
                 <div class="room">
                     <div class="room__overtitle">
-                        Family
+                        Room Only
                     </div>
-                    <h3>Double room</h3>
+                    <h3>Family</h3>
                     <img src="img/rooms/room.jpg" alt="">
                     <div class="room__description">
                         <span>8 sq.m.</span>
