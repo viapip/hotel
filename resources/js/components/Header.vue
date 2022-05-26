@@ -164,7 +164,8 @@ export default {
             isUpWords: false,
             links: [
                 {link: '/rooms', title:'Rooms', class: []},
-                {link: '/events', title:'Special offers', class: []},
+                {link: '/special-offer', title:'Special offers', class: []},
+                {link: '/events', title:'Events', class: []},
                 {link: '/location', title:'Location', class: []},
                 {link: '/about', title:'About Marylebone', class: []},
                 {link: '/rooms', title:'Gallery', class: []},

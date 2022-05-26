@@ -1,66 +1,87 @@
 .room
-  margin-bottom: 160px
-  &:last-of-type
-    margin-bottom: 200px
-  &--detail
-    margin-bottom: 160px !important
-  &__overtitle
-    +ralewayMed18
-    letter-spacing: 0.25em
-    color: $light-brown
-    margin-bottom: 20px
-    text-transform: uppercase
-  h2
-    margin-bottom: 30px
-  img
-    margin-bottom: 30px
-  &__description
-    margin-bottom: 30px
-    +ralewayBold12
-    color: $light-brown
-    text-transform: uppercase
-    span:not(:last-child)
-      margin-right: 30px
-  &__bottom
-    display: flex
-    align-items: center
-    justify-content: space-between
-  &__price
-    display: flex
-    flex-direction: column
-    align-items: flex-end
-    +italiana50
-    color: $dark
-    text-transform: uppercase
-    span
-      +ralewayBold12
-      color: $light-brown
+    margin-bottom: 160px
+
+    &:last-of-type
+        margin-bottom: 200px
+
+    &--detail
+        margin-bottom: 160px !important
+
+    &__overtitle
+        +ralewayMed18
+        letter-spacing: 0.25em
+        color: $light-brown
+        margin-bottom: 20px
+        text-transform: uppercase
+
+    h2
+        margin-bottom: 30px
+
+    img
+        margin-bottom: 30px
+
+    &__description
+        margin-bottom: 30px
+        +ralewayBold12
+        color: $light-brown
+        text-transform: uppercase
+
+        span:not(:last-child)
+            margin-right: 30px
+
+    &__bottom
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__price
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+        +italiana50
+        color: $dark
+        text-transform: uppercase
+
+        span
+            +ralewayBold12
+            color: $light-brown
 
 @media (max-width: 992px)
-  .room
-    margin-bottom: 100px
-    &:last-of-type
-      margin-bottom: 120px
-    &__overtitle
-      margin-bottom: 10px
-    h2
-      margin-bottom: 20px
-    &__price
+    .room
+        margin-bottom: 100px
+
+        &:last-of-type
+            margin-bottom: 120px
+
+        &__overtitle
+            margin-bottom: 10px
+
+        h2
+            margin-bottom: 20px
+
+        &__price
 
 @media (max-width: 575px)
-  .room
-    margin-bottom: 90px
-    &:last-of-type
-      margin-bottom: 100px
-    &__description
-      display: flex
-      flex-direction: column
-      span:not(:last-child)
-        margin-right: 0
-        margin-bottom: 20px
-    &__bottom
-      align-items: flex-start
-      flex-direction: column-reverse
-    &__price
-      align-items: flex-start
-      margin-bottom: 10px
+    .room
+        margin-bottom: 90px
+
+        &:last-of-type
+            margin-bottom: 100px
+
+        &__description
+            display: flex
+            flex-direction: column
+
+            span:not(:last-child)
+                margin-right: 0
+                margin-bottom: 20px
+
+        .button
+            padding: 25px 95px
+        &__bottom
+            align-items: flex-start
+            flex-direction: column-reverse
+
+        &__price
+            align-items: flex-start
+            margin-bottom: 10px

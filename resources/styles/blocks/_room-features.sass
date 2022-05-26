@@ -1,26 +1,34 @@
 .room-features
-  margin-bottom: 30px
-  &__title
-    +ralewayMed18
-    color: $dark
-    margin-bottom: 20px
-  &__ul
-    columns: 2
-    -webkit-columns: 2
-    -moz-columns: 2
-    max-width: 567px
-    margin-bottom: 0
-    +ralewayLight16
-    color: $dark
+    margin-bottom: 30px
+
+    &__title
+        +ralewayMed18
+        color: $dark
+        margin-bottom: 20px
+
+    &__ul
+        columns: 2
+        -webkit-columns: 2
+        -moz-columns: 2
+        max-width: 567px
+        margin-bottom: 0
+        +ralewayLight16
+        color: $dark
+
+    &__li
+        &:before
+            position: initial
 
 @media (max-width: 992px)
-  .room-features
-    &__title
-      font-size: 18px
+    .room-features
+        &__title
+            font-size: 18px
+
 @media (max-width: 575px)
-  .room-features
-    &__ul
-      columns: 1
-      -webkit-columns: 1
-      -moz-columns: 1
-      font-size: 16px
+    .room-features
+
+        &__ul
+            columns: 1
+            -webkit-columns: 1
+            -moz-columns: 1
+            font-size: 16px
