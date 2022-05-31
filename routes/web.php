@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HomePageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::group(['middleware' => 'admin','prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::resource('home-page', HomePageController::class, ['as' => 'admin']);
+    Route::resource('/', HomePageController::class, ['as' => 'admin']);
+    Route::post('/upload-image', 'ImageController@upload')->name('image.upload');
+    Route::post('/delete-image', 'ImageController@delete')->name('image.delete');
+});
+
 Route::get('{any}', function () {
-//    return view('app');
     return view('index');
 })->where('any', '.*');

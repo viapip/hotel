@@ -1,0 +1,76 @@
+{
+    "fields": [
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "banner",
+            "type": "text"
+        },
+        {
+            "name": "about_title",
+            "type": "string"
+        },
+        {
+            "name": "about_subtitle",
+            "type": "string"
+        },
+        {
+            "name": "about_text",
+            "type": "text"
+        },
+        {
+            "name": "about_button",
+            "type": "string"
+        },
+        {
+            "name": "about_button_link",
+            "type": "string"
+        },
+        {
+            "name": "about_image",
+            "type": "string"
+        },
+        {
+            "name": "rooms_title",
+            "type": "string"
+        },
+        {
+            "name": "rooms_text",
+            "type": "text"
+        },
+        {
+            "name": "rooms_items",
+            "type": "string"
+        },
+        {
+            "name": "location_image",
+            "type": "string"
+        },
+        {
+            "name": "location_title",
+            "type": "string"
+        },
+        {
+            "name": "location_text",
+            "type": "text"
+        },
+        {
+            "name": "quality_title",
+            "type": "string"
+        },
+        {
+            "name": "quality_text",
+            "type": "text"
+        },
+        {
+            "name": "quality_button",
+            "type": "string"
+        },
+        {
+            "name": "quality_link",
+            "type": "text"
+        }
+    ]
+}
