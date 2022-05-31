@@ -14,7 +14,6 @@ class CreateHomePagesTable extends Migration
     {
         Schema::create('home_pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('title')->nullable();
             $table->text('banner')->nullable();
             $table->string('about_title')->nullable();
@@ -26,13 +25,13 @@ class CreateHomePagesTable extends Migration
             $table->string('rooms_title')->nullable();
             $table->text('rooms_text')->nullable();
             $table->string('rooms_items')->nullable();
-            $table->string('location_image')->nullable();
-            $table->string('location_title')->nullable();
-            $table->text('location_text')->nullable();
             $table->string('quality_title')->nullable();
             $table->text('quality_text')->nullable();
             $table->string('quality_button')->nullable();
             $table->text('quality_link')->nullable();
+            $table->text('title_seo')->nullable();
+            $table->text('description_seo')->nullable();
+            $table->timestamps();
             });
     }
 

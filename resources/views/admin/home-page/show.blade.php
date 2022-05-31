@@ -8,7 +8,7 @@
                     <div class="card-header">HomePage {{ $homepage->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/admin/home-page') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
+                        <a href="{{ url('/admin/home-page') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <a href="{{ url('/admin/home-page/' . $homepage->id . '/edit') }}" title="Редактировать HomePage"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать</button></a>
 
                         <form method="POST" action="{{ url('/admin/homepage' . '/' . $homepage->id) }}" accept-charset="UTF-8" style="display:inline">

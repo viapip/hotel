@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">Создание HomePage</div>
                     <div class="card-body">
-                        <a href="{{ route('admin.home-page.index') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
+                        <a href="{{ route('admin.home-page.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
