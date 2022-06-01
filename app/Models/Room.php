@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
+    use Sluggable;
     /**
      * The database table used by the model.
      *
@@ -43,4 +45,18 @@ class Room extends Model
         return $this->belongsToMany(Room::class, 'other_room', 'other_id', 'room_id');
     }
 
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 }
