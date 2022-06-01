@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\Privacy;
@@ -52,9 +53,12 @@ class PrivacyController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image']);
+
         Privacy::create($requestData);
 
         return redirect('/admin/privacy')->with('flash_message', 'Privacy added!');
@@ -63,7 +67,7 @@ class PrivacyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -77,7 +81,7 @@ class PrivacyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -92,16 +96,20 @@ class PrivacyController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $privacy = Privacy::findOrFail($id);
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image'], $privacy->image);
+
         $privacy->update($requestData);
 
         return redirect('/admin/privacy')->with('flash_message', 'Privacy updated!');
@@ -110,13 +118,18 @@ class PrivacyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        Privacy::destroy($id);
+        $privacy = Privacy::query()->findOrFail($id);
+
+        if (isset($privacy->image))
+            Image::delete($privacy->image);
+
+        $privacy->delete();
 
         return redirect('/admin/privacy')->with('flash_message', 'Privacy deleted!');
     }

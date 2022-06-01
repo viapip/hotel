@@ -5,7 +5,12 @@
 </div>
 <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">
     <label for="image" class="control-label">{{ 'Image' }}</label>
-    <textarea class="form-control" rows="5" name="image" type="textarea" id="image" >{{ isset($privacy->image) ? $privacy->image : ''}}</textarea>
+    <br>
+    <img src="{{ asset(isset($privacy->image) ? $privacy->image : '') }}" alt="" width="200px">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" name="image" id="banner" value="{{ isset($privacy->image) ? $privacy->image : ''}}">
+        <label class="custom-file-label" for="image">{{ 'Image' }}</label>
+    </div>
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
@@ -15,7 +20,7 @@
 </div>
 <div class="form-group {{ $errors->has('title_seo') ? 'has-error' : ''}}">
     <label for="title_seo" class="control-label">{{ 'Title Seo' }}</label>
-    <textarea class="form-control" rows="5" name="title_seo" type="textarea" id="title_seo" >{{ isset($privacy->title_seo) ? $privacy->title_seo : ''}}</textarea>
+    <input class="form-control" name="title_seo" type="text" id="title_seo" value="{{ isset($privacy->title_seo) ? $privacy->title_seo : ''}}" >
     {!! $errors->first('title_seo', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('description_seo') ? 'has-error' : ''}}">

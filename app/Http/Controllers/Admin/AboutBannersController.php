@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\AboutBanner;
@@ -49,9 +50,12 @@ class AboutBannersController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image']);
+
         AboutBanner::create($requestData);
 
         return redirect('/admin/about-banners')->with('flash_message', 'AboutBanner added!');
@@ -95,10 +99,14 @@ class AboutBannersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $aboutbanner = AboutBanner::findOrFail($id);
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image'], $aboutbanner->image);
+
         $aboutbanner->update($requestData);
 
         return redirect('/admin/about-banners')->with('flash_message', 'AboutBanner updated!');
@@ -113,7 +121,12 @@ class AboutBannersController extends Controller
      */
     public function destroy($id)
     {
-        AboutBanner::destroy($id);
+        $aboutbanner = AboutBanner::query()->findOrFail($id);
+
+        if (isset($aboutbanner->image))
+            Image::delete($aboutbanner->image);
+
+        $aboutbanner->delete();
 
         return redirect('/admin/about-banners')->with('flash_message', 'AboutBanner deleted!');
     }

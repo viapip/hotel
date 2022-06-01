@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\Contact;
@@ -55,9 +56,12 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image']);
+
         Contact::create($requestData);
 
         return redirect('/admin/contact')->with('flash_message', 'Contact added!');
@@ -101,10 +105,14 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $contact = Contact::findOrFail($id);
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image'], $contact->image);
+
         $contact->update($requestData);
 
         return redirect('/admin/contact')->with('flash_message', 'Contact updated!');
@@ -119,7 +127,12 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        Contact::destroy($id);
+        $contact = Contact::query()->findOrFail($id);
+
+        if (isset($contact->image))
+            Image::delete($contact->image);
+
+        $contact->delete();
 
         return redirect('/admin/contact')->with('flash_message', 'Contact deleted!');
     }

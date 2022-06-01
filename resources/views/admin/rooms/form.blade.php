@@ -5,8 +5,13 @@
 </div>
 <div class="form-group {{ $errors->has('preview_image') ? 'has-error' : ''}}">
     <label for="preview_image" class="control-label">{{ 'Preview Image' }}</label>
-    <textarea class="form-control" rows="5" name="preview_image" type="textarea" id="preview_image" >{{ isset($room->preview_image) ? $room->preview_image : ''}}</textarea>
-    {!! $errors->first('preview_image', '<p class="help-block">:message</p>') !!}
+    <br>
+    <img src="{{ asset(isset($room->preview_image) ? $room->preview_image : '') }}" alt="" width="200px">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" name="preview_image" id="preview_image" value="{{ isset($room->preview_image) ? $room->preview_image : ''}}">
+        <label class="custom-file-label" for="preview_image">{{ 'Preview Image' }}</label>
+    </div>
+    {!! $errors->first('banner', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
     <label for="images" class="control-label">{{ 'Images' }}</label>

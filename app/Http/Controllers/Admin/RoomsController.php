@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\Room;
@@ -59,9 +60,12 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('preview_image'))
+            $requestData['preview_image'] = Image::uploadImage($requestData['preview_image']);
+
         Room::create($requestData);
 
         return redirect('/admin/rooms')->with('flash_message', 'Room added!');
@@ -70,7 +74,7 @@ class RoomsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -84,7 +88,7 @@ class RoomsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -99,16 +103,20 @@ class RoomsController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $room = Room::findOrFail($id);
+
+        if ($request->hasFile('preview_image'))
+            $requestData['preview_image'] = Image::uploadImage($requestData['preview_image'], $room->preview_image);
+
         $room->update($requestData);
 
         return redirect('/admin/rooms')->with('flash_message', 'Room updated!');
@@ -117,13 +125,18 @@ class RoomsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        Room::destroy($id);
+        $room = Room::query()->findOrFail($id);
+
+        if (isset($room->preview_image))
+            Image::delete($room->preview_image);
+
+        $room->delete();
 
         return redirect('/admin/rooms')->with('flash_message', 'Room deleted!');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\LocationHome;
@@ -50,9 +51,12 @@ class LocationHomeController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image']);
+
         LocationHome::create($requestData);
 
         return redirect('/admin/location-home')->with('flash_message', 'LocationHome added!');
@@ -96,10 +100,15 @@ class LocationHomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $locationhome = LocationHome::findOrFail($id);
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image'], $locationhome->image);
+
+
         $locationhome->update($requestData);
 
         return redirect('/admin/location-home')->with('flash_message', 'LocationHome updated!');
@@ -114,7 +123,12 @@ class LocationHomeController extends Controller
      */
     public function destroy($id)
     {
-        LocationHome::destroy($id);
+        $locationhome = LocationHome::query()->findOrFail($id);
+
+        if (isset($locationhome->image))
+            Image::delete($locationhome->image);
+
+        $locationhome->delete();
 
         return redirect('/admin/location-home')->with('flash_message', 'LocationHome deleted!');
     }

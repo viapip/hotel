@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Редактирование Event #{{ $event->id }}</div>
+                    <div class="card-header">Editing Event #{{ $event->id }}</div>
                     <div class="card-body">
                         <a href="{{ route('admin.events.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

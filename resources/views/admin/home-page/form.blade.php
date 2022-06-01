@@ -5,7 +5,12 @@
 </div>
 <div class="form-group {{ $errors->has('banner') ? 'has-error' : ''}}">
     <label for="banner" class="control-label">{{ 'Banner' }}</label>
-    <textarea class="form-control" rows="5" name="banner" type="textarea" id="banner" >{{ isset($homepage->banner) ? $homepage->banner : ''}}</textarea>
+    <br>
+    <img src="{{ asset(isset($homepage->banner) ? $homepage->banner : '') }}" alt="" width="200px">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" name="banner" id="banner" value="{{ isset($homepage->banner) ? $homepage->banner : ''}}">
+        <label class="custom-file-label" for="banner">{{ 'Banner' }}</label>
+    </div>
     {!! $errors->first('banner', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('about_title') ? 'has-error' : ''}}">
@@ -35,7 +40,12 @@
 </div>
 <div class="form-group {{ $errors->has('about_image') ? 'has-error' : ''}}">
     <label for="about_image" class="control-label">{{ 'About Image' }}</label>
-    <input class="form-control" name="about_image" type="text" id="about_image" value="{{ isset($homepage->about_image) ? $homepage->about_image : ''}}" >
+    <br>
+    <img src="{{ asset(isset($homepage->about_image) ? $homepage->about_image : '') }}" alt="" width="200px">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" name="about_image" id="about_image" value="{{ isset($homepage->about_image) ? $homepage->about_image : ''}}">
+        <label class="custom-file-label" for="about_image">{{ 'About Image' }}</label>
+    </div>
     {!! $errors->first('about_image', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('rooms_title') ? 'has-error' : ''}}">
@@ -52,21 +62,6 @@
     <label for="rooms_items" class="control-label">{{ 'Rooms Items' }}</label>
     <input class="form-control" name="rooms_items" type="text" id="rooms_items" value="{{ isset($homepage->rooms_items) ? $homepage->rooms_items : ''}}" >
     {!! $errors->first('rooms_items', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('location_image') ? 'has-error' : ''}}">
-    <label for="location_image" class="control-label">{{ 'Location Image' }}</label>
-    <input class="form-control" name="location_image" type="text" id="location_image" value="{{ isset($homepage->location_image) ? $homepage->location_image : ''}}" >
-    {!! $errors->first('location_image', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('location_title') ? 'has-error' : ''}}">
-    <label for="location_title" class="control-label">{{ 'Location Title' }}</label>
-    <input class="form-control" name="location_title" type="text" id="location_title" value="{{ isset($homepage->location_title) ? $homepage->location_title : ''}}" >
-    {!! $errors->first('location_title', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('location_text') ? 'has-error' : ''}}">
-    <label for="location_text" class="control-label">{{ 'Location Text' }}</label>
-    <textarea class="form-control" rows="5" name="location_text" type="textarea" id="location_text" >{{ isset($homepage->location_text) ? $homepage->location_text : ''}}</textarea>
-    {!! $errors->first('location_text', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('quality_title') ? 'has-error' : ''}}">
     <label for="quality_title" class="control-label">{{ 'Quality Title' }}</label>

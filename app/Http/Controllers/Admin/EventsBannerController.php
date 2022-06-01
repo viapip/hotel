@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\EventsBanner;
@@ -49,9 +50,12 @@ class EventsBannerController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image']);
+
         EventsBanner::create($requestData);
 
         return redirect('/admin/events-banner')->with('flash_message', 'EventsBanner added!');
@@ -95,10 +99,14 @@ class EventsBannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $eventsbanner = EventsBanner::findOrFail($id);
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image'], $eventsbanner->image);
+
         $eventsbanner->update($requestData);
 
         return redirect('/admin/events-banner')->with('flash_message', 'EventsBanner updated!');
@@ -113,7 +121,12 @@ class EventsBannerController extends Controller
      */
     public function destroy($id)
     {
-        EventsBanner::destroy($id);
+        $eventsbanner = EventsBanner::query()->findOrFail($id);
+
+        if (isset($eventsbanner->image))
+            Image::delete($eventsbanner->image);
+
+        $eventsbanner->delete();
 
         return redirect('/admin/events-banner')->with('flash_message', 'EventsBanner deleted!');
     }

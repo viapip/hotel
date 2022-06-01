@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\RoomsPage;
@@ -51,9 +52,12 @@ class RoomsPageController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('banner'))
+            $requestData['banner'] = Image::uploadImage($requestData['banner']);
+
         RoomsPage::create($requestData);
 
         return redirect('/admin/rooms-page')->with('flash_message', 'RoomsPage added!');
@@ -97,10 +101,14 @@ class RoomsPageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $roomspage = RoomsPage::findOrFail($id);
+
+        if ($request->hasFile('banner'))
+            $requestData['banner'] = Image::uploadImage($requestData['banner'], $roomspage->banner);
+
         $roomspage->update($requestData);
 
         return redirect('/admin/rooms-page')->with('flash_message', 'RoomsPage updated!');
@@ -115,7 +123,12 @@ class RoomsPageController extends Controller
      */
     public function destroy($id)
     {
-        RoomsPage::destroy($id);
+        $roomspage = RoomsPage::query()->findOrFail($id);
+
+        if (isset($roomspage->banner))
+            Image::delete($roomspage->banner);
+
+        $roomspage->delete();
 
         return redirect('/admin/rooms-page')->with('flash_message', 'RoomsPage deleted!');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\LocationPage;
@@ -52,9 +53,12 @@ class LocationPageController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('banner'))
+            $requestData['banner'] = Image::uploadImage($requestData['banner']);
+
         LocationPage::create($requestData);
 
         return redirect('/admin/location-page')->with('flash_message', 'LocationPage added!');
@@ -98,10 +102,14 @@ class LocationPageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $locationpage = LocationPage::findOrFail($id);
+
+        if ($request->hasFile('banner'))
+            $requestData['banner'] = Image::uploadImage($requestData['banner'], $locationpage->banner);
+
         $locationpage->update($requestData);
 
         return redirect('/admin/location-page')->with('flash_message', 'LocationPage updated!');
@@ -116,7 +124,12 @@ class LocationPageController extends Controller
      */
     public function destroy($id)
     {
-        LocationPage::destroy($id);
+        $locationpage = LocationPage::query()->findOrFail($id);
+
+        if (isset($locationpage->banner))
+            Image::delete($locationpage->banner);
+
+        $locationpage->delete();
 
         return redirect('/admin/location-page')->with('flash_message', 'LocationPage deleted!');
     }

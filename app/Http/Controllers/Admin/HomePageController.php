@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\HomePage;
@@ -65,9 +66,15 @@ class HomePageController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('banner'))
+            $requestData['banner'] = Image::uploadImage($requestData['banner']);
+
+        if ($request->hasFile('about_image'))
+            $requestData['about_image'] = Image::uploadImage($requestData['about_image']);
+
         HomePage::create($requestData);
 
         return redirect('/admin/home-page')->with('flash_message', 'HomePage added!');
@@ -76,7 +83,7 @@ class HomePageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -90,7 +97,7 @@ class HomePageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\View\View
      */
@@ -105,16 +112,23 @@ class HomePageController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $homepage = HomePage::findOrFail($id);
+
+        if ($request->hasFile('banner'))
+            $requestData['banner'] = Image::uploadImage($requestData['banner'], $homepage->banner);
+
+        if ($request->hasFile('about_image'))
+            $requestData['about_image'] = Image::uploadImage($requestData['about_image'], $homepage->about_image);
+
         $homepage->update($requestData);
 
         return redirect('/admin/home-page')->with('flash_message', 'HomePage updated!');
@@ -123,14 +137,19 @@ class HomePageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        HomePage::destroy($id);
+        $homepage = HomePage::query()->findOrFail($id);
+        if (isset($homepage->banner))
+            Image::delete($homepage->banner);
+        if (isset($homepage->about_image))
+            Image::delete($homepage->about_image);
 
+        $homepage->delete();
         return redirect('/admin/home-page')->with('flash_message', 'HomePage deleted!');
     }
 }

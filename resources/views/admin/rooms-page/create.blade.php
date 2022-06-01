@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Создание RoomsPage</div>
+                    <div class="card-header">Creating RoomsPage</div>
                     <div class="card-body">
                         <a href="{{ route('admin.rooms-page.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

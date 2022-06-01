@@ -10,10 +10,14 @@
 </div>
 <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">
     <label for="image" class="control-label">{{ 'Image' }}</label>
-    <input class="form-control" name="image" type="text" id="image" value="{{ isset($locationhome->image) ? $locationhome->image : ''}}" >
+    <br>
+    <img src="{{ asset(isset($locationhome->image) ? $locationhome->image : '') }}" alt="" width="200px">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" name="image" id="banner" value="{{ isset($locationhome->image) ? $locationhome->image : ''}}">
+        <label class="custom-file-label" for="image">{{ 'Image' }}</label>
+    </div>
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
-
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">

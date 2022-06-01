@@ -5,7 +5,12 @@
 </div>
 <div class="form-group {{ $errors->has('banner') ? 'has-error' : ''}}">
     <label for="banner" class="control-label">{{ 'Banner' }}</label>
-    <textarea class="form-control" rows="5" name="banner" type="textarea" id="banner" >{{ isset($roomspage->banner) ? $roomspage->banner : ''}}</textarea>
+    <br>
+    <img src="{{ asset(isset($roomspage->banner) ? $roomspage->banner : '') }}" alt="" width="200px">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" name="banner" id="banner" value="{{ isset($roomspage->banner) ? $roomspage->banner : ''}}">
+        <label class="custom-file-label" for="banner">{{ 'Banner' }}</label>
+    </div>
     {!! $errors->first('banner', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('title_seo') ? 'has-error' : ''}}">

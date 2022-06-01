@@ -5,7 +5,12 @@
 </div>
 <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">
     <label for="image" class="control-label">{{ 'Image' }}</label>
-    <textarea class="form-control" rows="5" name="image" type="textarea" id="image" >{{ isset($contact->image) ? $contact->image : ''}}</textarea>
+    <br>
+    <img src="{{ asset(isset($contact->image) ? $contact->image : '') }}" alt="" width="200px">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" name="image" id="banner" value="{{ isset($contact->image) ? $contact->image : ''}}">
+        <label class="custom-file-label" for="image">{{ 'Image' }}</label>
+    </div>
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
@@ -20,17 +25,17 @@
 </div>
 <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
     <label for="phone" class="control-label">{{ 'Phone' }}</label>
-    <textarea class="form-control" rows="5" name="phone" type="textarea" id="phone" >{{ isset($contact->phone) ? $contact->phone : ''}}</textarea>
+    <input class="form-control" name="phone" type="text" id="phone" value="{{ isset($contact->phone) ? $contact->phone : ''}}" >
     {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
     <label for="email" class="control-label">{{ 'Email' }}</label>
-    <textarea class="form-control" rows="5" name="email" type="textarea" id="email" >{{ isset($contact->email) ? $contact->email : ''}}</textarea>
+    <input class="form-control" name="email" type="text" id="email" value="{{ isset($contact->email) ? $contact->email : ''}}" >
     {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('title_seo') ? 'has-error' : ''}}">
     <label for="title_seo" class="control-label">{{ 'Title Seo' }}</label>
-    <textarea class="form-control" rows="5" name="title_seo" type="textarea" id="title_seo" >{{ isset($contact->title_seo) ? $contact->title_seo : ''}}</textarea>
+    <input class="form-control" name="title_seo" type="text" id="title_seo" value="{{ isset($contact->title_seo) ? $contact->title_seo : ''}}" >
     {!! $errors->first('title_seo', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('description_seo') ? 'has-error' : ''}}">

@@ -35,16 +35,16 @@
                                 @foreach($rooms as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->preview_image }}</td><td>{{ $item->images }}</td>
+                                        <td>{{ $item->title }}</td><td><img src="{{ asset($item->preview_image) }}" width="200px" alt=""></td><td>{{ $item->images }}</td>
                                         <td>
 
                                             {{--<a href="{{ url('/admin/rooms/' . $item->id) }}" title="Просмотр Room"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
-                                            <a href="{{ url('/admin/rooms/' . $item->id . '/edit') }}" title="Редактировать Room"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать</button></a>
+                                            <a href="{{ url('/admin/rooms/' . $item->id . '/edit') }}" title="Edit Room"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/rooms' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Улдалить Room" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Удалить</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Room" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>

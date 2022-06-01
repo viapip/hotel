@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\Discover;
@@ -57,9 +58,12 @@ class DiscoverController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image']);
+
         Discover::create($requestData);
 
         return redirect('/admin/discover')->with('flash_message', 'Discover added!');
@@ -103,10 +107,15 @@ class DiscoverController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $discover = Discover::findOrFail($id);
+
+        if ($request->hasFile('image'))
+            $requestData['image'] = Image::uploadImage($requestData['image'], $discover->image);
+
+
         $discover->update($requestData);
 
         return redirect('/admin/discover')->with('flash_message', 'Discover updated!');
@@ -121,7 +130,12 @@ class DiscoverController extends Controller
      */
     public function destroy($id)
     {
-        Discover::destroy($id);
+        $discover = Discover::query()->findOrFail($id);
+
+        if (isset($discover->image))
+            Image::delete($discover->image);
+
+        $discover->delete();
 
         return redirect('/admin/discover')->with('flash_message', 'Discover deleted!');
     }
