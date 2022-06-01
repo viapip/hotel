@@ -1,11 +1,11 @@
 {
     "fields": [
         {
-            "name": "under_title",
+            "name": "feature_id",
             "type": "string"
         },
         {
-            "name": "title",
+            "name": "room_id",
             "type": "string"
         }
     ]

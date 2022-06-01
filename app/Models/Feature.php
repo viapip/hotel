@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RoomFeature extends Model
+class Feature extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'room_features';
+    protected $table = 'features';
 
     /**
     * The database primary key value.
@@ -27,5 +27,8 @@ class RoomFeature extends Model
      */
     protected $fillable = ['title'];
 
-    
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class);
+    }
 }

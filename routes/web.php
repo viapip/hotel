@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DiscoverController;
 use App\Http\Controllers\Admin\EventsBannerController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\EventsPageController;
+use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\LocationHomeController;
 use App\Http\Controllers\Admin\LocationPageController;
@@ -43,7 +44,7 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function () {
     Route::resource('/location-home', LocationHomeController::class, ['as' => 'admin']);
     Route::resource('/rooms-page', RoomsPageController::class, ['as' => 'admin']);
     Route::resource('/rooms', RoomsController::class, ['as' => 'admin']);
-    Route::resource('/room-features', RoomFeaturesController::class, ['as' => 'admin']);
+    Route::resource('/feature', FeatureController::class, ['as' => 'admin']);
     Route::resource('/events-page', EventsPageController::class, ['as' => 'admin']);
     Route::resource('/events-banner', EventsBannerController::class, ['as' => 'admin']);
     Route::resource('/events', EventsController::class, ['as' => 'admin']);

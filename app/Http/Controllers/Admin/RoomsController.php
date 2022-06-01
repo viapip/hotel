@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
+use App\Models\Feature;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,8 @@ class RoomsController extends Controller
      */
     public function create()
     {
-        return view('admin.rooms.create');
+        $features = Feature::query()->pluck('title', 'id')->all();
+        return view('admin.rooms.create', compact('features'));
     }
 
     /**
@@ -62,11 +64,11 @@ class RoomsController extends Controller
     {
 
         $requestData = $request->all();
-
         if ($request->hasFile('preview_image'))
             $requestData['preview_image'] = Image::uploadImage($requestData['preview_image']);
 
-        Room::create($requestData);
+        $room = Room::create($requestData);
+        $room->features()->sync($request->features);
 
         return redirect('/admin/rooms')->with('flash_message', 'Room added!');
     }
@@ -95,8 +97,9 @@ class RoomsController extends Controller
     public function edit($id)
     {
         $room = Room::findOrFail($id);
+        $features = Feature::query()->pluck('title', 'id')->all();
 
-        return view('admin.rooms.edit', compact('room'));
+        return view('admin.rooms.edit', compact('room', 'features'));
     }
 
     /**
@@ -116,6 +119,7 @@ class RoomsController extends Controller
 
         if ($request->hasFile('preview_image'))
             $requestData['preview_image'] = Image::uploadImage($requestData['preview_image'], $room->preview_image);
+        $room->features()->sync($request->features);
 
         $room->update($requestData);
 
@@ -135,6 +139,8 @@ class RoomsController extends Controller
 
         if (isset($room->preview_image))
             Image::delete($room->preview_image);
+
+        $room->features()->detach();
 
         $room->delete();
 

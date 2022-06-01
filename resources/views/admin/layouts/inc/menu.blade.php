@@ -70,7 +70,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.room-features.index') }}" class="nav-link">
+                    <a href="{{ route('admin.feature.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Features</p>
                     </a>

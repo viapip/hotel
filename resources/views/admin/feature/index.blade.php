@@ -5,13 +5,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Roomfeatures</div>
+                    <div class="card-header">Feature</div>
                     <div class="card-body">
-                        <a href="{{ route('admin.room-features.create') }}" class="btn btn-success btn-sm" title="Add New RoomFeature">
+                        <a href="{{ route('admin.feature.create') }}" class="btn btn-success btn-sm" title="Add New Feature">
                             <i class="fa fa-plus" aria-hidden="true"></i> Create
                         </a>
 
-                        <form method="GET" action="{{ url('/admin/room-features') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                        <form method="GET" action="{{ url('/admin/feature') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                                 <span class="input-group-append">
@@ -32,26 +32,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($roomfeatures as $item)
+                                @foreach($feature as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>
 
-                                            {{--<a href="{{ url('/admin/room-features/' . $item->id) }}" title="Просмотр RoomFeature"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
-                                            <a href="{{ url('/admin/room-features/' . $item->id . '/edit') }}" title="Edit RoomFeature"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            {{--<a href="{{ url('/admin/feature/' . $item->id) }}" title="Просмотр Feature"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
+                                            <a href="{{ url('/admin/feature/' . $item->id . '/edit') }}" title="Edit Feature"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                            <form method="POST" action="{{ url('/admin/room-features' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/admin/feature' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete RoomFeature" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Feature" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $roomfeatures->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $feature->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

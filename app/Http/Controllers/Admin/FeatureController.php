@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\RoomFeature;
+use App\Models\Feature;
 use Illuminate\Http\Request;
 
-class RoomFeaturesController extends Controller
+class FeatureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,13 +20,13 @@ class RoomFeaturesController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $roomfeatures = RoomFeature::where('title', 'LIKE', "%$keyword%")
+            $feature = Feature::where('title', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $roomfeatures = RoomFeature::latest()->paginate($perPage);
+            $feature = Feature::latest()->paginate($perPage);
         }
 
-        return view('admin.room-features.index', compact('roomfeatures'));
+        return view('admin.feature.index', compact('feature'));
     }
 
     /**
@@ -36,7 +36,7 @@ class RoomFeaturesController extends Controller
      */
     public function create()
     {
-        return view('admin.room-features.create');
+        return view('admin.feature.create');
     }
 
     /**
@@ -48,12 +48,12 @@ class RoomFeaturesController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $requestData = $request->all();
-        
-        RoomFeature::create($requestData);
 
-        return redirect('/admin/room-features')->with('flash_message', 'RoomFeature added!');
+        $requestData = $request->all();
+
+        Feature::create($requestData);
+
+        return redirect('/admin/feature')->with('flash_message', 'Feature added!');
     }
 
     /**
@@ -65,9 +65,9 @@ class RoomFeaturesController extends Controller
      */
     public function show($id)
     {
-        $roomfeature = RoomFeature::findOrFail($id);
+        $feature = Feature::findOrFail($id);
 
-        return view('admin.room-features.show', compact('roomfeature'));
+        return view('admin.feature.show', compact('feature'));
     }
 
     /**
@@ -79,9 +79,9 @@ class RoomFeaturesController extends Controller
      */
     public function edit($id)
     {
-        $roomfeature = RoomFeature::findOrFail($id);
+        $feature = Feature::findOrFail($id);
 
-        return view('admin.room-features.edit', compact('roomfeature'));
+        return view('admin.feature.edit', compact('feature'));
     }
 
     /**
@@ -94,13 +94,13 @@ class RoomFeaturesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $requestData = $request->all();
-        
-        $roomfeature = RoomFeature::findOrFail($id);
-        $roomfeature->update($requestData);
 
-        return redirect('/admin/room-features')->with('flash_message', 'RoomFeature updated!');
+        $requestData = $request->all();
+
+        $feature = Feature::findOrFail($id);
+        $feature->update($requestData);
+
+        return redirect('/admin/feature')->with('flash_message', 'Feature updated!');
     }
 
     /**
@@ -112,8 +112,12 @@ class RoomFeaturesController extends Controller
      */
     public function destroy($id)
     {
-        RoomFeature::destroy($id);
+        $feature = Feature::query()->findOrFail($id);
 
-        return redirect('/admin/room-features')->with('flash_message', 'RoomFeature deleted!');
+        $feature->rooms()->detach();
+
+        $feature->delete();
+
+        return redirect('/admin/feature')->with('flash_message', 'Feature deleted!');
     }
 }

@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class FeatureRoom extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'rooms';
+    protected $table = 'feature_room';
 
     /**
     * The database primary key value.
@@ -25,12 +25,7 @@ class Room extends Model
      *
      * @var array
      */
-    protected $fillable = ['special_offer','title', 'preview_image', 'images', 'meters', 'description', 'price', 'link', 'other_rooms', 'title_seo', 'description_seo', 'slug'];
+    protected $fillable = ['feature_id', 'room_id'];
 
-
-    public function features()
-    {
-        return $this->belongsToMany(Feature::class);
-    }
 
 }

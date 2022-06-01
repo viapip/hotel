@@ -20,7 +20,6 @@ class CreateRoomsTable extends Migration
             $table->text('images')->nullable();
             $table->string('meters')->nullable();
             $table->text('description')->nullable();
-            $table->text('features')->nullable();
             $table->string('price')->nullable();
             $table->string('link')->nullable();
             $table->text('other_rooms')->nullable();

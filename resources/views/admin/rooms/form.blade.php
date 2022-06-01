@@ -48,6 +48,15 @@
               id="features">{{ isset($room->features) ? $room->features : ''}}</textarea>
     {!! $errors->first('features', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group">
+    <label>{{ 'Features' }}</label>
+    <select name="features[]" id="features" class="select2" multiple="multiple"
+            data-placeholder="Choose feature" style="width: 100%;" required>
+        @foreach($features as $id => $title)
+            <option value="{{ $id }}" @if(isset($room->features) && in_array($id, $room->features->pluck('id')->all())) selected @endif >{{ $title }}</option>
+        @endforeach
+    </select>
+</div>
 <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
     <label for="price" class="control-label">{{ 'Price' }}</label>
     <input class="form-control" name="price" type="text" id="price"

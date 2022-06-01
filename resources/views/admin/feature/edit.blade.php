@@ -5,9 +5,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Editing Room Feature #{{ $roomfeature->id }}</div>
+                    <div class="card-header">Editing Feature #{{ $feature->id }}</div>
                     <div class="card-body">
-                        <a href="{{ route('admin.room-features.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ route('admin.feature.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -19,11 +19,11 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/room-features/' . $roomfeature->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/feature/' . $feature->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             @method('PATCH')
                             @csrf
 
-                            @include ('admin.room-features.form', ['formMode' => 'edit'])
+                            @include ('admin.feature.form', ['formMode' => 'edit'])
 
                         </form>
 
