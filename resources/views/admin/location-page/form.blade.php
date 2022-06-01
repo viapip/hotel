@@ -5,7 +5,7 @@
 </div>
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     <label for="description" class="control-label">{{ 'Description' }}</label>
-    <textarea class="form-control" rows="5" name="description" type="textarea" id="description" >{{ isset($locationpage->description) ? $locationpage->description : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="description" type="textarea" id="description" >{{ isset($locationpage->description) ? $locationpage->description : ''}}</textarea>
     {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('banner') ? 'has-error' : ''}}">

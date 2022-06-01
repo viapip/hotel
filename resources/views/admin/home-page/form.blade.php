@@ -25,7 +25,7 @@
 </div>
 <div class="form-group {{ $errors->has('about_text') ? 'has-error' : ''}}">
     <label for="about_text" class="control-label">{{ 'About Text' }}</label>
-    <textarea class="form-control" rows="5" name="about_text" type="textarea" id="about_text" >{{ isset($homepage->about_text) ? $homepage->about_text : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="about_text" type="textarea" id="about_text" >{{ isset($homepage->about_text) ? $homepage->about_text : ''}}</textarea>
     {!! $errors->first('about_text', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('about_button') ? 'has-error' : ''}}">
@@ -55,7 +55,7 @@
 </div>
 <div class="form-group {{ $errors->has('rooms_text') ? 'has-error' : ''}}">
     <label for="rooms_text" class="control-label">{{ 'Rooms Text' }}</label>
-    <textarea class="form-control" rows="5" name="rooms_text" type="textarea" id="rooms_text" >{{ isset($homepage->rooms_text) ? $homepage->rooms_text : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="rooms_text" type="textarea" id="rooms_text" >{{ isset($homepage->rooms_text) ? $homepage->rooms_text : ''}}</textarea>
     {!! $errors->first('rooms_text', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('rooms_items') ? 'has-error' : ''}}">
@@ -69,7 +69,7 @@
     {!! $errors->first('quality_title', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('quality_text') ? 'has-error' : ''}}">
-    <label for="quality_text" class="control-label">{{ 'Quality Text' }}</label>
+    <label for="quality_text full-editor" class="control-label">{{ 'Quality Text' }}</label>
     <textarea class="form-control" rows="5" name="quality_text" type="textarea" id="quality_text" >{{ isset($homepage->quality_text) ? $homepage->quality_text : ''}}</textarea>
     {!! $errors->first('quality_text', '<p class="help-block">:message</p>') !!}
 </div>
@@ -80,8 +80,18 @@
 </div>
 <div class="form-group {{ $errors->has('quality_link') ? 'has-error' : ''}}">
     <label for="quality_link" class="control-label">{{ 'Quality Link' }}</label>
-    <textarea class="form-control" rows="5" name="quality_link" type="textarea" id="quality_link" >{{ isset($homepage->quality_link) ? $homepage->quality_link : ''}}</textarea>
+    <input class="form-control" name="quality_link" type="text" id="quality_link" value="{{ isset($homepage->quality_link) ? $homepage->quality_link : ''}}" >
     {!! $errors->first('quality_link', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('title_seo') ? 'has-error' : ''}}">
+    <label for="title_seo" class="control-label">{{ 'Title Seo' }}</label>
+    <input class="form-control" name="title_seo" type="text" id="title_seo" value="{{ isset($homepage->title_seo) ? $homepage->title_seo : ''}}" >
+    {!! $errors->first('title_seo', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('description_seo') ? 'has-error' : ''}}">
+    <label for="description_seo" class="control-label">{{ 'Description Seo' }}</label>
+    <textarea class="form-control" rows="5" name="description_seo" type="textarea" id="description_seo" >{{ isset($homepage->description_seo) ? $homepage->description_seo : ''}}</textarea>
+    {!! $errors->first('description_seo', '<p class="help-block">:message</p>') !!}
 </div>
 
 

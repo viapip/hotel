@@ -5,12 +5,12 @@
 </div>
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     <label for="description" class="control-label">{{ 'Description' }}</label>
-    <textarea class="form-control" rows="5" name="description" type="textarea" id="description" >{{ isset($aboutpage->description) ? $aboutpage->description : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="description" type="textarea" id="description" >{{ isset($aboutpage->description) ? $aboutpage->description : ''}}</textarea>
     {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('description_bottom') ? 'has-error' : ''}}">
     <label for="description_bottom" class="control-label">{{ 'Description Bottom' }}</label>
-    <textarea class="form-control" rows="5" name="description_bottom" type="textarea" id="description_bottom" >{{ isset($aboutpage->description_bottom) ? $aboutpage->description_bottom : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="description_bottom" type="textarea" id="description_bottom" >{{ isset($aboutpage->description_bottom) ? $aboutpage->description_bottom : ''}}</textarea>
     {!! $errors->first('description_bottom', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">

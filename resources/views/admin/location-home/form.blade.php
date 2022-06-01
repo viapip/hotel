@@ -5,7 +5,7 @@
 </div>
 <div class="form-group {{ $errors->has('text') ? 'has-error' : ''}}">
     <label for="text" class="control-label">{{ 'Text' }}</label>
-    <textarea class="form-control" rows="5" name="text" type="textarea" id="text" >{{ isset($locationhome->text) ? $locationhome->text : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="text" type="textarea" id="text" >{{ isset($locationhome->text) ? $locationhome->text : ''}}</textarea>
     {!! $errors->first('text', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">

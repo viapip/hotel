@@ -15,12 +15,12 @@
 </div>
 <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
     <label for="name" class="control-label">{{ 'Name' }}</label>
-    <textarea class="form-control" rows="5" name="name" type="textarea" id="name" >{{ isset($contact->name) ? $contact->name : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="name" type="textarea" id="name" >{{ isset($contact->name) ? $contact->name : ''}}</textarea>
     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('address') ? 'has-error' : ''}}">
     <label for="address" class="control-label">{{ 'Address' }}</label>
-    <textarea class="form-control" rows="5" name="address" type="textarea" id="address" >{{ isset($contact->address) ? $contact->address : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="address" type="textarea" id="address" >{{ isset($contact->address) ? $contact->address : ''}}</textarea>
     {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">

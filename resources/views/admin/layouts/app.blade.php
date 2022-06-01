@@ -115,76 +115,66 @@
         }
     });
 </script>
-{{--<script src="{{ asset('assets/admin/ckeditor5/build/ckeditor.js') }}"></script>--}}
-{{--<script src="{{ asset('assets/admin/ckfinder/ckfinder.js') }}"></script>--}}
+<script src="{{ asset('assets/admin/ckeditor5/build/ckeditor.js') }}"></script>
+<script src="{{ asset('assets/admin/ckfinder/ckfinder.js') }}"></script>
 
-{{--<script type="text/javascript">--}}
-{{--    ClassicEditor--}}
-{{--        .create( document.querySelector( '.full-editor' ), {--}}
-{{--            ckfinder: {--}}
-{{--                uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'--}}
-{{--            },--}}
-{{--            toolbar: {--}}
-{{--                items: [--}}
-{{--                    'heading',--}}
-{{--                    '|',--}}
-{{--                    'fontSize',--}}
-{{--                    'fontColor',--}}
-{{--                    'fontBackgroundColor',--}}
-{{--                    'bold',--}}
-{{--                    'italic',--}}
-{{--                    'link',--}}
-{{--                    'bulletedList',--}}
-{{--                    'numberedList',--}}
-{{--                    'specialCharacters',--}}
-{{--                    '|',--}}
-{{--                    'alignment',--}}
-{{--                    'outdent',--}}
-{{--                    'indent',--}}
-{{--                    '|',--}}
-{{--                    'CKFinder',--}}
-{{--                    'blockQuote',--}}
-{{--                    'insertTable',--}}
-{{--                    'mediaEmbed',--}}
-{{--                    'undo',--}}
-{{--                    'redo',--}}
-{{--                    '|',--}}
-{{--                    'highlight',--}}
-{{--                    'codeBlock',--}}
-{{--                    'code',--}}
-{{--                    'htmlEmbed',--}}
-{{--                    'horizontalLine',--}}
-{{--                ]--}}
-{{--            },--}}
-{{--            language: 'ru',--}}
-{{--            image: {--}}
-{{--                toolbar: [--}}
-{{--                    'imageTextAlternative',--}}
-{{--                    'imageStyle:inline',--}}
-{{--                    'imageStyle:block',--}}
-{{--                    'imageStyle:side'--}}
-{{--                ]--}}
-{{--            },--}}
-{{--            table: {--}}
-{{--                contentToolbar: [--}}
-{{--                    'tableColumn',--}}
-{{--                    'tableRow',--}}
-{{--                    'mergeTableCells'--}}
-{{--                ]--}}
-{{--            },--}}
-{{--        } )--}}
-{{--        .catch( function( error ) {--}}
-{{--            console.error( error );--}}
-{{--        } );--}}
-{{--    ClassicEditor--}}
-{{--        .create( document.querySelector( '.small-editor' ), {--}}
-{{--            language: 'ru',--}}
-{{--        } )--}}
-{{--        .catch( function( error ) {--}}
-{{--            console.error( error );--}}
-{{--        } );--}}
+<script type="text/javascript">
+    ClassicEditor
+        .create( document.querySelector( '.full-editor' ), {
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'fontSize',
+                    'fontColor',
+                    'fontBackgroundColor',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    'specialCharacters',
+                    '|',
+                    'alignment',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'blockQuote',
+                    'insertTable',
+                    'mediaEmbed',
+                    'undo',
+                    'redo',
+                    '|',
+                    'highlight',
+                    'codeBlock',
+                    'code',
+                    'htmlEmbed',
+                    'horizontalLine',
+                ]
+            },
+            language: 'en',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:inline',
+                    'imageStyle:block',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+        } )
+        .catch( function( error ) {
+            console.error( error );
+        } );
 
-{{--</script>--}}
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 {{--<script src="{{ asset('js/dropzone.js') }}"></script>--}}

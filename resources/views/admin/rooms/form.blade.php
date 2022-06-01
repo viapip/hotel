@@ -25,7 +25,7 @@
 </div>
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     <label for="description" class="control-label">{{ 'Description' }}</label>
-    <textarea class="form-control" rows="5" name="description" type="textarea" id="description" >{{ isset($room->description) ? $room->description : ''}}</textarea>
+    <textarea class="form-control full-editor" rows="5" name="description" type="textarea" id="description" >{{ isset($room->description) ? $room->description : ''}}</textarea>
     {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('features') ? 'has-error' : ''}}">
@@ -57,11 +57,6 @@
     <label for="description_seo" class="control-label">{{ 'Description Seo' }}</label>
     <textarea class="form-control" rows="5" name="description_seo" type="textarea" id="description_seo" >{{ isset($room->description_seo) ? $room->description_seo : ''}}</textarea>
     {!! $errors->first('description_seo', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('slug') ? 'has-error' : ''}}">
-    <label for="slug" class="control-label">{{ 'Slug' }}</label>
-    <textarea class="form-control" rows="5" name="slug" type="textarea" id="slug" >{{ isset($room->slug) ? $room->slug : ''}}</textarea>
-    {!! $errors->first('slug', '<p class="help-block">:message</p>') !!}
 </div>
 
 
