@@ -42,16 +42,10 @@
               id="description">{{ isset($room->description) ? $room->description : ''}}</textarea>
     {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('features') ? 'has-error' : ''}}">
-    <label for="features" class="control-label">{{ 'Features' }}</label>
-    <textarea class="form-control" rows="5" name="features" type="textarea"
-              id="features">{{ isset($room->features) ? $room->features : ''}}</textarea>
-    {!! $errors->first('features', '<p class="help-block">:message</p>') !!}
-</div>
 <div class="form-group">
     <label>{{ 'Features' }}</label>
     <select name="features[]" id="features" class="select2" multiple="multiple"
-            data-placeholder="Choose feature" style="width: 100%;" required>
+            data-placeholder="Choose feature" style="width: 100%;">
         @foreach($features as $id => $title)
             <option value="{{ $id }}" @if(isset($room->features) && in_array($id, $room->features->pluck('id')->all())) selected @endif >{{ $title }}</option>
         @endforeach
@@ -68,11 +62,14 @@
     <input class="form-control" name="link" type="text" id="link" value="{{ isset($room->link) ? $room->link : ''}}">
     {!! $errors->first('link', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('other_rooms') ? 'has-error' : ''}}">
-    <label for="other_rooms" class="control-label">{{ 'Other Rooms' }}</label>
-    <textarea class="form-control" rows="5" name="other_rooms" type="textarea"
-              id="other_rooms">{{ isset($room->other_rooms) ? $room->other_rooms : ''}}</textarea>
-    {!! $errors->first('other_rooms', '<p class="help-block">:message</p>') !!}
+<div class="form-group">
+    <label>{{ 'Other Rooms' }}</label>
+    <select name="other_rooms[]" id="other_rooms" class="select2" multiple="multiple"
+            data-placeholder="Choose other rooms" style="width: 100%;">
+        @foreach($rooms as $id => $title)
+            <option value="{{ $id }}" @if(isset($room->others) && in_array($id, $room->others->pluck('id')->all())) selected @endif >{{ $title }}</option>
+        @endforeach
+    </select>
 </div>
 <div class="form-group {{ $errors->has('title_seo') ? 'has-error' : ''}}">
     <label for="title_seo" class="control-label">{{ 'Title Seo' }}</label>

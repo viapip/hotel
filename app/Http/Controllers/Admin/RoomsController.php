@@ -27,10 +27,8 @@ class RoomsController extends Controller
                 ->orWhere('images', 'LIKE', "%$keyword%")
                 ->orWhere('meters', 'LIKE', "%$keyword%")
                 ->orWhere('description', 'LIKE', "%$keyword%")
-                ->orWhere('features', 'LIKE', "%$keyword%")
                 ->orWhere('price', 'LIKE', "%$keyword%")
                 ->orWhere('link', 'LIKE', "%$keyword%")
-                ->orWhere('other_rooms', 'LIKE', "%$keyword%")
                 ->orWhere('title_seo', 'LIKE', "%$keyword%")
                 ->orWhere('description_seo', 'LIKE', "%$keyword%")
                 ->orWhere('slug', 'LIKE', "%$keyword%")
@@ -50,7 +48,8 @@ class RoomsController extends Controller
     public function create()
     {
         $features = Feature::query()->pluck('title', 'id')->all();
-        return view('admin.rooms.create', compact('features'));
+        $rooms = Room::query()->pluck('title', 'id')->all();
+        return view('admin.rooms.create', compact('features', 'rooms'));
     }
 
     /**
@@ -69,6 +68,7 @@ class RoomsController extends Controller
 
         $room = Room::create($requestData);
         $room->features()->sync($request->features);
+        $room->others()->sync($request->other_rooms);
 
         return redirect('/admin/rooms')->with('flash_message', 'Room added!');
     }
@@ -98,8 +98,9 @@ class RoomsController extends Controller
     {
         $room = Room::findOrFail($id);
         $features = Feature::query()->pluck('title', 'id')->all();
+        $rooms = Room::query()->where('id', '<>', $id)->pluck('title', 'id')->all();
 
-        return view('admin.rooms.edit', compact('room', 'features'));
+        return view('admin.rooms.edit', compact('room', 'features', 'rooms'));
     }
 
     /**
@@ -120,6 +121,7 @@ class RoomsController extends Controller
         if ($request->hasFile('preview_image'))
             $requestData['preview_image'] = Image::uploadImage($requestData['preview_image'], $room->preview_image);
         $room->features()->sync($request->features);
+        $room->others()->sync($request->other_rooms);
 
         $room->update($requestData);
 
@@ -141,6 +143,8 @@ class RoomsController extends Controller
             Image::delete($room->preview_image);
 
         $room->features()->detach();
+        $room->others()->detach();
+        $room->parents()->detach();
 
         $room->delete();
 

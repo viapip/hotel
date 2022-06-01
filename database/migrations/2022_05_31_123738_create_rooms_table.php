@@ -22,7 +22,6 @@ class CreateRoomsTable extends Migration
             $table->text('description')->nullable();
             $table->string('price')->nullable();
             $table->string('link')->nullable();
-            $table->text('other_rooms')->nullable();
             $table->string('title_seo')->nullable();
             $table->text('description_seo')->nullable();
             $table->text('slug')->nullable();

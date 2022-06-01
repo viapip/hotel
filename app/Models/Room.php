@@ -25,12 +25,22 @@ class Room extends Model
      *
      * @var array
      */
-    protected $fillable = ['special_offer','title', 'preview_image', 'images', 'meters', 'description', 'price', 'link', 'other_rooms', 'title_seo', 'description_seo', 'slug'];
+    protected $fillable = ['special_offer','title', 'preview_image', 'images', 'meters', 'description', 'price', 'link', 'title_seo', 'description_seo', 'slug'];
 
 
     public function features()
     {
         return $this->belongsToMany(Feature::class);
+    }
+
+    public function others()
+    {
+        return $this->belongsToMany(Room::class, 'other_room', 'room_id', 'other_id');
+    }
+
+    public function parents()
+    {
+        return $this->belongsToMany(Room::class, 'other_room', 'other_id', 'room_id');
     }
 
 }
