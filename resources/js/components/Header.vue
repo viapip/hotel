@@ -168,7 +168,7 @@ export default {
                 {link: '/events', title:'Events', class: []},
                 {link: '/location', title:'Location', class: []},
                 {link: '/about', title:'About Marylebone', class: []},
-                {link: '/rooms', title:'Gallery', class: []},
+                {link: '/gallery', title:'Gallery', class: []},
                 {link: '/contact', title:'Contact', class: []},
             ]
         }

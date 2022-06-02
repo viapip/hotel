@@ -8,6 +8,7 @@ import Policy from "../pages/Policy";
 import Rooms from "../pages/Rooms";
 import SingleRoom from "../pages/SingleRoom";
 import SpecialOffer from "../pages/SpecialOffer";
+import Gallery from "../pages/Gallery";
 
 
 const routes = [
@@ -46,6 +47,10 @@ const routes = [
     {
         path: '/special-offer',
         component: SpecialOffer,
+    },
+    {
+        path: '/gallery',
+        component: Gallery,
     },
 ]
 

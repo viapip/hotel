@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "lodash.debounce": "^4.0.8",
+        "magic-grid": "^3.2.4",
         "vue": "^3.2.33",
         "vue-router": "^4.0.15"
     }
