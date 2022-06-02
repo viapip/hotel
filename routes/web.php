@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\EventsBannerController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\EventsPageController;
 use App\Http\Controllers\Admin\FeatureController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\GalleryPageController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\LocationHomeController;
 use App\Http\Controllers\Admin\LocationPageController;
@@ -55,6 +57,8 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function () {
     Route::resource('/privacy', PrivacyController::class, ['as' => 'admin']);
     Route::resource('/discover', DiscoverController::class, ['as' => 'admin']);
     Route::resource('/discover-block', DiscoverBlockController::class, ['as' => 'admin']);
+    Route::resource('/gallery-page', GalleryPageController::class, ['as' => 'admin']);
+    Route::resource('/gallery', GalleryController::class, ['as' => 'admin']);
 
     Route::post('/upload-image', 'ImageController@upload')->name('image.upload');
     Route::post('/delete-image', 'ImageController@delete')->name('image.delete');

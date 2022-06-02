@@ -1,12 +1,16 @@
 {
     "fields": [
         {
-            "name": "room_id",
+            "name": "category_undertitle",
             "type": "string"
         },
         {
-            "name": "other_id",
+            "name": "category_title",
             "type": "string"
+        },
+        {
+            "name": "images",
+            "type": "text"
         }
     ]
 }

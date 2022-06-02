@@ -136,6 +136,29 @@
             </ul>
         </li>
         <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-images"></i>
+                <p>
+                    Gallery
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('admin.gallery-page.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Page</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.gallery.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Items</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('admin.contact.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-phone"></i>
                 <p>Contacts</p>
