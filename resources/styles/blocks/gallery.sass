@@ -3,7 +3,9 @@
     &__title
         @include italiana66
         color: $black
+        text-align: center
     &__subtitle
+        text-align: center
         @include ralewayMed18
         color: $light-brown
     &__header
@@ -16,3 +18,9 @@
         //grid-template-columns: repeat(3, 1fr)
         //grid-column-gap: 30px
         //grid-row-gap: 30px
+@media (max-width: 1199px)
+    .gallery
+        &__title
+            font-size: 38px
+        &__subtitle
+            font-size: 14px

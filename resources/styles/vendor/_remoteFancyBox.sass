@@ -1,0 +1,76 @@
+//.with-fancybox
+    //display: none
+.fancybox
+    &__toolbar
+        &__items
+            &--left
+                display: none
+    &__button
+        &--zoom
+            display: none
+        &--slideshow
+            display: none
+        &--fullscreen
+            display: none
+        &--close
+            position: absolute
+            top: 11vh
+            right: 17vw
+    &__backdrop
+        background: rgba(0, 0, 0, 0.5)
+        backdrop-filter: blur(8px)
+    &__img
+        max-height: 100% !important
+    &__container
+        --carousel-button-svg-filter: none
+    &__nav
+        .carousel
+            &__button
+                background: #FFFFFF
+                bottom: 8%
+                top: initial
+                svg
+                    //width: 5px
+                    height: 12px
+                    path
+                        stroke: black
+
+
+@media (min-width: 1024px)
+    .fancybox
+        &__toolbar
+            &__items
+                &--left
+                    display: none
+        &__button
+        &__backdrop
+        &__slide
+            padding: 200px 100px
+        &__nav
+            .carousel__button.is-next
+                right: 17.5%
+            .carousel__button.is-prev
+                left: initial
+                right: 22%
+@media (max-width: 1024px)
+    .fancybox
+        &__toolbar
+            &__items
+                &--left
+                    display: none
+        &__button
+            &--close
+                position: absolute
+                top: 30px
+                right: 16px
+        &__backdrop
+        &__nav
+            .carousel
+                &__button
+                    background: #FFFFFF
+                    bottom: 45px
+            .carousel__button.is-next
+                right: 16px
+            .carousel__button.is-prev
+                left: initial
+                right: 76px
