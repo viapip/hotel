@@ -2,7 +2,22 @@
   background: $white-grey
   padding-bottom: 161px
   &__wrapper
-    margin-left: 255px
+    //margin-left: 255px
+    //overflow: hidden
+    padding-bottom: 90px
+    position: relative
+    &:before
+        height: 100%
+        left: -100%
+        content: ''
+        width: 100%
+        position: absolute
+        background: #F9F7F7
+        z-index: 2
+  &__content
+      padding: 0
+      margin: 0
+      position: relative
   &__overtitle
     +ralewayMed18
     color: $light-brown
@@ -18,7 +33,7 @@
   .discover
     padding-bottom: 61px
     &__wrapper
-      margin-left: 34px
+      //margin-left: 34px
     &__overtitle
       margin-bottom: 15px
       padding-top: 50px

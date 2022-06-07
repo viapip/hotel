@@ -23,7 +23,56 @@
 
     .button-blur
         display: none
+.main-screen-slider
+    .swiper-wrapper
+        display: flex
+    .header
+        min-width: 100vw
+    .swiper-pagination-bullets
+        bottom: 16px !important
+    .swiper-pagination-bullet
+        position: relative
+        width: 160px
+        border-radius: 0 !important
+        height: 2px !important
+        opacity: initial !important
+        background-color: transparent
+        i
+            position: absolute
+            bottom: 0
+            left: 0
+            height: 100%
+            width: 100%
+            background: #fff !important
+            opacity: .3 !important
+        b
+            position: absolute
+            left: 0
+            bottom: 0
+            height: 100%
+            width: 100%
+            background: #fff !important
+            opacity: 1 !important
 
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active
+        b
+            animation-name: filling
+            animation-duration: 3s
+            animation-timing-function: ease-in
+            animation-iteration-count: 1
+            animation-direction: alternate
+            animation-fill-mode: forwards
+        &~.swiper-pagination-bullet
+            b
+                width: 0
+            i
+                opacity: .3 !important
+@keyframes filling
+    0%
+        width: 0
+    100%
+        width: 100%
 @media (max-width: 992px)
     .header
         min-height: 267px

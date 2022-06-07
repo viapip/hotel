@@ -47,40 +47,7 @@
                 </div>
             </div>
         </section>
-
-    <section class="discover">
-        <div class="discover__wrapper">
-            <div class="discover__overtitle">discover</div>
-            <h2>Attractions near
-                Baker Street Tube Station</h2>
-            <div class="discover-slider">
-                <div class="discover-slider__item"
-                     style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                    <a href="#">
-                        <h6>Madame Tussauds</h6>
-                    </a>
-                </div>
-                <div class="discover-slider__item"
-                     style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                    <a href="#">
-                        <h6>Madame Tussauds</h6>
-                    </a>
-                </div>
-                <div class="discover-slider__item"
-                     style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                    <a href="#">
-                        <h6>Madame Tussauds</h6>
-                    </a>
-                </div>
-                <div class="discover-slider__item"
-                     style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                    <a href="#">
-                        <h6>Madame Tussauds</h6>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <DiscoverSlider/>
 </template>
 
 <script>
@@ -88,9 +55,12 @@
 
 import MagicGrid from "magic-grid";
 import {Fancybox} from '@fancyapps/ui'
+import DiscoverSlider from "../components/DiscoverSlider";
 
 export default {
     name: "Gallery",
+    components: {DiscoverSlider},
+
     data() {
         return {
             galleryItems: [],
@@ -142,7 +112,6 @@ export default {
     },
     mounted() {
         // this.magicGrid.listen()
-        console.log(this.gutter)
         this.test();
         Fancybox.bind("[data-fancybox]", {
             infinite: false,
