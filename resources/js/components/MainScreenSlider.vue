@@ -2,48 +2,44 @@
 
     <Swiper
         class="main-screen-slider"
+        @mousemove="parallaxEffect"
         :slidesPerView="1"
         :modules="modules"
         :pagination="pagination"
+        debounce-events="mousemove"
+        :effect="'fade'"
+        :speed="1000"
+        :autoplay="{
+          delay: 5000,
+          disableOnInteraction: true,
+    }"
     >
 
-    <SwiperSlide
+    <SwiperSlide v-for="(item, index) of dataAPi" :key="index"
     >
-    <header class="header header--big" style="background: url('./img/main/banner.jpg') center/cover no-repeat">
+        <div style="overflow: hidden">
+    <header class="header header--big"
+            :style="{
+        background: `url(${item.url}) center/cover no-repeat`,
+        backgroundPosition: 'calc(50% + '+ moveX + ') calc(50% + ' + moveY + ')',
+
+        transform: 'scale(1.1)'
+    }">
         <div class="container">
-            <h1>Welcome to London</h1>
+            <h1>{{ item.title }}</h1>
         </div>
         <a href="#" class="button-blur">Book Now</a>
     </header>
-
-    </SwiperSlide>
-    <SwiperSlide
-    >
-    <header class="header header--big" style="background: url('./img/main/banner.jpg') center/cover no-repeat">
-        <div class="container">
-            <h1>Welcome to London</h1>
         </div>
-        <a href="#" class="button-blur">Book Now</a>
-    </header>
-
-    </SwiperSlide>
-    <SwiperSlide
-    >
-    <header class="header header--big" style="background: url('./img/main/banner.jpg') center/cover no-repeat">
-        <div class="container">
-            <h1>Welcome to London</h1>
-        </div>
-        <a href="#" class="button-blur">Book Now</a>
-    </header>
-    <div class="pagination"></div>
     </SwiperSlide>
 
     </Swiper>
 </template>
 <script>
 
-import {Navigation, Pagination} from 'swiper';
+import {EffectFade, Navigation, Pagination, Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
+import {debounce} from "lodash";
 
 // import "swiper/css";
 // import "swiper/css/pagination";
@@ -56,7 +52,16 @@ export default {
     },
     data() {
         return {
-            modules: [Pagination, Navigation],
+            dataAPi: [
+                {url: './img/main/banner.jpg', title: 'Welcome to London'},
+                {url: './img/main/nationalgallerylondon.jpg', title: 'Welcome to London1'},
+                {url: './img/main/banner.jpg', title: 'Welcome to London2'},
+                {url: './img/main/nationalgallerylondon.jpg', title: 'Welcome to London3'},
+                {url: './img/main/banner.jpg', title: 'Welcome to London4'},
+            ],
+            modules: [EffectFade, Pagination, Navigation, Autoplay],
+            moveX: 0,
+            moveY: 0,
             pagination: {
                 clickable: true,
                 renderBullet: function (index, className) {
@@ -64,6 +69,13 @@ export default {
                 },
             },
         }
+    },
+    methods: {
+        parallaxEffect(e) {
+            console.log(e)
+            this.moveX = e.pageX * -1 / 25 + 'px'
+            this.moveY = e.pageY * -1 / 25 + 'px'
+        },
     },
 }
 </script>
