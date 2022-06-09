@@ -1,10 +1,6 @@
 <template>
-    <header class="header header--big" style="background: url('./img/about/banner.jpg') center/cover no-repeat">
-        <div class="container">
-            <h1 class="title--wide">Fantastic location competitively priced</h1>
-        </div>
-        <a href="#" class="button-blur">Book Now</a>
-    </header>
+
+    <MainScreenSlider/>
 
     <main>
         <section class="about-page">
@@ -80,8 +76,10 @@
 </template>
 
 <script>
+import MainScreenSlider from "../components/MainScreenSlider";
 export default {
-    name: "About"
+    name: "About",
+    components: {MainScreenSlider}
 }
 </script>
 

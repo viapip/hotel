@@ -1,11 +1,6 @@
 <template>
-    <header class="header header--big" style="background: url('./img/events/banner.jpg') center/cover no-repeat">
-        <div class="container">
-            <h1 class="title--wide">Lords - England vs Australia
-                18th july</h1>
-        </div>
-        <a href="#" class="button-blur">Book Now</a>
-    </header>
+
+    <MainScreenSlider/>
 
     <main>
         <section class="events">
@@ -22,9 +17,10 @@
 
 <script>
 import DiscoverSlider from "../components/DiscoverSlider";
+import MainScreenSlider from "../components/MainScreenSlider";
 export default {
     name: "Events",
-    components: {DiscoverSlider}
+    components: {MainScreenSlider, DiscoverSlider}
 }
 </script>
 

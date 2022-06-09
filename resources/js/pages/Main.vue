@@ -86,21 +86,27 @@
             </div>
         </section>
         <section class="advantages">
+
+            <Swiper
+                class=""
+                :slidesPerView="1"
+                :modules="modules"
+                :speed="1000"
+            >
+
+                <SwiperSlide>
             <div class="advantages__wrapper" style="background: url('./img/main/advantages.jpg') center/cover no-repeat">
-                <div class="advantages__block">
-                    <h2>Convenient Location</h2>
-                    <div class="advantages__text">
-                        The Location is ideal for business or leisure stay and our convenient location offers easy access to
-                        the entire city. Paddington Rail Station and the Heathrow Express service are a 10-minute taxi ride
-                        from Marylebone Inn. Buckingham Palace is within 2 miles from the building. In the heart of the West
-                        End, Marylebone Inn is surrounded by restaurants and shops, which can be reached in 5 minutes on
-                        foot. Regent’s Park is also a 5-minute walk away and the city’s popular theatres are just Tube ride
-                        away.
-                    </div>
-                </div>
             </div>
-            <div class="advantages__block advantages__block--mobile">
+                </SwiperSlide>
+                <SwiperSlide>
+            <div class="advantages__wrapper" style="background: url('./img/main/03_cutaway-london-big-ben.jpg') center/cover no-repeat">
+            </div>
+                </SwiperSlide>
+
+            </Swiper>
+            <div class="advantages__block">
                 <div class="container">
+                    <div class="advantages__block-wrapper">
                     <h2>Convenient Location</h2>
                     <div class="advantages__text">
                         The Location is ideal for business or leisure stay and our convenient location offers easy access to
@@ -110,7 +116,11 @@
                         foot. Regent’s Park is also a 5-minute walk away and the city’s popular theatres are just Tube ride
                         away.
                     </div>
+                    </div>
                 </div>
+
+
+                <div class="advantages__background"></div>
             </div>
         </section>
         <section class="quality">
@@ -139,11 +149,20 @@
 <script>
 import MainScreenSlider from "../components/MainScreenSlider";
 import DiscoverSlider from "../components/DiscoverSlider";
+import {EffectFade, Navigation, Pagination, Autoplay} from 'swiper';
+import {Swiper, SwiperSlide} from 'swiper/vue';
 export default {
     name: "Main",
     components: {
         DiscoverSlider,
-        MainScreenSlider
+        MainScreenSlider,
+        Swiper,
+        SwiperSlide
+    },
+    data() {
+        return {
+            modules: [EffectFade, Pagination, Navigation, Autoplay],
+        }
     }
 
 }

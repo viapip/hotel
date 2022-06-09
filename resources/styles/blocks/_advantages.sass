@@ -1,45 +1,79 @@
 .advantages
-  margin-bottom: 534px
-  &__wrapper
-    min-height: 970px
-    display: flex
-    align-items: flex-end
-  &__block
-    position: relative
-    background: $white-grey
-    bottom: -345px
-    max-width: 1424px
-    padding: 95px 135px 115px 255px
-    &--mobile
-      display: none
-  h2
-    margin-bottom: 45px
-  &__text
-    +ralewayLight16
-    color: $dark
+    margin-bottom: 95px
+
+    &__wrapper
+        min-height: 970px
+        display: flex
+        align-items: flex-end
+
+    &__block
+        position: relative
+        top: -95px
+        //bottom: -345px
+        //max-width: 1424px
+        //padding: 95px 135px 115px 255px
+        &--mobile
+            display: none
+    &__block-wrapper
+        max-width: 75%
+        position: relative
+        z-index: 1
+        padding-top: 95px
+        padding-bottom: 115px
+    &__background
+        position: absolute
+        background: $white-grey
+        height: 100%
+        width: 100%
+        max-width: 80%
+        left: 0
+        top: 0
+        z-index: 0
+    h2
+        margin-bottom: 45px
+
+    &__text
+        +ralewayLight16
+        color: $dark
+    .swiper-wrapper
+        display: flex
+    .swiper-slide
+        min-width: 100%
 
 @media (max-width: 992px)
-  .advantages
-    margin-bottom: 324px
-    h2
-      margin-bottom: 14px
-    &__wrapper
-      min-height: 388px
-    &__block
-      max-width: 614px
-      padding: 40px 30px 30px 34px
-      bottom: -204px
+    .advantages
+        margin-bottom: 65px
+
+        h2
+            margin-bottom: 14px
+
+        &__wrapper
+            min-height: 388px
+
+        &__block
+            //max-width: 614px
+            //bottom: -204px
+        &__block-wrapper
+            max-width: 75%
+            position: relative
+            z-index: 1
+            padding-top: 40px
+            padding-bottom: 40px
 
 @media (max-width: 575px)
-  .advantages
-    margin-bottom: 100px
-    h2
-      margin-bottom: 30px
-    &__block
-      display: none
-      &--mobile
-        position: static
-        display: block
-        padding: 30px 0
-    &__wrapper
-      min-height: 320px
+    .advantages
+        margin-bottom: 100px
+
+        h2
+            margin-bottom: 30px
+
+        &__block
+            display: none
+
+            &--mobile
+                position: static
+                display: block
+                padding: 30px 0
+
+        &__wrapper
+            min-height: 320px

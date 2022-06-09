@@ -6,7 +6,6 @@
         :slidesPerView="1"
         :modules="modules"
         :pagination="pagination"
-        debounce-events="mousemove"
         :effect="'fade'"
         :speed="1000"
         :autoplay="{
@@ -72,7 +71,7 @@ export default {
     },
     methods: {
         parallaxEffect(e) {
-            console.log(e)
+            // console.log(e)
             this.moveX = e.pageX * -1 / 25 + 'px'
             this.moveY = e.pageY * -1 / 25 + 'px'
         },
