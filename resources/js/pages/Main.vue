@@ -117,6 +117,7 @@
                         away.
                     </div>
                     </div>
+                    <ArrowsSlider/>
                 </div>
 
 
@@ -151,9 +152,11 @@ import MainScreenSlider from "../components/MainScreenSlider";
 import DiscoverSlider from "../components/DiscoverSlider";
 import {EffectFade, Navigation, Pagination, Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
+import ArrowsSlider from "../components/button/ArrowsSlider";
 export default {
     name: "Main",
     components: {
+        ArrowsSlider,
         DiscoverSlider,
         MainScreenSlider,
         Swiper,
