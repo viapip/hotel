@@ -46,25 +46,45 @@
                     </div>
                     <div class="contact-form__line">
                         <div class="form-group">
-                            <select name="country" id="country">
-                                <option value="Country">Country</option>
-                                <option value="USA">USA</option>
-                                <option value="Poland">Poland</option>
-                                <option value="Czech Republic">Czech Republic</option>
-                            </select>
+
+                            <VSelect
+                                label="title"
+                                class="custom-select"
+                                placeholder="Select the type of issue or question"
+                                :options="options"
+                                :appendToBody="true"
+                                :closeOnSelect="false"
+                            >
+                                <template #option="{ title, id }">
+                                    <span style="margin: 0">{{ title }}</span>
+                                </template>
+                                <template #no-options="{ search, searching, loading }">
+                                    This is the no options slot.
+                                </template>
+                            </VSelect>
                         </div>
                         <div class="form-group required">
                             <input type="text" class="form-text" placeholder="State*">
                         </div>
                     </div>
                     <div class="contact-form__line">
-                        <div class="form-group">
-                            <select name="issue" id="issue">
-                                <option value="#">Select the type of issue or question</option>
-                                <option value="USA">USA</option>
-                                <option value="Poland">Poland</option>
-                                <option value="Czech Republic">Czech Republic</option>
-                            </select>
+                        <div style="margin-right: 0" class="form-group">
+
+                            <VSelect
+                                label="title"
+                                class="custom-select"
+                                placeholder="Select the type of issue or question"
+                                :options="options"
+                                :appendToBody="true"
+                                :closeOnSelect="false"
+                            >
+                                <template #option="{ title, id }">
+                                    <span style="margin: 0">{{ title }}</span>
+                                </template>
+                                <template #no-options="{ search, searching, loading }">
+                                    This is the no options slot.
+                                </template>
+                            </VSelect>
                         </div>
                     </div>
                     <div class="contact-form__line">
@@ -86,45 +106,39 @@
                 </form>
             </div>
         </section>
-        <section class="discover">
-            <div class="discover__wrapper">
-                <div class="discover__overtitle">discover</div>
-                <h2>Attractions near
-                    Baker Street Tube Station</h2>
-                <div class="discover-slider">
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <DiscoverSlider/>
     </main>
 </template>
 
 <script>
+import DiscoverSlider from "../components/DiscoverSlider";
+import VSelect from 'vue-select'
 export default {
-    name: "Contact"
+    name: "Contact",
+    components: {DiscoverSlider, VSelect},
+    data(){
+        return {
+            options: [
+                {
+                    title: 'Question#1',
+                    id: 0,
+                },
+                {
+                    title: 'Question#2',
+                    id: 1,
+                },
+            ]
+        }
+    },
+    methods: {
+        dropdownShouldOpen(VueSelect) {
+            if (this.options !== null) {
+                return VueSelect.open
+            }
+
+            return VueSelect.options.length !== 0 && VueSelect.open
+        },
+    },
 }
 </script>
 
