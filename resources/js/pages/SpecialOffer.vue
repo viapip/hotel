@@ -49,6 +49,9 @@
                 </div>
             </div>
         </section>
+
+        <OtherRooms/>
+
         <DiscoverSlider/>
     </main>
 
@@ -56,9 +59,10 @@
 
 <script>
 import DiscoverSlider from "../components/DiscoverSlider";
+import OtherRooms from "../components/OtherRooms";
 export default {
     name: "SpecialOffer",
-    components: {DiscoverSlider}
+    components: {OtherRooms, DiscoverSlider}
 }
 </script>
 

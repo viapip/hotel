@@ -48,46 +48,16 @@
                 </div>
             </div>
         </section>
-        <section class="discover">
-            <div class="discover__wrapper">
-                <div class="discover__overtitle">discover</div>
-                <h2>Attractions near
-                    Baker Street Tube Station</h2>
-                <div class="discover-slider">
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                    <div class="discover-slider__item"
-                         style="background: url('./img/main/slider.jpg') center/cover no-repeat">
-                        <a href="#">
-                            <h6>Madame Tussauds</h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <DiscoverSlider/>
     </main>
 
 </template>
 
 <script>
+import DiscoverSlider from "../components/DiscoverSlider";
 export default {
-    name: "SingleRoom"
+    name: "SingleRoom",
+    components: {DiscoverSlider}
 }
 </script>
 

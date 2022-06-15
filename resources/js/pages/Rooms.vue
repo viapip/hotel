@@ -16,7 +16,8 @@
     <main>
         <section>
             <div class="container container--sm">
-                <div class="room">
+                <div @click="$router.push('/single-room')"
+                    class="room">
                     <div class="room__overtitle">
                         Room Only
                     </div>
@@ -41,7 +42,8 @@
                         <a href="#" class="button">Book Now</a>
                     </div>
                 </div>
-                <div class="room">
+                <div @click="$router.push('/single-room')"
+                    class="room">
                     <div class="room__overtitle">
                         Room Only
                     </div>
@@ -73,7 +75,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="room">
+                <div @click="$router.push('/single-room')"
+                    class="room">
                     <div class="room__overtitle">
                         Room Only
                     </div>

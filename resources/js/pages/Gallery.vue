@@ -33,8 +33,8 @@
         <section class="gallery gallery__main">
             <div class="container">
                 <div class="gallery__header">
-                    <div class="gallery__subtitle">Some images of our hotel</div>
-                    <div class="gallery__title">The Marylebone Inn Hotel</div>
+                    <div class="gallery__subtitle">Pictures of our lovely rooms</div>
+                    <div class="gallery__title">The Marylebone Inn Rooms</div>
                 </div>
                 <div class="gallery__wrapper">
                     <div v-for="(item, index) of images" :key="index" class="gallery__item item-gallery"  >

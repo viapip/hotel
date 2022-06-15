@@ -50,7 +50,7 @@
                             <VSelect
                                 label="title"
                                 class="custom-select"
-                                placeholder="Select the type of issue or question"
+                                placeholder="Country"
                                 :options="options"
                                 :appendToBody="true"
                                 :closeOnSelect="false"

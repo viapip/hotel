@@ -1,0 +1,74 @@
+.collapse-room
+    padding-bottom: 20px
+    border-bottom: 1px solid #CCD3DD
+    margin-bottom: 50px
+    &__subtitle
+        @include ralewaySB12
+        color: $light-brown
+        margin-bottom: 20px
+    &__header
+        display: flex
+        justify-content: space-between
+        margin-bottom: 0
+        align-items: center
+    &__wrapper
+        display: flex
+        flex-direction: column
+    &__title
+        @include ralewayReg25
+        color: $black
+    &__action-block
+        height: 0
+        overflow: hidden
+    &__hidden-wrapper
+        display: flex
+    &__img-wrapper
+        position: relative
+        max-width: 494px
+        width: 100%
+        margin-right: 60px
+        max-height: 282px
+        overflow: hidden
+        &:after
+            display: block
+            content: ''
+            padding-bottom: 100%
+    &__img
+        position: absolute
+        height: 100%
+        width: 100%
+        top: 0
+        left: 0
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+    &__content
+        display: flex
+        flex-direction: column
+    &__list
+        @include ralewayLight16
+        color: $black
+    &__button
+        background: none
+        border: none
+        outline: none
+        box-shadow: none
+        height: 17px
+        padding: 0
+        span
+            display: block
+            width: 17px
+            height: 1px
+            background: $black
+            &:last-of-type
+                transform: rotate(90deg) translateX(-1px)
+
+.collapse-room.active
+    padding-bottom: 50px
+    .collapse-room
+        &__button
+        &__action-block
+            height: auto
+        &__header
+            margin-bottom: 20px
+
