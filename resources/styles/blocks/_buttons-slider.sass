@@ -9,3 +9,41 @@
         border: none
         outline: none
         box-shadow: none
+        padding: 0
+        display: flex
+        align-items: center
+        justify-content: center
+        transition: background-color .4s linear
+        svg
+            pointer-events: none
+
+    &.is-double
+        .buttons-slider
+            &__item
+                &:first-of-type
+                    margin-right: 10px
+                &:hover
+                    background: rgba(255, 255, 255, 0.7)
+    &.is-long
+        .buttons-slider
+            &__wrapper
+                border-radius: 54px
+                background: $white
+
+            &__item
+                svg
+                    transform: translateX(0px)
+                    transition: transform .3s linear
+                &.is-next
+                    &:hover
+                        svg
+                            transform: translateX(7px)
+                &.is-prev
+                    &:hover
+                        svg
+                            transform: translateX(-7px)
+@media (max-width: 992px)
+    .buttons-slider
+        &__item
+            height: 50px
+            width: 50px

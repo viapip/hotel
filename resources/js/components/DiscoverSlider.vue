@@ -9,7 +9,11 @@
                 <h2>Attractions near
                     Baker Street Tube Station</h2>
                 <div class="discover__remote">
-
+                    <ArrowsSlider
+                        :isDouble="false"
+                        @clickPrev="swiper.slidePrev()"
+                        @clickNext="swiper.slideNext()"
+                    />
                 </div>
             </div>
             <div class="discover__content">
@@ -18,6 +22,7 @@
                     :slidesPerView="1"
                     :space-between="30"
                     :modules="modules"
+                    @swiper="onSwiper"
                     :pagination="{
                               type: 'progressbar',
                             }"
@@ -36,6 +41,74 @@
                 }"
                 >
 
+                    <SwiperSlide
+                        @click="openModal"
+                        class="discover-slider__item"
+                    >
+                        <div class="discover-slider__inner">
+                            <div style="overflow: hidden" class="discover-slider__img-wrapper">
+                                <div class="discover-slider__img"
+                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                            </div>
+                            <div class="discover-slider__content">
+                                <button class="discover-slider__button">
+                                    view the route
+                                </button>
+                                <h6>Madame Tussauds</h6>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide
+                        @click="openModal"
+                        class="discover-slider__item"
+                    >
+                        <div class="discover-slider__inner">
+                            <div style="overflow: hidden" class="discover-slider__img-wrapper">
+                                <div class="discover-slider__img"
+                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                            </div>
+                            <div class="discover-slider__content">
+                                <button class="discover-slider__button">
+                                    view the route
+                                </button>
+                                <h6>Madame Tussauds</h6>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide
+                        @click="openModal"
+                        class="discover-slider__item"
+                    >
+                        <div class="discover-slider__inner">
+                            <div style="overflow: hidden" class="discover-slider__img-wrapper">
+                                <div class="discover-slider__img"
+                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                            </div>
+                            <div class="discover-slider__content">
+                                <button class="discover-slider__button">
+                                    view the route
+                                </button>
+                                <h6>Madame Tussauds</h6>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide
+                        @click="openModal"
+                        class="discover-slider__item"
+                    >
+                        <div class="discover-slider__inner">
+                            <div style="overflow: hidden" class="discover-slider__img-wrapper">
+                                <div class="discover-slider__img"
+                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                            </div>
+                            <div class="discover-slider__content">
+                                <button class="discover-slider__button">
+                                    view the route
+                                </button>
+                                <h6>Madame Tussauds</h6>
+                            </div>
+                        </div>
+                    </SwiperSlide>
                     <SwiperSlide
                         @click="openModal"
                         class="discover-slider__item"
@@ -119,15 +192,18 @@ import {Swiper, SwiperSlide} from 'swiper/vue';
 
 // import "swiper/css";
 import "swiper/css/pagination";
+import ArrowsSlider from "./button/ArrowsSlider";
 
 export default {
     name: "DiscoverSlider",
     components: {
+        ArrowsSlider,
         Swiper,
         SwiperSlide
     },
     data() {
         return {
+            swiper: null,
             modules: [Pagination, Navigation],
             isOpenModal: false,
         }
@@ -135,6 +211,9 @@ export default {
     methods: {
         log() {
             console.log(123)
+        },
+        onSwiper(swiper) {
+            this.swiper = swiper
         },
         closeModal(e) {
             if(!e.target.closest('.modal-discover__wrapper')){

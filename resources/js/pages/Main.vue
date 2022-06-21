@@ -88,10 +88,12 @@
         <section class="advantages">
 
             <Swiper
+                ref="swiper"
                 class=""
                 :slidesPerView="1"
                 :modules="modules"
                 :speed="1000"
+                @swiper="onSwiper"
             >
 
                 <SwiperSlide>
@@ -117,7 +119,11 @@
                         away.
                     </div>
                     </div>
-                    <ArrowsSlider/>
+                    <ArrowsSlider
+                        :isDouble="true"
+                        @clickPrev="swiper.slidePrev()"
+                        @clickNext="swiper.slideNext()"
+                    />
                 </div>
 
 
@@ -151,7 +157,7 @@
 import MainScreenSlider from "../components/MainScreenSlider";
 import DiscoverSlider from "../components/DiscoverSlider";
 import {EffectFade, Navigation, Pagination, Autoplay} from 'swiper';
-import {Swiper, SwiperSlide} from 'swiper/vue';
+import {Swiper, SwiperSlide, useSwiper} from 'swiper/vue';
 import ArrowsSlider from "../components/button/ArrowsSlider";
 export default {
     name: "Main",
@@ -160,13 +166,20 @@ export default {
         DiscoverSlider,
         MainScreenSlider,
         Swiper,
-        SwiperSlide
+        SwiperSlide,
     },
     data() {
+
         return {
+            swiper : null,
             modules: [EffectFade, Pagination, Navigation, Autoplay],
         }
-    }
+    },
+    methods: {
+        onSwiper(swiper) {
+            this.swiper = swiper;
+        },
+    },
 
 }
 </script>
