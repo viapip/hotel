@@ -104,7 +104,6 @@
             <div class="advantages__wrapper" style="background: url('./img/main/03_cutaway-london-big-ben.jpg') center/cover no-repeat">
             </div>
                 </SwiperSlide>
-
             </Swiper>
             <div class="advantages__block">
                 <div class="container">
