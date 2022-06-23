@@ -1,24 +1,22 @@
 <template>
 
-    <MainScreenSlider></MainScreenSlider>
+    <MainScreenSlider
+        :banner="data?.banner"
+        :title="data?.title"
+    />
 
     <main>
         <section class="about">
             <div class="container">
                 <div class="about__wrapper">
                     <div class="about__left">
-                        <h2>Marylebone Inn Hotel</h2>
-                        <div class="about__subtitle">Dear Customers</div>
+                        <h2>{{data?.about_title}}</h2>
+                        <div class="about__subtitle">{{data?.about_subtitle}}</div>
                         <div class="image-wrapper-full-width">
-                            <img class="about__image about__image--mobile" src="img/main/about.jpg" alt="">
+                            <img class="about__image about__image--mobile" :src="data?.about_image" alt="">
                         </div>
                         <div class="about__text">
-                            Marylebone Inn Hotel has been opening the doors for its customers for more than 9 years. Today
-                            we face the difficult challenge of responding to the coronavirus (COVID-19). Our hearts and
-                            thoughts go out to the people who have been affected by this unprecedented event and we
-                            appreciate the healthcare workers, local communities, and governments around the world who are
-                            on the front line working to contain this coronavirus. In this climate, we know travel may not
-                            be your first thought, but I want you to know the safety of our guests is our top priority.
+                            {{data?.about_text}}
                         </div>
                         <div class="about__view-more">
                             <a href="#" class="view-more">
@@ -28,11 +26,11 @@
                                     <path d="M21 29H37M37 29L29 21M37 29L29 37" stroke="#424454" stroke-linecap="square"
                                           stroke-linejoin="bevel"/>
                                 </svg>
-                                <span>View more</span>
+                                <span>{{data?.about_button}}</span>
                             </a>
                         </div>
                     </div>
-                    <img class="about__image" src="img/main/about.jpg" alt="">
+                    <img class="about__image" :src="data?.about_image" alt="">
                 </div>
             </div>
         </section>
@@ -172,12 +170,24 @@ export default {
         return {
             swiper : null,
             modules: [EffectFade, Pagination, Navigation, Autoplay],
+            data: null,
         }
     },
     methods: {
         onSwiper(swiper) {
             this.swiper = swiper;
         },
+        async fetchData() {
+            const response = await fetch(process.env.MIX_HOST_API + '/api/home', {
+                // method: 'GET'
+            })
+            this.data = await response.json();
+
+        },
+    },
+   async mounted() {
+        // await this.fetchData()
+        console.log(this.data)
     },
 
 }

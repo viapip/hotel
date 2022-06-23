@@ -129,7 +129,7 @@
                 </Swiper>
 
             </div>
-                <div v-if="isOpenModal"  class="discover__modal modal-discover">
+                <div v-if="isOpenModal" @click="closeModal" class="discover__modal modal-discover">
                     <div class="modal-discover__wrapper">
                         <div class="modal-discover__content">
                             <img src="/img/discover/Rectangle 66.png" alt="" class="modal-discover__img">
@@ -192,7 +192,7 @@
                         <div id="map" class="modal-discover__map"></div>
                     </div>
                 </div>
-            <div v-if="isOpenModal" @click="closeModal" class="modal-overlay"></div>
+            <div v-if="isOpenModal"  class="modal-overlay"></div>
         </div>
     </section>
 </template>
@@ -203,6 +203,7 @@ import {Navigation, Pagination} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import "swiper/css/pagination";
 import ArrowsSlider from "./button/ArrowsSlider";
+import {Loader, LoaderOptions} from 'google-maps';
 
 
 export default {
@@ -225,6 +226,7 @@ export default {
             endPoint: './img/GMap/end.png',
             startPoint: './img/GMap/start.png',
             markers: [],
+            google: null,
             styledMap: [
                 {
                     elementType: "geometry",
@@ -325,12 +327,12 @@ export default {
         },
         closeModal(e) {
             console.log(e)
-            // if (!e.target.closest('.modal-discover__wrapper')) {
+            if (!e.target.closest('.modal-discover__wrapper')) {
                 this.isOpenModal = false
                 document.body.classList.remove('openModal');
-            // }
+            }
             window.initMap = null;
-            document.querySelector('#googleMaps').remove()
+            // document.querySelector('#googleMaps').remove()
         },
         toggleActive(e) {
             e.stopPropagation();
@@ -341,25 +343,30 @@ export default {
             document.body.classList.add('openModal')
             this.loadGoogleMaps()
         },
-        loadGoogleMaps() {
-            const existingScript = document.getElementById('googleMaps');
-
-            if (!existingScript) {
-
-                window.initMap = this.initMap;
-                const script = document.createElement('script');
-                script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCxc1PVWFAIR-0cN2f4N5Cj183nbV81Llw&callback=initMap&v=weekly';
-                script.id = 'googleMaps';
-                document.body.appendChild(script);
-
-                script.onload = () => {
-                    this.GMapsIsReady = true;
-                };
+        async loadGoogleMaps() {
+            const options = {
+                version: 'weekly'
             }
-
-            if (existingScript && callback) callback();
+            const loader = new Loader('AIzaSyCxc1PVWFAIR-0cN2f4N5Cj183nbV81Llw', options);
+            this.google = await loader.load();
+            this.initMap(this.google)
+            // const existingScript = document.getElementById('googleMaps');
+            //
+            // if (!existingScript) {
+            //     window.initMap = this.initMap;
+            //     const script = document.createElement('script');
+            //     script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCxc1PVWFAIR-0cN2f4N5Cj183nbV81Llw&callback=initMap&v=weekly';
+            //     script.id = 'googleMaps';
+            //     document.body.appendChild(script);
+            //
+            //     script.onload = () => {
+            //         this.GMapsIsReady = true;
+            //     };
+            // }
+            //
+            // if (existingScript && callback) callback();
         },
-        initMap() {
+        initMap(google) {
             this.directionsRenderer = new google.maps.DirectionsRenderer();
             this.directionsService = new google.maps.DirectionsService();
             this.map = new google.maps.Map(
@@ -367,13 +374,9 @@ export default {
                 {
                     zoom: 14,
                     center: { lat: 37.77, lng: -122.447 },
-                    // mapTypeControlOptions: {
-                    //     mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'custom_map_style']
-                    // }
+                    disableDefaultUI: true,
                 }
         );
-            // this.map.mapTypes.set('custom_map_style', this.styledMap);
-            // this.map.setMapTypeId('custom_map_style');
             this.map.setOptions({ styles: this.styledMap })
             this.directionsRenderer.setMap(this.map);
             this.directionsRenderer.setOptions( { suppressMarkers: true } );
@@ -429,6 +432,7 @@ export default {
     },
     mounted() {
 
+        // this.loadGoogleMaps()
     },
     // setup() {
     //     return {

@@ -14,18 +14,18 @@
     }"
     >
 
-    <SwiperSlide v-for="(item, index) of dataAPi" :key="index"
+    <SwiperSlide v-for="(item, index) of banner" :key="index"
     >
         <div style="overflow: hidden">
     <header class="header header--big"
             :style="{
-        background: `url(${item.url}) center/cover no-repeat`,
+        background: `url(${item}) center/cover no-repeat`,
         backgroundPosition: 'calc(50% + '+ moveX + ') calc(50% + ' + moveY + ')',
 
         transform: 'scale(1.1)'
     }">
         <div class="container">
-            <h1>{{ item.title }}</h1>
+            <h1>{{ title }}</h1>
         </div>
         <a href="#" class="button-blur">Book Now</a>
     </header>
@@ -49,6 +49,19 @@ export default {
         Swiper,
         SwiperSlide
     },
+    props: {
+        banner: {
+            type: Array,
+            default: (props) => {
+                 return ['./img/main/banner.jpg', './img/main/nationalgallerylondon.jpg']
+
+            },
+        },
+        title: {
+            type: String,
+            default: "Welcome to Caucasus",
+        },
+    },
     data() {
         return {
             dataAPi: [
@@ -61,6 +74,7 @@ export default {
             modules: [EffectFade, Pagination, Navigation, Autoplay],
             moveX: 0,
             moveY: 0,
+            isMobile: window.innerWidth <= 992,
             pagination: {
                 clickable: true,
                 renderBullet: function (index, className) {
@@ -72,9 +86,13 @@ export default {
     methods: {
         parallaxEffect(e) {
             // console.log(e)
+            if (this.isMobile) return false;
             this.moveX = e.pageX * -1 / 25 + 'px'
             this.moveY = e.pageY * -1 / 25 + 'px'
         },
+    },
+    mounted () {
+        console.log(this.isMobile)
     },
 }
 </script>
