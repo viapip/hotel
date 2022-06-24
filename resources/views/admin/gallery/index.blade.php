@@ -38,7 +38,7 @@
                                         <td>{{ $item->category_undertitle }}</td><td>{{ $item->category_title }}</td><td>{{ $item->images }}</td>
                                         <td>
 
-                                            {{--<a href="{{ url('/admin/gallery/' . $item->id) }}" title="Просмотр Gallery"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
+                                            {{--<a href="{{ url('/admin/gallery/' . $item->id) }}" title="Просмотр Gallery"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
                                             <a href="{{ url('/admin/gallery/' . $item->id . '/edit') }}" title="Edit Gallery"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/gallery' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

@@ -197,7 +197,7 @@ CKFinder.addPlugin( 'fileeditor', function( api )
 								var fileArea = doc.getById( 'fileArea' );
 
 								// TODO get rid of ugly buttons and provide something better
-								var undoB = doc.createElement( 'button', { attributes: { 'label' : api.lang.common.undo, 'class' : 'fileeditor-button' } } );
+								var undoB = doc.createElement( 'button', { attributes: { 'label' : api.lang.common.undo, 'class' : 'fileeditor-UI' } } );
 								undoB.on( 'click', function()
 								{
 									codemirror.undo();
@@ -205,7 +205,7 @@ CKFinder.addPlugin( 'fileeditor', function( api )
 								undoB.setHtml( api.lang.common.undo );
 								undoB.appendTo( fileArea );
 
-								var redoB = doc.createElement( 'button', { attributes: { 'label' : api.lang.common.redo, 'class' : 'fileeditor-button' } } );
+								var redoB = doc.createElement( 'button', { attributes: { 'label' : api.lang.common.redo, 'class' : 'fileeditor-UI' } } );
 								redoB.on( 'click', function()
 								{
 									codemirror.redo();
@@ -234,7 +234,7 @@ CKFinder.addPlugin( 'fileeditor', function( api )
 							'#fileArea .CodeMirror {background:white;height: '+ cssHeight +'px;}' +
 							'#fileArea .CodeMirror-scroll {height:' + cssHeight + 'px; width:' + cssWidth + 'px;margin-bottom:0;}' +
 							'#fileArea .CodeMirror .cm-tab {white-space:pre;}' +
-							'button.fileeditor-button {border: 1px solid #999;margin: 7px 7px 0 0;text-align: center;width: 60px;color: #222;padding: 3px 10px;}' +
+							'UI.fileeditor-UI {border: 1px solid #999;margin: 7px 7px 0 0;text-align: center;width: 60px;color: #222;padding: 3px 10px;}' +
 							// override .cke-compatibility issues which resolves to cursor below edited content bug
 							'#fileArea .CodeMirror * {font-family:monospace !important;white-space:pre !important;line-height: 1.2em;}' +
 							// FF >= 12 has some scrolling issue

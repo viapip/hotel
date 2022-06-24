@@ -38,7 +38,7 @@
                                         <td>{{ $item->title }}</td><td>{{ $item->description }}</td><td>{{ $item->title_seo }}</td>
                                         <td>
 
-                                            {{--<a href="{{ url('/admin/events-page/' . $item->id) }}" title="Просмотр EventsPage"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
+                                            {{--<a href="{{ url('/admin/events-page/' . $item->id) }}" title="Просмотр EventsPage"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
                                             <a href="{{ url('/admin/events-page/' . $item->id . '/edit') }}" title="Edit EventsPage"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/events-page' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

@@ -1,6 +1,6 @@
 <template>
 
-    <MainScreenSlider/>
+    <main-screen-slider/>
 
     <main>
         <section class="events">
@@ -11,16 +11,18 @@
                 </div>
             </div>
         </section>
-        <DiscoverSlider/>
+
+        <discover-slider/>
     </main>
 </template>
 
 <script>
 import DiscoverSlider from "../components/DiscoverSlider";
-import MainScreenSlider from "../components/MainScreenSlider";
+import FirstScreenSlider from "../components/FirstScreenSlider";
+import MainScreenSlider from "../components/FirstScreenSlider";
 export default {
     name: "Events",
-    components: {MainScreenSlider, DiscoverSlider}
+    components: {MainScreenSlider, FirstScreenSlider, DiscoverSlider}
 }
 </script>
 

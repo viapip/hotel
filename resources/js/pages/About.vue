@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import MainScreenSlider from "../components/MainScreenSlider";
+import MainScreenSlider from "../components/FirstScreenSlider";
 export default {
     name: "About",
     components: {MainScreenSlider}

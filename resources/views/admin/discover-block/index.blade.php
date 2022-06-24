@@ -38,7 +38,7 @@
                                         <td>{{ $item->under_title }}</td><td>{{ $item->title }}</td>
                                         <td>
 
-                                            {{--<a href="{{ url('/admin/discover-block/' . $item->id) }}" title="Просмотр DiscoverBlock"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
+                                            {{--<a href="{{ url('/admin/discover-block/' . $item->id) }}" title="Просмотр DiscoverBlock"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
                                             <a href="{{ url('/admin/discover-block/' . $item->id . '/edit') }}" title="Edit DiscoverBlock"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/discover-block' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

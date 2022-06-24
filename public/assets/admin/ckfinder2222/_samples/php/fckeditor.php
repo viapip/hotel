@@ -44,7 +44,7 @@ else
 {
 	$fckeditor = new FCKeditor( 'FCKeditor1' ) ;
 	$fckeditor->BasePath	= '../../../fckeditor/' ;
-	$fckeditor->Value		= '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' ;
+	$fckeditor->Value		= '<p>Just click the <b>Image</b> or <b>Link</b> UI, and then <b>&quot;Browse Server&quot;</b>.</p>' ;
 
 	// Just call CKFinder::SetupFCKeditor before calling Create() or CreateHtml()
 	// in FCKeditor. The second parameter (optional), is the path for the

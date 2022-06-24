@@ -560,7 +560,7 @@ class CrudViewCommand extends Command
     }
 
     /**
-     * Create a yes/no radio button group using the form helper.
+     * Create a yes/no radio UI group using the form helper.
      *
      * @param  array $item
      *

@@ -63,7 +63,7 @@ if (!class_exists('CKEditor'))
 }
 else
 {
-	$initialValue = '<p>Just click the <b>Image</b> or <b>Link</b> button, and then <b>&quot;Browse Server&quot;</b>.</p>' ;
+	$initialValue = '<p>Just click the <b>Image</b> or <b>Link</b> UI, and then <b>&quot;Browse Server&quot;</b>.</p>' ;
 
 	$ckeditor = new CKEditor( ) ;
 	$ckeditor->basePath	= '../../../ckeditor/' ;

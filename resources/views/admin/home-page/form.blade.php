@@ -8,7 +8,7 @@
     <br>
     <img src="{{ asset(isset($homepage->banner) ? $homepage->banner : '') }}" alt="" width="200px">
     <div class="custom-file">
-        <input type="file" class="custom-file-input" name="banner" id="banner" value="{{ isset($homepage->banner) ? $homepage->banner : ''}}">
+        <input type="file" multiple class="custom-file-input" name="banner" id="banner" value="{{ isset($homepage->banner) ? $homepage->banner : ''}}">
         <label class="custom-file-label" for="banner">{{ 'Banner' }}</label>
     </div>
     {!! $errors->first('banner', '<p class="help-block">:message</p>') !!}

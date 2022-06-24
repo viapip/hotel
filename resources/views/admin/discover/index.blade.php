@@ -38,7 +38,7 @@
                                         <td>{{ $item->title }}</td><td><img src="{{ asset($item->image) }}" width="200px" alt=""></td><td>{{ $item->description }}</td>
                                         <td>
 
-                                            {{--<a href="{{ url('/admin/discover/' . $item->id) }}" title="Просмотр Discover"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
+                                            {{--<a href="{{ url('/admin/discover/' . $item->id) }}" title="Просмотр Discover"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
                                             <a href="{{ url('/admin/discover/' . $item->id . '/edit') }}" title="Edit Discover"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/discover' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

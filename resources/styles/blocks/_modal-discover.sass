@@ -8,12 +8,13 @@
     &__wrapper
         max-width: 1170px
         margin: auto
-        margin-top: 10%
+        margin-top: 5%
         width: 100%
         background-color: $white
         display: flex
     &__content
         width: 50%
+        max-height: 700px
     &__map
         width: 50%
         position: relative
@@ -25,6 +26,8 @@
         object-fit: cover
     &__content-wrapper
         padding: 50px 60px 60px
+        max-height: 350px
+        overflow-y: auto
     &__title
         margin-bottom: 40px
         @include ralewayReg25
@@ -65,7 +68,7 @@
             margin-right: 20px
         input:checked ~ label
             background: #E9EFF1
-    //&__footer-button.active
+    //&__footer-UI.active
 
 
 

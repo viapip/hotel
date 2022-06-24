@@ -524,7 +524,7 @@ CKFinder.addPlugin( 'imageresize', {
 														{
 															var doc = this.getElement().getDocument(),
 																dialog = this.getDialog();
-															// Activate Reset button
+															// Activate Reset UI
 															var	resetButton = doc.getById( 'btnResetSize' ),
 																ratioButton = doc.getById( 'btnLockSizes' );
 															if ( resetButton )
@@ -543,7 +543,7 @@ CKFinder.addPlugin( 'imageresize', {
 																		this.removeClass( 'ckf_btn_over' );
 																	}, resetButton );
 															}
-															// Activate (Un)LockRatio button
+															// Activate (Un)LockRatio UI
 															if ( ratioButton )
 															{
 																ratioButton.on( 'click', function( evt )

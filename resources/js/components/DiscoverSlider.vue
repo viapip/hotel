@@ -146,7 +146,7 @@
                                     <div class="modal-discover__footer-title">get from the hotel</div>
                                     <div class="modal-discover__footer-buttons">
                                         <div class="modal-discover__footer-button active">
-                                            <input checked type="radio" value="WALKING" id="type1" name="mode" @change="changeMode"/>
+                                            <input checked type="radio" value="DRIVING" id="type1" name="mode" @change="changeMode"/>
                                             <label for="type1">
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg"
@@ -166,14 +166,14 @@
 
                                         </div>
                                         <div class="modal-discover__footer-button active">
-                                            <input  type="radio" id="type2" value="DRIVING" name="mode" @change="changeMode"/>
+                                            <input  type="radio" id="type2" value="WALKING" name="mode" @change="changeMode"/>
                                             <label for="type2">
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg"
                                                      xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <rect width="16" height="16" fill="url(#pattern0)"/>
+                                                    <rect width="16" height="16" fill="url(#pattern1)"/>
                                                     <defs>
-                                                        <pattern id="pattern0" patternContentUnits="objectBoundingBox"
+                                                        <pattern id="pattern1" patternContentUnits="objectBoundingBox"
                                                                  width="1" height="1">
                                                             <use xlink:href="#image0_644_2074"
                                                                  transform="scale(0.00195312)"/>
@@ -202,7 +202,7 @@
 import {Navigation, Pagination} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import "swiper/css/pagination";
-import ArrowsSlider from "./button/ArrowsSlider";
+import ArrowsSlider from "./UI/ArrowsSlider";
 import {Loader, LoaderOptions} from 'google-maps';
 
 

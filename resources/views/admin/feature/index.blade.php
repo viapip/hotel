@@ -38,7 +38,7 @@
                                         <td>{{ $item->title }}</td>
                                         <td>
 
-                                            {{--<a href="{{ url('/admin/feature/' . $item->id) }}" title="Просмотр Feature"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
+                                            {{--<a href="{{ url('/admin/feature/' . $item->id) }}" title="Просмотр Feature"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
                                             <a href="{{ url('/admin/feature/' . $item->id . '/edit') }}" title="Edit Feature"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/feature' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

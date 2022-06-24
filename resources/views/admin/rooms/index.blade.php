@@ -38,7 +38,7 @@
                                         <td>{{ $item->title }}</td><td><img src="{{ asset($item->preview_image) }}" width="200px" alt=""></td><td>{{ $item->images }}</td>
                                         <td>
 
-                                            {{--<a href="{{ url('/admin/rooms/' . $item->id) }}" title="Просмотр Room"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</button></a>--}}
+                                            {{--<a href="{{ url('/admin/rooms/' . $item->id) }}" title="Просмотр Room"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
                                             <a href="{{ url('/admin/rooms/' . $item->id . '/edit') }}" title="Edit Room"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/rooms' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
