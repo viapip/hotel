@@ -17,7 +17,7 @@
 
         <section class="rooms-main">
             <div class="container">
-                <h2>Comfortable Rooms12</h2>
+                <h2>Comfortable Rooms</h2>
                 <div class="rooms-main__text">
                     At Marylebone Inn you will always get a quality, modern room to enjoy a respectable night's sleep.
                     Every room is fitted with the finest modern accessories including plasma TV's. High speed Internet
@@ -125,8 +125,6 @@ export default {
         return {
             swiper: null,
             modules: [EffectFade, Pagination, Navigation, Autoplay],
-            // data: null,
-            // advantages: null
         }
     },
     methods: {
@@ -134,23 +132,7 @@ export default {
         onSwiper(swiper) {
             this.swiper = swiper;
         },
-
-        // async fetchData() {
-        //     try {
-        //         const response = await fetch(process.env.MIX_HOST_API + '/api/home')
-        //         this.data = await response.json();
-        //         this.advantages = this.data.location[0]
-        //
-        //     } catch (e) {
-        //         console.log(e)
-        //     }
-        //
-        // },
     },
-    // async mounted() {
-    //     await this.fetchData()
-    //     console.log(this.data)
-    // },
 
 }
 </script>
