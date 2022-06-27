@@ -3,7 +3,7 @@
     <header class="header" style="background: url('./img/rooms/banner.jpg') center/cover no-repeat">
         <div class="container">
             <div class="header__wrapper">
-                <h1>Rooms</h1>
+                <h1>{{ data.title }}</h1>
                 <div class="breadcrumb">
                     <a href="#" class="breadcrumb__item">Home</a>
                     <a href="#" class="breadcrumb__item">Rooms</a>
