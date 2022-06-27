@@ -33,6 +33,16 @@
     <input class="form-control" name="email" type="text" id="email" value="{{ isset($contact->email) ? $contact->email : ''}}" >
     {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group {{ $errors->has('twitter') ? 'has-error' : ''}}">
+    <label for="twitter" class="control-label">{{ 'Twitter' }}</label>
+    <input class="form-control" name="twitter" type="text" id="twitter" value="{{ isset($contact->twitter) ? $contact->twitter : ''}}" >
+    {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('facebook') ? 'has-error' : ''}}">
+    <label for="facebook" class="control-label">{{ 'Facebook' }}</label>
+    <input class="form-control" name="facebook" type="text" id="facebook" value="{{ isset($contact->facebook) ? $contact->facebook : ''}}" >
+    {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+</div>
 <div class="form-group {{ $errors->has('title_seo') ? 'has-error' : ''}}">
     <label for="title_seo" class="control-label">{{ 'Title Seo' }}</label>
     <input class="form-control" name="title_seo" type="text" id="title_seo" value="{{ isset($contact->title_seo) ? $contact->title_seo : ''}}" >
