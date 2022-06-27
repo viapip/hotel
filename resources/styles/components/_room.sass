@@ -17,9 +17,30 @@
     h2
         margin-bottom: 30px
 
-    img
-        margin-bottom: 30px
+    //img
+    //    margin-bottom: 30px
 
+    &__swiper-slide
+        min-width: 100%
+
+    &__wrapper-img
+        position: relative
+        width: 100%
+        max-height: 500px
+        overflow: hidden
+        &:after
+            display: block
+            content: ''
+            padding-bottom: 55%
+    &__img
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
     &__description
         margin-bottom: 30px
         +ralewayBold12
@@ -46,6 +67,55 @@
             +ralewayBold12
             color: $light-brown
 
+    &__swiper
+        margin-bottom: 30px
+        overflow: hidden
+        position: relative
+        .swiper-wrapper
+            display: flex
+        .swiper-pagination-bullet
+            position: relative
+            width: 94px
+            border-radius: 0 !important
+            height: 2px !important
+            opacity: initial !important
+            background-color: transparent
+            i
+                position: absolute
+                bottom: 0
+                left: 0
+                height: 100%
+                width: 100%
+                background: #fff !important
+                opacity: .3 !important
+            b
+                position: absolute
+                left: 0
+                bottom: 0
+                height: 100%
+                width: 0%
+                background: #fff !important
+                opacity: 1 !important
+
+
+        .swiper-pagination-bullet.swiper-pagination-bullet-active
+            b
+                animation-name: filling
+                animation-duration: 0s
+                animation-timing-function: ease-in
+                animation-iteration-count: 1
+                animation-direction: alternate
+                animation-fill-mode: forwards
+            &~.swiper-pagination-bullet
+                b
+                    width: 0
+                i
+                    opacity: .3 !important
+    @keyframes filling
+        0%
+            width: 0
+        100%
+            width: 100%
 @media (max-width: 992px)
     .room
         margin-bottom: 100px
