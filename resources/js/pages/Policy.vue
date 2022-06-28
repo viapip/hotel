@@ -94,8 +94,16 @@
 </template>
 
 <script>
+import {useFetchData} from "../hooks/useFetchData";
+
 export default {
-    name: "Policy"
+    name: "Policy",
+    setup() {
+        const {data, isLoading} = useFetchData('/api/privacy')
+        return {
+            data, isLoading
+        }
+    },
 }
 </script>
 

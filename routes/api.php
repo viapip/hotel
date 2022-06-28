@@ -33,3 +33,4 @@ Route::get('/location-page', [LocationController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/privacy', [PrivacyController::class, 'index']);
+Route::get('/about-page', [AboutController::class, 'index']);
