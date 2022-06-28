@@ -1,9 +1,9 @@
 <template>
 
-    <header class="header" style="background: url('./img/single-room/banner.jpg') center/cover no-repeat">
+    <header class="header" :style='[`background: url(/${data?.[0].preview_image}) center/cover no-repeat`]'>
         <div class="container">
             <div class="header__wrapper">
-                <h1>Single room</h1>
+                <h1> {{ data?.[0].title }}</h1>
                 <div class="breadcrumb">
                     <a href="#" class="breadcrumb__item">Home</a>
                     <a href="#" class="breadcrumb__item">Rooms</a>
@@ -17,47 +17,48 @@
     <main>
         <section>
             <div class="container container--sm">
-                <div class="room room--detail">
-                    <div class="room__overtitle">
-                        Room Only
-                    </div>
-                    <h3>Single room</h3>
-                    <img src="img/rooms/room.jpg" alt="">
-                    <div class="room__description">
-                        <span>8 sq.m.</span>
-                        <span>1 Single Bed (Extra beds are not available for this room)</span>
-                    </div>
-                    <div class="room-features">
-                        <div class="room-features__title">Room Features:</div>
-                        <ul class="room-features__ul">
-                            <li class="room-features__li">Non smoking rooms</li>
-                            <li class="room-features__li">Ironing facilities</li>
-                            <li class="room-features__li">Separate shower and tub</li>
-                            <li class="room-features__li">Hair dryer</li>
-                            <li class="room-features__li">Television LCD/plasma screen</li>
-                            <li class="room-features__li">Satellite/cable TV</li>
-                        </ul>
-                    </div>
-                    <div class="room__bottom">
-                        <a href="#" class="button">Book Now</a>
-                        <div class="room__price">
-                            <span>RATES FROM</span>
-                            £ 95.00
-                        </div>
-                    </div>
-                </div>
+                <rooms-item
+                    v-for="room in data"
+                    :key="room.id"
+                    :room="room"
+                />
             </div>
         </section>
-        <DiscoverSlider/>
+
+
+        <other-rooms/>
+
+        <discover-slider/>
     </main>
 
 </template>
 
 <script>
 import DiscoverSlider from "../components/DiscoverSlider";
+import {useFetchData} from "../hooks/useFetchData";
+import {useRoute, useRouter} from "vue-router";
+import router from "../router/router";
+import RoomsItem from "../components/RoomsItem";
+import OtherRooms from "../components/OtherRooms";
 export default {
     name: "SingleRoom",
-    components: {DiscoverSlider}
+    components: {OtherRooms, RoomsItem, DiscoverSlider},
+    setup(props, context) {
+        const route = useRoute()
+        console.log(route.params)
+        const {data, isLoading} = useFetchData('/api/room/' + route.params.slug)
+        console.log(data, 'database')
+        return {
+            data, isLoading
+        }
+    },
+    data() {
+        return {
+        }
+    },
+    // beforeCreate() {
+    //     this.params = this.$router.params
+    // }
 }
 </script>
 

@@ -4,9 +4,10 @@
         <div class="room__overtitle">
             Room Only
         </div>
-        <h3>{{room?.title}}</h3>
+        <h3
+            @click="$router.push(`/rooms/` + room.slug)"
+        >{{room?.title}}</h3>
         <Swiper
-            @click="$router.push(`/` + room.slug)"
             class="room__swiper"
             :slidesPerView="1"
             :modules="modules"
@@ -15,7 +16,7 @@
         >
             <SwiperSlide
                 class="room__swiper-slide"
-                v-for="item in room.images"
+                v-for="item in room?.images.split(',')"
                 :key="item"
             >
                 <div class="room__wrapper-img">
@@ -29,14 +30,14 @@
         </Swiper>
 
         <div class="room__description">
-            <span>{{ room.meters }} sq.m.</span>
-            <span>{{ room.description }}</span>
+            <span>{{ room?.meters }} sq.m.</span>
+            <span>{{ room?.description }}</span>
         </div>
         <div class="room-features">
             <div class="room-features__title">Room Features:</div>
             <ul class="room-features__ul">
                 <li class="room-features__li"
-                    v-for="feature in room.features"
+                    v-for="feature in room?.features"
                     :key="feature.id"
                 >
                     {{ feature.title }}
@@ -44,10 +45,10 @@
             </ul>
         </div>
         <div class="room__bottom">
-            <a href="{{ room.link }}" class="button">Book Now</a>
+            <a href="{{ room?.link }}" class="button">Book Now</a>
             <div class="room__price">
                 <span>RATES FROM</span>
-                £ {{ room.price }}
+                £ {{ room?.price }}
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ import Rooms from "../pages/Rooms";
 import SingleRoom from "../pages/SingleRoom";
 import SpecialOffer from "../pages/SpecialOffer";
 import Gallery from "../pages/Gallery";
+import NotFound from "../pages/NotFound";
 
 
 const routes = [
@@ -41,7 +42,7 @@ const routes = [
         component: Rooms,
     },
     {
-        path: '/single-room',
+        path: '/rooms/:slug',
         component: SingleRoom,
     },
     {
@@ -51,6 +52,12 @@ const routes = [
     {
         path: '/gallery',
         component: Gallery,
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'not-found',
+        // alias: '*',
+        component: NotFound,
     },
 ]
 
