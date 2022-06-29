@@ -4,9 +4,10 @@
         <div class="room__overtitle">
             Room Only
         </div>
-        <h3>{{title}}</h3>
+        <h3
+            @click="$router.push(`/rooms/` + room.slug)"
+        >{{room?.title}}</h3>
         <Swiper
-            @click="$router.push(`/` + slug)"
             class="room__swiper"
             :slidesPerView="1"
             :modules="modules"
@@ -15,7 +16,7 @@
         >
             <SwiperSlide
                 class="room__swiper-slide"
-                v-for="item in images"
+                v-for="item in room?.images.split(',')"
                 :key="item"
             >
                 <div class="room__wrapper-img">
@@ -29,14 +30,14 @@
         </Swiper>
 
         <div class="room__description">
-            <span>{{ meters }} sq.m.</span>
-            <span>{{ description }}</span>
+            <span>{{ room?.meters }} sq.m.</span>
+            <span>{{ room?.description }}</span>
         </div>
         <div class="room-features">
             <div class="room-features__title">Room Features:</div>
             <ul class="room-features__ul">
                 <li class="room-features__li"
-                    v-for="feature in features"
+                    v-for="feature in room?.features"
                     :key="feature.id"
                 >
                     {{ feature.title }}
@@ -44,10 +45,10 @@
             </ul>
         </div>
         <div class="room__bottom">
-            <a href="{{ link }}" class="button">Book Now</a>
+            <a href="{{ room?.link }}" class="button">Book Now</a>
             <div class="room__price">
                 <span>RATES FROM</span>
-                £ {{ price }}
+                £ {{ room?.price }}
             </div>
         </div>
     </div>
@@ -66,48 +67,8 @@ export default {
         SwiperSlide
     },
     props: {
-        images: {
-            type: Array,
-            default: ['img/rooms/room.jpg','img/rooms/room.jpg',]
-        },
-        title : {
-            type: String,
-            default: 'Single room'
-        },
-        meters : {
-            type: String,
-            default: '8'
-        },
-        description : {
-            type: String,
-            default: 'Single Bed (Extra beds are not available for this room)'
-        },
-        price : {
-            type: String,
-            default: '95.00'
-        },
-        link : {
-            type: String,
-            default: '#'
-        },
-        slug : {
-            type: String,
-            default: 'single-room'
-        },
-        features : {
-            type: Array,
-            default: () => {
-                return [{
-                    "id": 4,
-                    "title": "Hair dryer",
-                    "created_at": "2022-06-24T11:22:34.000000Z",
-                    "updated_at": "2022-06-24T11:22:34.000000Z",
-                    "pivot": {
-                        "room_id": "3",
-                        "feature_id": "4"
-                    }
-                }]
-            }
+        room: {
+            type: Object
         }
     },
     data() {

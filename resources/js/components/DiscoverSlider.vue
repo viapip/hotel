@@ -48,7 +48,7 @@
                         <div class="discover-slider__inner">
                             <div style="overflow: hidden" class="discover-slider__img-wrapper">
                                 <div class="discover-slider__img"
-                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                                     style="background: url('/img/main/slider.jpg') center/cover no-repeat"></div>
                             </div>
                             <div class="discover-slider__content">
                                 <button class="discover-slider__button">
@@ -65,7 +65,7 @@
                         <div class="discover-slider__inner">
                             <div style="overflow: hidden" class="discover-slider__img-wrapper">
                                 <div class="discover-slider__img"
-                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                                     style="background: url('/img/main/slider.jpg') center/cover no-repeat"></div>
                             </div>
                             <div class="discover-slider__content">
                                 <button class="discover-slider__button">
@@ -82,7 +82,7 @@
                         <div class="discover-slider__inner">
                             <div style="overflow: hidden" class="discover-slider__img-wrapper">
                                 <div class="discover-slider__img"
-                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                                     style="background: url('/img/main/slider.jpg') center/cover no-repeat"></div>
                             </div>
                             <div class="discover-slider__content">
                                 <button class="discover-slider__button">
@@ -99,7 +99,7 @@
                         <div class="discover-slider__inner">
                             <div style="overflow: hidden" class="discover-slider__img-wrapper">
                                 <div class="discover-slider__img"
-                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                                     style="background: url('/img/main/slider.jpg') center/cover no-repeat"></div>
                             </div>
                             <div class="discover-slider__content">
                                 <button class="discover-slider__button">
@@ -116,7 +116,7 @@
                         <div class="discover-slider__inner">
                             <div style="overflow: hidden" class="discover-slider__img-wrapper">
                                 <div class="discover-slider__img"
-                                     style="background: url('./img/main/slider.jpg') center/cover no-repeat"></div>
+                                     style="background: url('/img/main/slider.jpg') center/cover no-repeat"></div>
                             </div>
                             <div class="discover-slider__content">
                                 <button class="discover-slider__button">
@@ -204,6 +204,7 @@ import {Swiper, SwiperSlide} from 'swiper/vue';
 import "swiper/css/pagination";
 import ArrowsSlider from "./UI/ArrowsSlider";
 import {Loader, LoaderOptions} from 'google-maps';
+import loaderGoogleMaps from "../mixins/loaderGoogleMaps";
 
 
 export default {
@@ -213,6 +214,7 @@ export default {
         Swiper,
         SwiperSlide,
     },
+    mixins: [loaderGoogleMaps],
     data() {
         return {
             swiper: null,
@@ -223,10 +225,9 @@ export default {
             directionsService: null,
             map: null,
             mapsMode: 'WALKING',
-            endPoint: './img/GMap/end.png',
-            startPoint: './img/GMap/start.png',
+            endPoint: '/img/GMap/end.png',
+            startPoint: '/img/GMap/start.png',
             markers: [],
-            google: null,
             styledMap: [
                 {
                     elementType: "geometry",
@@ -330,9 +331,9 @@ export default {
             if (!e.target.closest('.modal-discover__wrapper')) {
                 this.isOpenModal = false
                 document.body.classList.remove('openModal');
+
+                window.initMap = null;
             }
-            window.initMap = null;
-            // document.querySelector('#googleMaps').remove()
         },
         toggleActive(e) {
             e.stopPropagation();
@@ -342,29 +343,6 @@ export default {
             this.isOpenModal = !this.isOpenModal;
             document.body.classList.add('openModal')
             this.loadGoogleMaps()
-        },
-        async loadGoogleMaps() {
-            const options = {
-                version: 'weekly'
-            }
-            const loader = new Loader('AIzaSyCxc1PVWFAIR-0cN2f4N5Cj183nbV81Llw', options);
-            this.google = await loader.load();
-            this.initMap(this.google)
-            // const existingScript = document.getElementById('googleMaps');
-            //
-            // if (!existingScript) {
-            //     window.initMap = this.initMap;
-            //     const script = document.createElement('script');
-            //     script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCxc1PVWFAIR-0cN2f4N5Cj183nbV81Llw&callback=initMap&v=weekly';
-            //     script.id = 'googleMaps';
-            //     document.body.appendChild(script);
-            //
-            //     script.onload = () => {
-            //         this.GMapsIsReady = true;
-            //     };
-            // }
-            //
-            // if (existingScript && callback) callback();
         },
         initMap(google) {
             this.directionsRenderer = new google.maps.DirectionsRenderer();

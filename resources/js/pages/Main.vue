@@ -1,18 +1,18 @@
 <template>
 
     <first-screen-slider
-        :banner="[data.banner]"
-        :title="data.title"
+        :banner="[data?.banner]"
+        :title="data?.title"
     />
 
     <main>
 
         <main-about
-            :title="data.about_title"
-            :sub-title="data.about_subtitle"
-            :text="data.about_text"
-            :button-text="data.about_button"
-            :button-link="data.about_button_link"
+            :title="data?.about_title"
+            :sub-title="data?.about_subtitle"
+            :text="data?.about_text"
+            :button-text="data?.about_button"
+            :button-link="data?.about_button_link"
         />
 
         <section class="rooms-main">
@@ -79,10 +79,10 @@
         />
 
         <main-quality
-            :title="data.quality_title"
-            :text="data.quality_text"
-            :button-text="data.quality_button"
-            :button-link="data.quality_link"
+            :title="data?.quality_title"
+            :text="data?.quality_text"
+            :button-text="data?.quality_button"
+            :button-link="data?.quality_link"
         />
 
         <discover-slider/>
@@ -125,8 +125,6 @@ export default {
         return {
             swiper: null,
             modules: [EffectFade, Pagination, Navigation, Autoplay],
-            // data: null,
-            // advantages: null
         }
     },
     methods: {
@@ -134,23 +132,7 @@ export default {
         onSwiper(swiper) {
             this.swiper = swiper;
         },
-
-        // async fetchData() {
-        //     try {
-        //         const response = await fetch(process.env.MIX_HOST_API + '/api/home')
-        //         this.data = await response.json();
-        //         this.advantages = this.data.location[0]
-        //
-        //     } catch (e) {
-        //         console.log(e)
-        //     }
-        //
-        // },
     },
-    // async mounted() {
-    //     await this.fetchData()
-    //     console.log(this.data)
-    // },
 
 }
 </script>
