@@ -20,7 +20,7 @@ class RoomsController extends Controller
 
     public function get($slug)
     {
-        $room = Room::query()->where('slug', $slug)->with('features')->get();
+        $room = Room::query()->where('slug', $slug)->with('features')->with('others')->get();
         if ($room->isEmpty()){
             return response()->json(['code' => 404, 'message' => 'Not found!'], 404);
         }
