@@ -13,99 +13,9 @@
     </header>
 
     <main>
-        <section class="contact">
-            <div class="container container--sm">
-                <div class="contact__title">
-                    Contact
-                </div>
-                <div class="contact__text">
-                    Marylebone Inn Hotel
-                    <br>
-                    119 Gloucester Place W1U 6JX London United Kingdom
-                    <br>
-                    +44 (0) 207 486 7872
-                    <br>
-                    info@marhotel.co.uk
-                </div>
-                <form action="#" class="contact-form">
-                    <div class="contact-form__line">
-                        <div class="form-group required">
-                            <input type="text" class="form-text" placeholder="First Name*" required>
-                        </div>
-                        <div class="form-group required">
-                            <input type="text" class="form-text" placeholder="Last Name*" required>
-                        </div>
-                    </div>
-                    <div class="contact-form__line">
-                        <div class="form-group required">
-                            <input type="email" class="form-text" placeholder="Your email*" required>
-                        </div>
-                        <div class="form-group required">
-                            <input type="tel" class="form-text" placeholder="Phone number*" required>
-                        </div>
-                    </div>
-                    <div class="contact-form__line">
-                        <div class="form-group">
-
-                            <VSelect
-                                label="title"
-                                class="custom-select"
-                                placeholder="Country"
-                                :options="options"
-                                :appendToBody="true"
-                                :closeOnSelect="false"
-                            >
-                                <template #option="{ title, id }">
-                                    <span style="margin: 0">{{ title }}</span>
-                                </template>
-                                <template #no-options="{ search, searching, loading }">
-                                    This is the no options slot.
-                                </template>
-                            </VSelect>
-                        </div>
-                        <div class="form-group required">
-                            <input type="text" class="form-text" placeholder="State*">
-                        </div>
-                    </div>
-                    <div class="contact-form__line">
-                        <div style="margin-right: 0" class="form-group">
-
-                            <VSelect
-                                label="title"
-                                class="custom-select"
-                                placeholder="Select the type of issue or question"
-                                :options="options"
-                                :appendToBody="true"
-                                :closeOnSelect="false"
-                            >
-                                <template #option="{ title, id }">
-                                    <span style="margin: 0">{{ title }}</span>
-                                </template>
-                                <template #no-options="{ search, searching, loading }">
-                                    This is the no options slot.
-                                </template>
-                            </VSelect>
-                        </div>
-                    </div>
-                    <div class="contact-form__line">
-                        <div class="form-group">
-                            <input type="text" class="form-text" placeholder="Enter your comments:">
-                        </div>
-                    </div>
-
-                    <div class="form-term">
-                        <input type="checkbox" id="term" required>
-                        <label for="term">I accept the Terms and Conditions and the Privacy and Personal Data Policy, which
-                            is an integral part thereof*</label>
-                    </div>
-                    <div class="form-term">
-                        <input type="checkbox" id="promotions">
-                        <label for="promotions">Please notify me of any special offers or promotions</label>
-                    </div>
-                    <button class="button button--dark">Submit</button>
-                </form>
-            </div>
-        </section>
+        <contact-form
+            :is-contact-page="true"
+        />
         <DiscoverSlider/>
     </main>
 </template>
@@ -113,9 +23,10 @@
 <script>
 import DiscoverSlider from "../components/DiscoverSlider";
 import VSelect from 'vue-select'
+import ContactForm from "../components/ContactForm";
 export default {
     name: "Contact",
-    components: {DiscoverSlider, VSelect},
+    components: {ContactForm, DiscoverSlider, VSelect},
     data(){
         return {
             options: [

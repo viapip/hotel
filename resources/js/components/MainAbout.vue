@@ -8,9 +8,9 @@
                     <div class="image-wrapper-full-width">
                         <img class="about__image about__image--mobile" :src="image" alt="">
                     </div>
-                    <div class="about__text">
-                        {{text}}
-                    </div>
+
+                    <div v-html="text" class="about__text"></div>
+
                     <div class="about__view-more">
                         <a @click="$router.push(buttonLink)" class="view-more">
                             <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">

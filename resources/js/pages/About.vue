@@ -5,41 +5,26 @@
     <main>
         <section class="about-page">
             <div class="container container--sm container--content-sm">
-                <h2>About Marylebone</h2>
+                <h2>{{ data?.title }}</h2>
                 <div class="about-page__text">
-                    Marylebone Inn Hotel is definitely a great spot from which to explore all that this fantastic city has
-                    to offer.
-                    <br>
-                    <br>
-                    Whether you are visiting London for one night, one month or longer, Marylebone Inn will provide you with
-                    a comfortable and secure base, conveniently located and at the most competitive prices guaranteed. We
-                    are known for providing the most comfortable beds in the most modern rooms at very competitive prices.
-
-                    <br>
-                    <br>
-                    <br>
-                    <img src="img/about/about.jpg" alt="">
-
-                    <br>
-                    <br>
-                    <br>
-                    Our en-suite rooms provide the perfect alternative to a hotel. We have 22 fully refurbished en-suite
-                    bedrooms available. Each has its own brand new kitchen and bathrooms with plasma TV's and broadband in
-                    every room.
-
+                    {{ data?.description }}
                 </div>
             </div>
-            <div class="about-slider">
-                <img src="img/about/slider.jpg" alt="">
-            </div>
+
+
+            <about-slider
+                :images="data?.images.split(',')"
+            />
+
+
 
             <div class="container container--sm">
                 <div class="events__text">
-                    Our desire is to ensure you feel entirely at home, which is stylishly furnished and boasts a relaxed and
-                    friendly atmosphere, sure to appeal to business and pleasure guests.
+                    {{ data?.description_bottom }}
                 </div>
             </div>
         </section>
+        <contact-form/>
         <section class="about-contact">
             <div class="container container--sm">
                 <h2>Contact</h2>
@@ -77,9 +62,25 @@
 
 <script>
 import MainScreenSlider from "../components/FirstScreenSlider";
+import ArrowsSlider from "../components/UI/ArrowsSlider";
+import DiscoverSlider from "../components/DiscoverSlider";
+import {Swiper, SwiperSlide} from "swiper/vue";
+import AboutSlider from "../components/AboutSlider";
+import {useFetchData} from "../hooks/useFetchData";
+import ContactForm from "../components/ContactForm";
 export default {
     name: "About",
-    components: {MainScreenSlider}
+    components: {
+        ContactForm,
+        AboutSlider,
+        MainScreenSlider,
+    },
+    setup() {
+        const {data, isLoading} = useFetchData('/api/about-page')
+        return {
+            data, isLoading,
+        }
+    },
 }
 </script>
 

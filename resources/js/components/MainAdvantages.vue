@@ -19,9 +19,7 @@
             <div class="container">
                 <div class="advantages__block-wrapper">
                     <h2>{{ title }}</h2>
-                    <div class="advantages__text">
-                        {{ text }}
-                    </div>
+                    <div v-html="text" class="advantages__text"></div>
                 </div>
                 <ArrowsSlider
                     :isDouble="true"

@@ -19,7 +19,10 @@
 export default {
     name: "ArrowsSlider",
     props: {
-        isDouble: Boolean
+        isDouble: {
+            type: Boolean,
+            default: true,
+        }
     },
     methods: {
     },

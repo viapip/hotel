@@ -31,7 +31,7 @@
 
         <div class="room__description">
             <span>{{ room?.meters }} sq.m.</span>
-            <span>{{ room?.description }}</span>
+            <span v-html="room?.description"></span>
         </div>
         <div class="room-features">
             <div class="room-features__title">Room Features:</div>

@@ -35,3 +35,4 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/privacy', [PrivacyController::class, 'index']);
 Route::post('/form', [FormController::class, 'default']);
+Route::get('/about-page', [AboutController::class, 'index']);
