@@ -8,6 +8,7 @@
 import ExampleComponent from "./components/ExampleComponent";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import {mapActions} from "vuex";
 export default {
     components: {
         Footer,
@@ -15,8 +16,15 @@ export default {
         // ExampleComponent
     },
     methods: {
-
-    }
+        ...mapActions({
+            fetchContacts: 'contacts/fetchContacts',
+            fetchDiscovery: 'discovery/fetchDiscovery'
+        })
+    },
+    mounted() {
+        this.fetchContacts();
+        this.fetchDiscovery();
+    },
 }
 </script>
 

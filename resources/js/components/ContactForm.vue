@@ -6,13 +6,13 @@
                 Contact
             </h2>
             <div class="contact__text">
-                Marylebone Inn Hotel
+                <span v-html="contacts?.name"></span>
                 <br>
-                119 Gloucester Place W1U 6JX London United Kingdom
+                {{ contacts?.address }}
                 <br>
-                +44 (0) 207 486 7872
+                {{ contacts?.phone }}
                 <br>
-                info@marhotel.co.uk
+                {{ contacts?.email }}
             </div>
             <form action="#" class="contact-form" v-on:submit="onSubmit">
                 <div class="contact-form__line">
@@ -133,6 +133,8 @@
 import DiscoverSlider from "../components/DiscoverSlider";
 import VSelect from 'vue-select'
 
+import { mapState} from "vuex";
+
 export default {
     name: "ContactForm",
     components: {DiscoverSlider, VSelect},
@@ -185,6 +187,11 @@ export default {
             // console.log(this.typeOfIssueSelected)
         },
     },
+    computed: {
+        ...mapState({
+            contacts: state => state.contacts.contacts
+        })
+    }
 }
 </script>
 

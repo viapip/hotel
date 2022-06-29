@@ -1,19 +1,24 @@
 .contact
-  margin-bottom: 120px
-  &__title
-    +ralewayMed18
-    letter-spacing: 0.25em
-    color: $light-brown
-    margin-bottom: 68px
-    text-transform: uppercase
-  &__text
-    +ralewayMed18
-    color: $dark
-    margin-bottom: 82px
+    margin-bottom: 120px
+
+    &__title
+        +ralewayMed18
+        letter-spacing: 0.25em
+        color: $light-brown
+        margin-bottom: 68px
+        text-transform: uppercase
+
+    &__text
+        +ralewayMed18
+        color: $dark
+        margin-bottom: 82px
+        p
+            display: initial
 
 .contact.other-page
     padding: 130px 0
     background: #F9F7F7
+
     .contact
         &__title
             @include italiana66
@@ -24,14 +29,16 @@
 
 
 @media (max-width: 991px)
-  .contact
-    &__text
-      font-size: 18px
+    .contact
+        &__text
+            font-size: 18px
 
 @media (max-width: 575px)
-  .contact
-    margin-bottom: 100px
-    &__title
-      margin-bottom: 30px
-    &__text
-      margin-bottom: 30px
+    .contact
+        margin-bottom: 100px
+
+        &__title
+            margin-bottom: 30px
+
+        &__text
+            margin-bottom: 30px

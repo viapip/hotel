@@ -19,13 +19,13 @@
         <div style="overflow: hidden">
     <header class="header header--big"
             :style="{
-        background: `url(${item}) center/cover no-repeat`,
+        background: `url(${isMultipleTitle ? item.image : item}) center/cover no-repeat`,
         backgroundPosition: 'calc(50% + '+ moveX + ') calc(50% + ' + moveY + ')',
 
         transform: 'scale(1.1)'
     }">
         <div class="container">
-            <h1>{{ title }}</h1>
+            <h1>{{ isMultipleTitle ? item.title : title }}</h1>
         </div>
         <a href="#" class="button-blur">Book Now</a>
     </header>
@@ -61,6 +61,10 @@ export default {
             type: String,
             default: "Welcome to Caucasus",
         },
+        isMultipleTitle: {
+            type: Boolean,
+            default: false
+        }
     },
     data() {
         return {
