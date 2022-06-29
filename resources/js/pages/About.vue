@@ -24,6 +24,7 @@
                 </div>
             </div>
         </section>
+        <contact-form/>
         <section class="about-contact">
             <div class="container container--sm">
                 <h2>Contact</h2>
@@ -66,9 +67,11 @@ import DiscoverSlider from "../components/DiscoverSlider";
 import {Swiper, SwiperSlide} from "swiper/vue";
 import AboutSlider from "../components/AboutSlider";
 import {useFetchData} from "../hooks/useFetchData";
+import ContactForm from "../components/ContactForm";
 export default {
     name: "About",
     components: {
+        ContactForm,
         AboutSlider,
         MainScreenSlider,
     },
