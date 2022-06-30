@@ -3,7 +3,7 @@
     <footer class="footer">
         <div class="container container--footer">
             <div class="footer__top">
-                <a href="#" class="footer__logo">
+                <a @click="$router.push('/')" href="#" class="footer__logo">
                     <svg width="289" height="120" viewBox="0 0 289 120" fill="none" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <path d="M16.555 76.8978V82.0665C16.555 83.5533 16.5978 84.5675 16.6835 85.1094C16.7834 85.6513 16.919 85.9917 17.0904 86.1307C17.4188 86.3947 17.9399 86.5267 18.6538 86.5267L18.6966 86.7768H12.957L12.9998 86.5267C13.6994 86.5267 14.2134 86.4016 14.5418 86.1515C14.8131 85.9431 14.9701 85.2623 15.013 84.109C15.0415 83.6505 15.0558 82.9697 15.0558 82.0665V73.2505L9.05918 86.5684L2.86981 75.293V82.0249C2.86981 83.4143 2.93406 84.4217 3.06256 85.0469C3.20534 85.6583 3.42664 86.0612 3.72647 86.2557C4.0263 86.4364 4.52602 86.5267 5.22563 86.5267L5.26846 86.7768H0L0.042833 86.5267C0.571107 86.5267 0.963743 86.4919 1.22074 86.4225C1.49202 86.3391 1.72046 86.1307 1.90607 85.7972C2.09168 85.4637 2.2059 85.0191 2.24873 84.4633C2.30584 83.9076 2.3344 83.0947 2.3344 82.0249V76.9186C2.3344 75.8488 2.30584 75.0359 2.24873 74.4802C2.2059 73.9244 2.09168 73.4798 1.90607 73.1463C1.72046 72.8128 1.49202 72.6114 1.22074 72.5419C0.963743 72.4585 0.571107 72.4168 0.042833 72.4168L0 72.1876H2.86981L9.48751 84.3383L14.9487 72.1876H18.6966L18.6538 72.4168C17.9399 72.4168 17.4188 72.5488 17.0904 72.8128C16.7334 73.1046 16.555 74.4663 16.555 76.8978Z"
@@ -71,30 +71,30 @@
                 </a>
                 <div class="footer-menu">
                     <div class="footer-menu__col">
-                        <a href="#" class="footer-menu__item">
+                        <a @click="$router.push('/about')" href="#" class="footer-menu__item">
                             About Marylebone
                         </a>
-                        <a href="#" class="footer-menu__item">
+                        <a @click="$router.push('/rooms')" href="#" class="footer-menu__item">
                             Rooms
                         </a>
                         <a href="#" class="footer-menu__item">
                             Special offers
                         </a>
-                        <a href="#" class="footer-menu__item">
+                        <a @click="$router.push('/events')" href="#" class="footer-menu__item">
                             Events
                         </a>
                     </div>
                     <div class="footer-menu__col">
-                        <a href="#" class="footer-menu__item">
+                        <a @click="$router.push('/location')" href="#" class="footer-menu__item">
                             Location
                         </a>
-                        <a href="#" class="footer-menu__item">
+                        <a @click="$router.push('/gallery')" href="#" class="footer-menu__item">
                             Gallery
                         </a>
-                        <a href="#" class="footer-menu__item">
+                        <a @click="$router.push('/contacts')" href="#" class="footer-menu__item">
                             Contact
                         </a>
-                        <a href="#" class="footer-menu__item">
+                        <a @click="$router.push('/policy')" href="#" class="footer-menu__item">
                             Privacy and Data Policy
                         </a>
                     </div>

@@ -61,9 +61,9 @@
                             :options="options"
                             v-model="countrySelected"
                         >
-<!--                            <template #option="{ title, id }">-->
-<!--                                <span style="margin: 0">{{ title }}</span>-->
-<!--                            </template>-->
+                            <!--                            <template #option="{ title, id }">-->
+                            <!--                                <span style="margin: 0">{{ title }}</span>-->
+                            <!--                            </template>-->
                             <template #search="{ attributes, events }">
                                 <input
                                     class="vs__search"
@@ -133,7 +133,7 @@
 import DiscoverSlider from "../components/DiscoverSlider";
 import VSelect from 'vue-select'
 
-import { mapState} from "vuex";
+import {mapState} from "vuex";
 
 export default {
     name: "ContactForm",
@@ -162,24 +162,27 @@ export default {
     },
     methods: {
         async onSubmit(e) {
-                e.preventDefault();
-                let formData = new FormData(e.target)
-                formData = Object.fromEntries(formData)
-                formData.type_issue = this.typeOfIssueSelected.title
-                formData.country = this.countrySelected.title
-                let data = JSON.stringify(formData)
+            e.preventDefault();
+            let formData = new FormData(e.target)
+            formData = Object.fromEntries(formData)
+            formData.type_issue = this.typeOfIssueSelected.title
+            formData.country = this.countrySelected.title
+            let data = JSON.stringify(formData)
 
-                // console.log(data)
-
+            // console.log(data)
+            console.log(window.location)
             try {
-                // const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: data
-                // })
-
+                const url = new URL(window.location.origin + '/api/form')
+                url.search = new URLSearchParams(data).toString()
+                console.log(url)
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: data
+                })
+                console.log(123)
             } catch (e) {
                 console.log(e)
             }
