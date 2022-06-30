@@ -25,8 +25,10 @@
             </div>
         </section>
 
-
-        <other-rooms/>
+        <other-rooms
+            v-if="isLoading"
+            :rooms="data?.others"
+        />
 
         <discover-slider/>
     </main>

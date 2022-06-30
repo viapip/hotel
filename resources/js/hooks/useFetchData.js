@@ -1,15 +1,14 @@
 import * as url from "url";
-import {onMounted, ref} from "vue";
+import {onMounted, ref, onBeforeMount} from "vue";
 import {useRouter} from "vue-router";
 
 
-export const useFetchData = (url) => {
+export const useFetchData =  (url) => {
     const data = ref(null)
-    let isLoading = ref(false)
+    let isLoading = ref(true)
     const router = useRouter()
     const fetchingData = async () => {
         try {
-            isLoading.value = true;
             const response = await fetch(url);
             if (response.status === 404) await router.push('/rooms');
 
@@ -23,7 +22,7 @@ export const useFetchData = (url) => {
         }
     }
 
-    onMounted(fetchingData)
+    onBeforeMount(fetchingData)
     return {
         data, isLoading
     }
