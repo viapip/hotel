@@ -6,13 +6,13 @@
                 Contact
             </h2>
             <div class="contact__text">
-                Marylebone Inn Hotel
+                <span v-html="contacts?.name"></span>
                 <br>
-                119 Gloucester Place W1U 6JX London United Kingdom
+                {{ contacts?.address }}
                 <br>
-                +44 (0) 207 486 7872
+                {{ contacts?.phone }}
                 <br>
-                info@marhotel.co.uk
+                {{ contacts?.email }}
             </div>
             <form action="#" class="contact-form" v-on:submit="onSubmit">
                 <div class="contact-form__line">
@@ -61,9 +61,9 @@
                             :options="options"
                             v-model="countrySelected"
                         >
-<!--                            <template #option="{ title, id }">-->
-<!--                                <span style="margin: 0">{{ title }}</span>-->
-<!--                            </template>-->
+                            <!--                            <template #option="{ title, id }">-->
+                            <!--                                <span style="margin: 0">{{ title }}</span>-->
+                            <!--                            </template>-->
                             <template #search="{ attributes, events }">
                                 <input
                                     class="vs__search"
@@ -133,6 +133,8 @@
 import DiscoverSlider from "../components/DiscoverSlider";
 import VSelect from 'vue-select'
 
+import {mapState} from "vuex";
+
 export default {
     name: "ContactForm",
     components: {DiscoverSlider, VSelect},
@@ -160,24 +162,27 @@ export default {
     },
     methods: {
         async onSubmit(e) {
-                e.preventDefault();
-                let formData = new FormData(e.target)
-                formData = Object.fromEntries(formData)
-                formData.type_issue = this.typeOfIssueSelected.title
-                formData.country = this.countrySelected.title
-                let data = JSON.stringify(formData)
+            e.preventDefault();
+            let formData = new FormData(e.target)
+            formData = Object.fromEntries(formData)
+            formData.type_issue = this.typeOfIssueSelected.title
+            formData.country = this.countrySelected.title
+            let data = JSON.stringify(formData)
 
-                // console.log(data)
-
+            // console.log(data)
+            console.log(window.location)
             try {
-                // const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: data
-                // })
-
+                const url = new URL(window.location.origin + '/api/form')
+                url.search = new URLSearchParams(data).toString()
+                console.log(url)
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: data
+                })
+                console.log(123)
             } catch (e) {
                 console.log(e)
             }
@@ -185,6 +190,11 @@ export default {
             // console.log(this.typeOfIssueSelected)
         },
     },
+    computed: {
+        ...mapState({
+            contacts: state => state.contacts.contacts
+        })
+    }
 }
 </script>
 

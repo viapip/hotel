@@ -1,0 +1,25 @@
+.events-links
+    margin-bottom: 120px
+    &__list
+        list-style: none
+    &__item
+        display: flex
+        align-items: center
+        &:not(:last-of-type)
+            margin-bottom: 50px
+        &:before
+            content: ''
+            display: block
+            background-image: url("data:image/svg+xml,%3Csvg width='7' height='12' viewBox='0 0 7 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L1 11' stroke='%23A18F88'/%3E%3C/svg%3E%0A")
+            width: 7px
+            height: 12px
+            position: initial
+            margin-right: 20px
+
+
+    &__link
+        @include ralewayMed18
+        color: #424454
+        text-transform: uppercase
+        &:hover
+            color: #424454

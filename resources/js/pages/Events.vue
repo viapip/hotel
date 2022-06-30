@@ -1,14 +1,26 @@
 <template>
 
-    <main-screen-slider/>
+    <main-screen-slider
+        :banner="data?.banner"
+        :is-multiple-title="true"
+    />
 
     <main>
         <section class="events">
             <div class="container">
-                <h2>Events</h2>
-                <div class="events__text">
-                    The hotel is conveniently located to Baker Street Station with the Jubilee and Metropolitan line taking you to Wembley Park for Wembley Stadium or the Jubilee line taking you directly to North Greenwich for The 02 Arena, both venues staging major sporting or music events.
+                <h2>{{ data?.title }}</h2>
+                <div v-html="data?.description" class="events__text">
                 </div>
+            </div>
+        </section>
+
+        <section class="events-links">
+            <div class="container">
+                <ul class="events-links_list">
+                    <li class="events-links__item" v-for="item of data?.events">
+                        <a :href="item.link" target="_blank" class="events-links__link">{{ item.title }}</a>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -20,9 +32,17 @@
 import DiscoverSlider from "../components/DiscoverSlider";
 import FirstScreenSlider from "../components/FirstScreenSlider";
 import MainScreenSlider from "../components/FirstScreenSlider";
+import {useFetchData} from "../hooks/useFetchData";
+
 export default {
     name: "Events",
-    components: {MainScreenSlider, FirstScreenSlider, DiscoverSlider}
+    components: {MainScreenSlider, FirstScreenSlider, DiscoverSlider},
+    setup() {
+        const {data, isLoading} = useFetchData('/api/events-page')
+        return {
+            data, isLoading,
+        }
+    }
 }
 </script>
 
