@@ -5,8 +5,8 @@
             <div class="header__wrapper">
                 <h1> {{ data?.[0].title }}</h1>
                 <div class="breadcrumb">
-                    <a href="#" class="breadcrumb__item">Home</a>
-                    <a href="#" class="breadcrumb__item">Rooms</a>
+                    <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
+                    <a @click.prevent="linkTo('/rooms')" href="#" class="breadcrumb__item">Rooms</a>
                     <a href="#" class="breadcrumb__item">Single room</a>
                 </div>
             </div>
@@ -41,10 +41,12 @@ import {useRoute, useRouter} from "vue-router";
 import router from "../router/router";
 import RoomsItem from "../components/RoomsItem";
 import OtherRooms from "../components/OtherRooms";
+import linkTo from "../mixins/linkTo";
 
 export default {
     name: "SingleRoom",
     components: {OtherRooms, RoomsItem, DiscoverSlider},
+    mixins: [linkTo],
     setup(props, context) {
         const route = useRoute()
         console.log(route.params)

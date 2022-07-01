@@ -4,7 +4,7 @@
             <div class="header__wrapper">
                 <h1>{{ data?.title }}</h1>
                 <div class="breadcrumb">
-                    <a href="#" class="breadcrumb__item">Home</a>
+                    <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
                     <a href="#" class="breadcrumb__item">Gallery</a>
                 </div>
             </div>
@@ -27,10 +27,12 @@ import {Fancybox} from '@fancyapps/ui'
 import DiscoverSlider from "../components/DiscoverSlider";
 import GalleryGrid from "../components/GalleryGrid";
 import {useFetchData} from "../hooks/useFetchData";
+import linkTo from "../mixins/linkTo";
 
 export default {
     name: "Gallery",
     components: {GalleryGrid, DiscoverSlider},
+    mixins: [linkTo],
     setup() {
         const {data, isLoading} = useFetchData('/api/gallery')
         return {

@@ -4,7 +4,7 @@
             <div class="header__wrapper">
                 <h1>Contact</h1>
                 <div class="breadcrumb">
-                    <a href="#" class="breadcrumb__item">Home</a>
+                    <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
                     <a href="#" class="breadcrumb__item">Contact</a>
                 </div>
             </div>
@@ -24,9 +24,11 @@
 import DiscoverSlider from "../components/DiscoverSlider";
 import VSelect from 'vue-select'
 import ContactForm from "../components/ContactForm";
+import linkTo from "../mixins/linkTo";
 export default {
     name: "Contact",
     components: {ContactForm, DiscoverSlider, VSelect},
+    mixins: [linkTo],
     data(){
         return {
             options: [
