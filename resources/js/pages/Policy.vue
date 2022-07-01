@@ -5,7 +5,7 @@
             <div class="header__wrapper">
                 <h1> {{ data?.title}} </h1>
                 <div class="breadcrumb">
-                    <a href="#" class="breadcrumb__item">Home</a>
+                    <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
                     <a href="#" class="breadcrumb__item">Privacy and Data Policy </a>
                 </div>
             </div>
@@ -29,9 +29,11 @@
 
 <script>
 import {useFetchData} from "../hooks/useFetchData";
+import linkTo from "../mixins/linkTo";
 
 export default {
     name: "Policy",
+    mixins: [linkTo],
     setup() {
         const {data, isLoading} = useFetchData('/api/privacy')
         return {

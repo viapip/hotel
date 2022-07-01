@@ -6,13 +6,13 @@
     />
 
     <main>
-
         <main-about
             :title="data?.about_title"
             :sub-title="data?.about_subtitle"
             :text="data?.about_text"
             :button-text="data?.about_button"
             :button-link="data?.about_button_link"
+            :image="data?.about_image"
         />
 
         <section class="rooms-main">

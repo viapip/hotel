@@ -5,8 +5,8 @@
             <div class="header__wrapper">
                 <h1> {{ data?.[0].title }}</h1>
                 <div class="breadcrumb">
-                    <a href="#" class="breadcrumb__item">Home</a>
-                    <a href="#" class="breadcrumb__item">Rooms</a>
+                    <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
+                    <a @click.prevent="linkTo('/rooms')" href="#" class="breadcrumb__item">Rooms</a>
                     <a href="#" class="breadcrumb__item">Single room</a>
                 </div>
             </div>
@@ -25,8 +25,9 @@
             </div>
         </section>
 
-
-        <other-rooms/>
+        <other-rooms
+            :rooms="data?.[0].others"
+        />
 
         <discover-slider/>
     </main>
@@ -40,25 +41,29 @@ import {useRoute, useRouter} from "vue-router";
 import router from "../router/router";
 import RoomsItem from "../components/RoomsItem";
 import OtherRooms from "../components/OtherRooms";
+import linkTo from "../mixins/linkTo";
+
 export default {
     name: "SingleRoom",
     components: {OtherRooms, RoomsItem, DiscoverSlider},
+    mixins: [linkTo],
     setup(props, context) {
         const route = useRoute()
         console.log(route.params)
         const {data, isLoading} = useFetchData('/api/room/' + route.params.slug)
-        console.log(data, 'database')
         return {
             data, isLoading
         }
     },
     data() {
-        return {
-        }
+        return {}
     },
     // beforeCreate() {
     //     this.params = this.$router.params
     // }
+    mounted() {
+        console.log(this.$router.getRoutes(), 'router');
+    }
 }
 </script>
 

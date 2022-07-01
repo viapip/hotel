@@ -5,7 +5,7 @@
             <div class="header__wrapper">
                 <h1>{{ data?.title }}</h1>
                 <div class="breadcrumb">
-                    <a href="#" class="breadcrumb__item">Home</a>
+                    <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
                     <a href="#" class="breadcrumb__item">Location</a>
                 </div>
             </div>
@@ -37,10 +37,11 @@
 import DiscoverSlider from "../components/DiscoverSlider";
 import {useFetchData} from "../hooks/useFetchData";
 import loaderGoogleMaps from "../mixins/loaderGoogleMaps";
+import linkTo from "../mixins/linkTo";
 export default {
     name: "Location",
     components: {DiscoverSlider},
-    mixins: [loaderGoogleMaps],
+    mixins: [loaderGoogleMaps, linkTo],
     setup(props) {
         const {data, isLoading} = useFetchData('/api/location-page');
         return {
