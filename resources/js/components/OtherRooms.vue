@@ -4,7 +4,7 @@
         <div class="container container--sm">
             <div class="other-rooms__wrapper">
                 <div class="other-rooms__title">
-                    Other Rooms {{rooms?.[0].title}}
+                    Other Rooms
                 </div>
                 <div class="other-rooms__wrapper">
                     <other-rooms-item
@@ -26,6 +26,7 @@ export default {
     props: {
         rooms: {
             type: Array,
+            required: true,
         }
     },
     data () {
@@ -39,7 +40,6 @@ export default {
         },
     },
     mounted() {
-        console.log(this.rooms, 'room')
     },
     updated() {
         console.log(this.rooms, 'rooms')

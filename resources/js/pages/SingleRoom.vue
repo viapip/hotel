@@ -26,8 +26,7 @@
         </section>
 
         <other-rooms
-            v-if="isLoading"
-            :rooms="data?.others"
+            :rooms="data?.[0].others"
         />
 
         <discover-slider/>
@@ -42,6 +41,7 @@ import {useRoute, useRouter} from "vue-router";
 import router from "../router/router";
 import RoomsItem from "../components/RoomsItem";
 import OtherRooms from "../components/OtherRooms";
+
 export default {
     name: "SingleRoom",
     components: {OtherRooms, RoomsItem, DiscoverSlider},
@@ -49,18 +49,19 @@ export default {
         const route = useRoute()
         console.log(route.params)
         const {data, isLoading} = useFetchData('/api/room/' + route.params.slug)
-        console.log(data, 'database')
         return {
             data, isLoading
         }
     },
     data() {
-        return {
-        }
+        return {}
     },
     // beforeCreate() {
     //     this.params = this.$router.params
     // }
+    mounted() {
+        console.log(this.$router.getRoutes(), 'router');
+    }
 }
 </script>
 

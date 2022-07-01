@@ -12,7 +12,7 @@
             <div class="collapse-room__action-block">
                 <div class="collapse-room__hidden-wrapper">
                     <div class="collapse-room__img-wrapper">
-                        <div :style="[`background-image: url(${room.preview_image})`]"
+                        <div :style="[`background-image: url(/${room.preview_image})`]"
                              class="collapse-room__img"></div>
                     </div>
                     <div class="collapse-room__content">
@@ -60,6 +60,9 @@ export default {
             this.isActive = !this.isActive
         },
     },
+    mounted() {
+        console.log(this.room, 'room')
+    }
 }
 </script>
 

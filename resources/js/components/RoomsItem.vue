@@ -45,7 +45,7 @@
             </ul>
         </div>
         <div class="room__bottom">
-            <a href="{{ room?.link }}" class="button">Book Now</a>
+            <a :href="room?.link" class="button">Book Now</a>
             <div class="room__price">
                 <span>RATES FROM</span>
                 £ {{ room?.price }}
