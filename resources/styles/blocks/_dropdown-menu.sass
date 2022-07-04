@@ -9,6 +9,7 @@
     transition: transform .8s ease .6s,visibility 0s 2s
     z-index: 89
     &__wrapper
+        min-height: 100%
         height: 100%
         padding: 65px
         display: flex
@@ -112,10 +113,10 @@ body.openMenu
 
 @media (max-width: 575px)
     .dropdown-menu
-        height: calc(100vh - 88px)
+        min-height: 100%
         &__wrapper
             padding: 20px
-            padding-top: 50px
+            padding-top: 130px
         &__list
             li
                 &:not(:last-of-type)
