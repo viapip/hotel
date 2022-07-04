@@ -1,57 +1,68 @@
 .discover
-  background: $white-grey
-  padding-bottom: 161px
-  &__wrapper
-    //margin-left: 255px
-    //overflow: hidden
-    padding-bottom: 90px
-    position: relative
-    &:before
-        height: 100%
-        left: -100%
-        content: ''
-        width: 100%
-        position: absolute
-        background: #F9F7F7
-        z-index: 2
-  &__content
-      padding: 0
-      margin: 0
-      position: relative
-  &__overtitle
-    +ralewayMed18
-    color: $light-brown
-    padding-top: 100px
-    margin-right: 3px
-    margin-bottom: 40px
-    text-transform: uppercase
-  h2
-    max-width: 698px
-    margin-bottom: 40px
-  &__head
-      display: flex
-      align-items: center
-      justify-content: space-between
-  &__remote
-      position: relative
-      top: 10px
+    background: $white-grey
+    padding-bottom: 161px
+    overflow-x: hidden
+    &__wrapper
+        //margin-left: 255px
+        //overflow: hidden
+        padding-bottom: 90px
+        position: relative
+
+        &:before
+            height: 100%
+            left: -100%
+            content: ''
+            width: 100%
+            position: absolute
+            background: #F9F7F7
+            z-index: 2
+
+    &__content
+        padding: 0
+        margin: 0
+        position: relative
+
+    &__overtitle
+        +ralewayMed18
+        color: $light-brown
+        padding-top: 100px
+        margin-right: 3px
+        margin-bottom: 40px
+        text-transform: uppercase
+
+    h2
+        max-width: 698px
+        margin-bottom: 40px
+
+    &__head
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__remote
+        position: relative
+        top: 10px
 
 @media (max-width: 992px)
-  .discover
-    padding-bottom: 61px
-    &__wrapper
-      //margin-left: 34px
-    &__overtitle
-      margin-bottom: 15px
-      padding-top: 50px
-    h2
-      max-width: 370px
-      margin-bottom: 30px
+    .discover
+        padding-bottom: 61px
 
-    &__remote
-        top: 0
+        &__wrapper
+        //margin-left: 34px
+        &__overtitle
+            margin-bottom: 15px
+            padding-top: 50px
+
+        h2
+            max-width: 370px
+            margin-bottom: 30px
+
+        &__remote
+            top: 0
+
 @media (max-width: 550px)
-  .discover
-    padding-bottom: 61px
-    &__remote
-        display: none
+    .discover
+        padding-bottom: 61px
+
+        &__remote
+            display: none
