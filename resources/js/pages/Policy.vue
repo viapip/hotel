@@ -1,6 +1,8 @@
 <template>
 
     <header class="header header--contact" :style="[`background: url(${data?.image}) center/cover no-repeat`]">
+
+        <div class="header__gradient"></div>
         <div class="container">
             <div class="header__wrapper">
                 <h1> {{ data?.title}} </h1>

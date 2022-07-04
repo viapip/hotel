@@ -1,6 +1,8 @@
 <template>
 
     <header class="header" :style="[`background: url(${data?.banner}) center/cover no-repeat`]">
+
+        <div class="header__gradient"></div>
         <div class="container">
             <div class="header__wrapper">
                 <h1>{{ data?.title }}</h1>
@@ -16,8 +18,7 @@
     <main>
         <section class="location">
             <div class="container container--sm">
-                <div class="location__text">
-                    {{ data?.description }}
+                <div v-html="data?.description" class="location__text">
                 </div>
                 <div class="location__get" @click="openModal">Get directions</div>
             </div>
@@ -72,13 +73,13 @@ export default {
                 document.getElementById("locationMap"),
                 {
                     zoom: 14,
-                    center: { lat: 37.77, lng: -122.447 },
+                    center: { lat: 51.5208603, lng: -0.1595759 },
                     disableDefaultUI: true,
                 }
             );
             const marker = new google.maps.Marker({
-                position: { lat: 37.77, lng: -122.447 },
-                icon: '/img/GMap/start.png',
+                position: { lat: 51.5208603, lng: -0.1595759 },
+                icon: '/img/GMap/end.png',
                 map: map
             });
         },

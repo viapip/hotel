@@ -1,6 +1,8 @@
 <template>
 
     <header class="header" style="background: url('./img/special-offer/banner.jpg') center/cover no-repeat">
+
+        <div class="header__gradient"></div>
         <div class="container">
             <div class="header__wrapper">
                 <h1>Special offer</h1>

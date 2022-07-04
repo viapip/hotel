@@ -1,11 +1,13 @@
 <template>
     <header class="header" style="background: url('./img/gallery/Rectangle 2.png') center/cover no-repeat">
+
+        <div class="header__gradient"></div>
         <div class="container">
             <div class="header__wrapper">
                 <h1>{{ data?.title }}</h1>
                 <div class="breadcrumb">
                     <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
-                    <a href="#" class="breadcrumb__item">Gallery</a>
+                    <a href="#" class="breadcrumb__item">{{ data?.title }}</a>
                 </div>
             </div>
         </div>

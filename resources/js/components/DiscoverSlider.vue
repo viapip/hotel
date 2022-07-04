@@ -49,6 +49,7 @@
                             <div style="overflow: hidden" class="discover-slider__img-wrapper">
                                 <div class="discover-slider__img"
                                      :style="[`background: url(${item.image}) center/cover no-repeat`]"></div>
+                                <div class="discover-slider__gradient"></div>
                             </div>
                             <div class="discover-slider__content">
                                 <button class="discover-slider__button">

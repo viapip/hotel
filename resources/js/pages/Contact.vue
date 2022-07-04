@@ -1,11 +1,13 @@
 <template>
-    <header class="header" style="background: url('./img/contact/banner.jpg') center/cover no-repeat">
+    <header class="header" :style="`background: url('${contacts?.image}') center/cover no-repeat`">
+
+        <div class="header__gradient"></div>
         <div class="container">
             <div class="header__wrapper">
-                <h1>Contact</h1>
+                <h1>{{ contacts?.title }}</h1>
                 <div class="breadcrumb">
                     <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
-                    <a href="#" class="breadcrumb__item">Contact</a>
+                    <a href="#" class="breadcrumb__item">{{ contacts?.title }}</a>
                 </div>
             </div>
         </div>
@@ -25,6 +27,8 @@ import DiscoverSlider from "../components/DiscoverSlider";
 import VSelect from 'vue-select'
 import ContactForm from "../components/ContactForm";
 import linkTo from "../mixins/linkTo";
+
+import {mapState} from "vuex";
 export default {
     name: "Contact",
     components: {ContactForm, DiscoverSlider, VSelect},
@@ -52,6 +56,11 @@ export default {
             return VueSelect.options.length !== 0 && VueSelect.open
         },
     },
+    computed: {
+        ...mapState({
+            contacts: state => state.contacts.contacts
+        })
+    }
 }
 </script>
 

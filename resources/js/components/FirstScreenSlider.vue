@@ -17,13 +17,13 @@
     <SwiperSlide v-for="(item, index) of banner" :key="index"
     >
         <div style="overflow: hidden">
-    <header class="header header--big"
+    <header :class="['header','header--big', {'multiple': isMultipleTitle }]"
             :style="{
         background: `url(${isMultipleTitle ? item.image : item}) center/cover no-repeat`,
         backgroundPosition: 'calc(50% + '+ moveX + ') calc(50% + ' + moveY + ')',
-
         transform: 'scale(1.1)'
     }">
+        <div class="header__gradient"></div>
         <div class="container">
             <h1>{{ isMultipleTitle ? item.title : title }}</h1>
         </div>
