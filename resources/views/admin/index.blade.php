@@ -10,11 +10,13 @@
 
     <script>
 
-        const getToken = (name) => {
-            let matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
+        const getToken = () => {
+            const csrfToken = document.querySelector('[name="csrf-token"]')
+            if (!csrfToken) {
+                console.log('траблы с токеном')
+                return false;
+            }
+            return csrfToken.getAttribute('content')
         }
 
         const fetchData = async (data, url) => {
