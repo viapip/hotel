@@ -41,4 +41,22 @@ class Image
 
         return response()->json(['status' => 200, 'message' => 'Image successful deleted']);
     }
+
+
+    public static function deleteAll($images): JsonResponse
+    {
+        if (!$images){
+            return response()->json(['status' => 404, 'message' => 'Images not found'], 404);
+        }
+
+        try {
+            foreach ($images as $image){
+                self::delete($image);
+            }
+        } catch (ErrorException $ex){
+            return response()->json(['status' => 200, 'message' => 'Image successful deleted']);
+        }
+
+        return response()->json(['status' => 200, 'message' => 'Image successful deleted']);
+    }
 }

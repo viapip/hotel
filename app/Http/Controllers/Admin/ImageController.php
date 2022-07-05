@@ -6,8 +6,6 @@ use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image as ImageConverter;
 
 class ImageController extends Controller
 {
@@ -19,8 +17,8 @@ class ImageController extends Controller
         return false;
     }
 
-    public function delete(Request $request): JsonResponse
+    public function deleteAll(Request $request): JsonResponse
     {
-        return Image::delete($request->image);
+        return Image::deleteAll($request->images);
     }
 }

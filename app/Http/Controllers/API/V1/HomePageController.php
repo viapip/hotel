@@ -11,7 +11,7 @@ class HomePageController extends Controller
 
     public function index()
     {
-        $home = HomePage::query()->firstOrFail();
+        $home = HomePage::query()->with('rooms')->firstOrFail();
         $home->location = LocationHome::all();
         return $home;
     }

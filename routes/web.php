@@ -13,10 +13,10 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\GalleryPageController;
 use App\Http\Controllers\Admin\HomePageController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\LocationHomeController;
 use App\Http\Controllers\Admin\LocationPageController;
 use App\Http\Controllers\Admin\PrivacyController;
-use App\Http\Controllers\Admin\RoomFeaturesController;
 use App\Http\Controllers\Admin\RoomsController;
 use App\Http\Controllers\Admin\RoomsPageController;
 use App\Http\Controllers\UserController;
@@ -60,8 +60,8 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function () {
     Route::resource('/gallery-page', GalleryPageController::class, ['as' => 'admin']);
     Route::resource('/gallery', GalleryController::class, ['as' => 'admin']);
 
-    Route::post('/upload-image', 'ImageController@upload')->name('image.upload');
-    Route::post('/delete-image', 'ImageController@delete')->name('image.delete');
+    Route::post('/image', [ImageController::class, 'upload']);
+    Route::delete('/image', [ImageController::class, 'deleteAll']);
 });
 
 Route::get('{any}', function () {

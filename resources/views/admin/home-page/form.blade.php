@@ -58,11 +58,23 @@
     <textarea class="form-control full-editor" rows="5" name="rooms_text" type="textarea" id="rooms_text" >{{ isset($homepage->rooms_text) ? $homepage->rooms_text : ''}}</textarea>
     {!! $errors->first('rooms_text', '<p class="help-block">:message</p>') !!}
 </div>
+
 <div class="form-group {{ $errors->has('rooms_items') ? 'has-error' : ''}}">
     <label for="rooms_items" class="control-label">{{ 'Rooms Items' }}</label>
     <input class="form-control" name="rooms_items" type="text" id="rooms_items" value="{{ isset($homepage->rooms_items) ? $homepage->rooms_items : ''}}" >
     {!! $errors->first('rooms_items', '<p class="help-block">:message</p>') !!}
 </div>
+
+<div class="form-group">
+    <label>{{ 'Rooms Items' }}</label>
+    <select name="rooms_items[]" id="rooms_items" class="select2" multiple="multiple"
+            data-placeholder="Choose rooms" style="width: 100%;">
+        @foreach($rooms as $id => $title)
+            <option value="{{ $id }}" @if(isset($homepage->rooms) && in_array($id, $homepage->rooms->pluck('id')->all())) selected @endif >{{ $title }}</option>
+        @endforeach
+    </select>
+</div>
+
 <div class="form-group {{ $errors->has('quality_title') ? 'has-error' : ''}}">
     <label for="quality_title" class="control-label">{{ 'Quality Title' }}</label>
     <input class="form-control" name="quality_title" type="text" id="quality_title" value="{{ isset($homepage->quality_title) ? $homepage->quality_title : ''}}" >

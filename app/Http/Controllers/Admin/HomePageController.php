@@ -6,6 +6,7 @@ use App\Helpers\Images\Image;
 use App\Http\Controllers\Controller;
 
 use App\Models\HomePage;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -31,7 +32,6 @@ class HomePageController extends Controller
                 ->orWhere('about_image', 'LIKE', "%$keyword%")
                 ->orWhere('rooms_title', 'LIKE', "%$keyword%")
                 ->orWhere('rooms_text', 'LIKE', "%$keyword%")
-                ->orWhere('rooms_items', 'LIKE', "%$keyword%")
                 ->orWhere('quality_title', 'LIKE', "%$keyword%")
                 ->orWhere('quality_text', 'LIKE', "%$keyword%")
                 ->orWhere('quality_button', 'LIKE', "%$keyword%")
@@ -51,7 +51,8 @@ class HomePageController extends Controller
      */
     public function create()
     {
-        return view('admin.home-page.create');
+        $rooms = Room::query()->pluck('title', 'id')->all();
+        return view('admin.home-page.create', compact('rooms'));
     }
 
     /**
@@ -72,7 +73,8 @@ class HomePageController extends Controller
         if ($request->hasFile('about_image'))
             $requestData['about_image'] = Image::uploadImage($requestData['about_image']);
 
-        HomePage::create($requestData);
+        $homepage = HomePage::create($requestData);
+        $homepage->rooms()->sync($request->rooms_items);
 
         return redirect('/admin/home-page')->with('flash_message', 'HomePage added!');
     }
@@ -101,8 +103,9 @@ class HomePageController extends Controller
     public function edit($id)
     {
         $homepage = HomePage::findOrFail($id);
+        $rooms = Room::query()->pluck('title', 'id')->all();
 
-        return view('admin.home-page.edit', compact('homepage'));
+        return view('admin.home-page.edit', compact('homepage', 'rooms'));
     }
 
     /**
@@ -127,6 +130,7 @@ class HomePageController extends Controller
             $requestData['about_image'] = Image::uploadImage($requestData['about_image'], $homepage->about_image);
 
         $homepage->update($requestData);
+        $homepage->rooms()->sync($request->rooms_items);
 
         return redirect('/admin/home-page')->with('flash_message', 'HomePage updated!');
     }
@@ -141,10 +145,13 @@ class HomePageController extends Controller
     public function destroy($id)
     {
         $homepage = HomePage::query()->findOrFail($id);
+
         if (isset($homepage->banner))
             Image::delete($homepage->banner);
         if (isset($homepage->about_image))
             Image::delete($homepage->about_image);
+
+        $homepage->rooms()->detach();
 
         $homepage->delete();
         return redirect('/admin/home-page')->with('flash_message', 'HomePage deleted!');

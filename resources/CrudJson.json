@@ -1,16 +1,12 @@
 {
     "fields": [
         {
-            "name": "category_undertitle",
+            "name": "homepage_id",
             "type": "string"
         },
         {
-            "name": "category_title",
+            "name": "room_id",
             "type": "string"
-        },
-        {
-            "name": "images",
-            "type": "text"
         }
     ]
 }
