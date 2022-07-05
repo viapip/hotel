@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/uploadZone.css') }}">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body class=" hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->

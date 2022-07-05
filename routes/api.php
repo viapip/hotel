@@ -29,6 +29,7 @@ Route::get('/discover', [DiscoverController::class, 'index']);
 Route::get('/discover/{id}', [DiscoverController::class, 'get']);
 Route::get('/rooms-page', [RoomsController::class, 'index']);
 Route::get('/room/{slug}', [RoomsController::class, 'get']);
+Route::get('/special-offer', [RoomsController::class, 'special']);
 Route::get('/events-page', [EventsController::class, 'index']);
 Route::get('/location-page', [LocationController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);

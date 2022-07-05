@@ -32,4 +32,14 @@ class RoomsController extends Controller
         return $room;
     }
 
+    public function special()
+    {
+        $room = Room::query()->select('slug')->where('special_offer', 1)
+            ->first();
+        if (!$room){
+            return response()->json(['code' => 404, 'message' => 'Not found!'], 404);
+        }
+        return $room;
+    }
+
 }
