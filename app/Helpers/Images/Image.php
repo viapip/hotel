@@ -2,10 +2,9 @@
 
 namespace App\Helpers\Images;
 
-use Carbon\Carbon;
+use ErrorException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as ImageConverter;
 
 class Image
