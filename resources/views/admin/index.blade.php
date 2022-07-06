@@ -4,7 +4,7 @@
 
 
     <form id="test123" action="/admin/image">
-        <input name="file" type="file">
+        <input name="image" type="file">
         <button>оптправка</button>
     </form>
 
