@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function upload( $request)
+    public function upload(Request $request)
     {
         if ($request->hasFile('image')) {
             return Image::uploadImage($request->image);
