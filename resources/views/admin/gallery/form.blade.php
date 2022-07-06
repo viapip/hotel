@@ -10,10 +10,20 @@
 </div>
 <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
     <label for="images" class="control-label">{{ 'Images' }}</label>
-    <textarea class="form-control" rows="5" name="images" type="textarea" id="images" >{{ isset($gallery->images) ? $gallery->images : ''}}</textarea>
+    <textarea class="form-control hidden" rows="5" name="images" type="textarea" id="images" >{{ isset($gallery->images) ? $gallery->images : ''}}</textarea>
+
+    <button id="uploadZone" class="zoneUpload">
+        Загрузить
+    </button>
+    <ul id="dragZone" class="drag-zone">
+    </ul>
+
     {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
 </div>
 
+<script>
+    const test = new DragDrop({zone: '#dragZone', input: '#images', uploadZone: '#uploadZone'})
+</script>
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">

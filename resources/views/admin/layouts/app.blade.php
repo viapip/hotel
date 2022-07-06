@@ -11,11 +11,16 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/uploadZone.css') }}">
+    <link rel="stylesheet" href="{{ asset('/adminStyles/uploaderZone.css') }}">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <script src="{{ '/adminJS/uploaderDragZone.js' }}">
+    </script>
 </head>
-<body class=" hold-transition sidebar-mini layout-fixed">
+
+<body class=" hold-transition 123 sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
     <!-- Navbar -->
