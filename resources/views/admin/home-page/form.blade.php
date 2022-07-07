@@ -6,11 +6,23 @@
 <div class="form-group {{ $errors->has('banner') ? 'has-error' : ''}}">
     <label for="banner" class="control-label">{{ 'Banner' }}</label>
     <br>
-    <img src="{{ asset(isset($homepage->banner) ? $homepage->banner : '') }}" alt="" width="200px">
-    <div class="custom-file">
-        <input type="file" multiple class="custom-file-input" name="banner" id="banner" value="{{ isset($homepage->banner) ? $homepage->banner : ''}}">
-        <label class="custom-file-label" for="banner">{{ 'Banner' }}</label>
+{{--    <img src="{{ asset(isset($homepage->banner) ? $homepage->banner : '') }}" alt="" width="200px">--}}
+    <button id="uploadZone" class="zoneUpload">
+        Select Images
+    </button>
+    <ul id="dragZone" class="drag-zone">
+    </ul>
+    <div class="custom-file hidden">
+
+
+
+        <input type="text" class="custom-file-input hidden" name="banner" id="banner" value="{{ isset($homepage->banner) ? $homepage->banner : ''}}">
+        <label class="custom-file-label hidden" for="banner">{{ 'Banner' }}</label>
     </div>
+
+    <script>
+        const test = new DragDrop({zone: '#dragZone', input: '#banner', uploadZone: '#uploadZone'})
+    </script>
     {!! $errors->first('banner', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('about_title') ? 'has-error' : ''}}">

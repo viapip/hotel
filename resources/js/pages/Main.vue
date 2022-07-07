@@ -1,7 +1,7 @@
 <template>
 
     <first-screen-slider
-        :banner="[data?.banner]"
+        :banner="data?.banner.split(`,`)"
         :title="data?.title"
     />
 
@@ -75,7 +75,7 @@
             v-if="data?.location"
             :title="data?.location[0]?.title"
             :text="data?.location[0]?.text"
-            :images="[data?.location[0]?.image]"
+            :images="data?.location[0]?.image.split(',')"
         />
 
         <main-quality

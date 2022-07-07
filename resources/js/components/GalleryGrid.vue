@@ -5,7 +5,7 @@
                 <div class="gallery__subtitle">{{ item.category_undertitle }}</div>
                 <div class="gallery__title">{{ item.category_title }}</div>
             </div>
-            <div class="gallery__wrapper">
+            <div v-if="item.images" class="gallery__wrapper">
                 <div v-for="(image, index) of item.images.split(',')" :key="index" class="gallery__item item-gallery">
                     <div :style="{paddingBottom: computedPadding(index)}" class="item-gallery__wrapper">
                         <a :href='image' :data-fancybox="['gallery-' + item.id]" class="item-gallery__img"
@@ -67,11 +67,13 @@ export default {
 
     },
     mounted() {
+        if (this.item.images) {
 
         this.test();
         Fancybox.bind("[data-fancybox]", {
             infinite: false,
         });
+        }
     }
 }
 </script>

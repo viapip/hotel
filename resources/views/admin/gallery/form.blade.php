@@ -13,7 +13,7 @@
     <textarea class="form-control hidden" rows="5" name="images" type="textarea" id="images" >{{ isset($gallery->images) ? $gallery->images : ''}}</textarea>
 
     <button id="uploadZone" class="zoneUpload">
-        Загрузить
+        Select Images
     </button>
     <ul id="dragZone" class="drag-zone">
     </ul>

@@ -24,12 +24,24 @@
     </div>
     {!! $errors->first('banner', '<p class="help-block">:message</p>') !!}
 </div>
+
 <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
-    <label for="images" class="control-label">{{ 'Images' }}</label>
-    <textarea class="form-control" rows="5" name="images" type="textarea"
+    <button id="uploadZone" class="zoneUpload">
+        Select Images
+    </button>
+    <ul id="dragZone" class="drag-zone">
+    </ul>
+    <label for="images" class="control-label hidden">{{ 'Images' }}</label>
+    <textarea class="form-control hidden" rows="5" name="images" type="textarea"
               id="images">{{ isset($room->images) ? $room->images : ''}}</textarea>
     {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
 </div>
+
+
+<script>
+    const test = new DragDrop({zone: '#dragZone', input: '#images', uploadZone: '#uploadZone'})
+</script>
+
 <div class="form-group {{ $errors->has('meters') ? 'has-error' : ''}}">
     <label for="meters" class="control-label">{{ 'Meters' }}</label>
     <input class="form-control" name="meters" type="text" id="meters"

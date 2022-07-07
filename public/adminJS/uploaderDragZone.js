@@ -86,6 +86,7 @@ class HandlerDragZone {
     parsingInputItems() {
         this.detectInput()
         if (!this.input.value) return false;
+        console.log(this.input.value, 'input value')
         this.array = this.input.value.split(',');
         this.newArray.push(...this.array)
     }

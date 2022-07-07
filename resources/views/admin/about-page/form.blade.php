@@ -13,11 +13,26 @@
     <textarea class="form-control full-editor" rows="5" name="description_bottom" type="textarea" id="description_bottom" >{{ isset($aboutpage->description_bottom) ? $aboutpage->description_bottom : ''}}</textarea>
     {!! $errors->first('description_bottom', '<p class="help-block">:message</p>') !!}
 </div>
+
+
 <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
-    <label for="images" class="control-label">{{ 'Images' }}</label>
-    <textarea class="form-control" rows="5" name="images" type="textarea" id="images" >{{ isset($aboutpage->images) ? $aboutpage->images : ''}}</textarea>
+    <button id="uploadZone" class="zoneUpload">
+        Select Images
+    </button>
+    <ul id="dragZone" class="drag-zone">
+    </ul>
+
+    <label for="images" class="control-label hidden">{{ 'Images' }}</label>
+    <textarea class="form-control hidden" rows="5" name="images" type="textarea" id="images" >{{ isset($aboutpage->images) ? $aboutpage->images : ''}}</textarea>
     {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
 </div>
+
+
+<script>
+    const test = new DragDrop({zone: '#dragZone', input: '#images', uploadZone: '#uploadZone'})
+</script>
+
+
 <div class="form-group {{ $errors->has('title_seo') ? 'has-error' : ''}}">
     <label for="title_seo" class="control-label">{{ 'Title Seo' }}</label>
     <input class="form-control" name="title_seo" type="text" id="title_seo" value="{{ isset($aboutpage->title_seo) ? $aboutpage->title_seo : ''}}" >
