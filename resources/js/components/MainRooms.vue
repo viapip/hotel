@@ -1,26 +1,18 @@
 <template>
 
-    <section class="rooms-main">
+    <section v-if="rooms" class="rooms-main">
         <div class="container">
-            <h2>Comfortable Rooms</h2>
+            <h2>{{ title }}</h2>
             <div class="rooms-main__text">
-                At Marylebone Inn you will always get a quality, modern room to enjoy a respectable night's sleep.
-                Every room is fitted with the finest modern accessories including plasma TV's. High speed Internet
-                is also available free of charge.
+                {{ description }}
             </div>
             <div class="rooms-main__cards">
-                <div class="room-card-small">
-                    <div class="image-wrapper-full-width">
-                        <img src="img/main/card.jpg" alt="">
-                    </div>
-                    <h6>Single room</h6>
-                    <div class="room-card-small__text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore.
-                    </div>
-                </div>
+                <main-rooms-item
+                    v-for="room of rooms"
+                    :room="room"
+                />
             </div>
-            <div @click="$router.push('/rooms')" class="rooms-main__view-more">
+            <div @click.prevent="$router.push('/rooms')" class="rooms-main__view-more">
                 <a href="#" class="view-more">
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -38,8 +30,22 @@
 </template>
 
 <script>
+import MainRoomsItem from "./MainRoomsItem";
+
 export default {
-    name: "MainRooms"
+    name: "MainRooms",
+    components: {MainRoomsItem},
+    props: {
+        rooms: {
+            type: Array
+        },
+        title: {
+            type: String,
+        },
+        description: {
+            type: String,
+        }
+    },
 }
 </script>
 

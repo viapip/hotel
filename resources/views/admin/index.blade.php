@@ -4,14 +4,14 @@
 
 
 
-    <form style="margin-bottom: 50px" id="test123" data-method="POST" action="/admin/image">
-        <input name="image" type="file">
-        <button>оптправка</button>
-    </form>
-    <form id="test321" data-method="DELETE" action="/admin/image">
-        <input name="images[]" id="delete" type="text">
-        <button>удалить</button>
-    </form>
+{{--    <form style="margin-bottom: 50px" id="test123" data-method="POST" action="/admin/image">--}}
+{{--        <input name="image" type="file">--}}
+{{--        <button>оптправка</button>--}}
+{{--    </form>--}}
+{{--    <form id="test321" data-method="DELETE" action="/admin/image">--}}
+{{--        <input name="images[]" id="delete" type="text">--}}
+{{--        <button>удалить</button>--}}
+{{--    </form>--}}
 
     {{--    <input style="width: 100%" id="dragZoneInput" type="text" value="https://klike.net/uploads/posts/2019-03/medium/1551511866_11.jpg,https://klike.net/uploads/posts/2019-03/1551511801_1.jpg,https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg,https://klike.net/uploads/posts/2019-03/1551511774_9.jpg">--}}
 

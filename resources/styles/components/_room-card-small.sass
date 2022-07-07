@@ -1,16 +1,38 @@
 .room-card-small
-  max-width: 450px
-  img
-    margin-bottom: 20px
-  h6
-    margin-bottom: 20px
-  &__text
-    +ralewayLight16
-    color: $dark
+    max-width: 450px
+    cursor: pointer
+    .image-wrapper-full-width
+        width: 100%
+        max-height: 351px
+        overflow: hidden
+        position: relative
+        margin-bottom: 20px
+        &::before
+            content: ''
+            display: block
+            padding-bottom: 100%
+    &__img
+        background-repeat: no-repeat
+        background-position: center
+        background-size: cover
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+
+
+    h6
+        margin-bottom: 20px
+
+    &__text
+        +ralewayLight16
+        color: $dark
 
 @media (max-width: 992px)
-  .room-card-small
-    img
-      margin-bottom: 10px
-    h6
-      margin-bottom: 6px
+    .room-card-small
+        img
+            margin-bottom: 10px
+
+        h6
+            margin-bottom: 6px

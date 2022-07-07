@@ -71,30 +71,30 @@
                 </a>
                 <div class="footer-menu">
                     <div class="footer-menu__col">
-                        <a @click="$router.push('/about')" href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push('/about')" href="#" class="footer-menu__item">
                             About Marylebone
                         </a>
-                        <a @click="$router.push('/rooms')" href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push('/rooms')" href="#" class="footer-menu__item">
                             Rooms
                         </a>
-                        <a href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push(`/rooms/${special}`)" href="#" class="footer-menu__item">
                             Special offers
                         </a>
-                        <a @click="$router.push('/events')" href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push('/events')" href="#" class="footer-menu__item">
                             Events
                         </a>
                     </div>
                     <div class="footer-menu__col">
-                        <a @click="$router.push('/location')" href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push('/location')" href="#" class="footer-menu__item">
                             Location
                         </a>
-                        <a @click="$router.push('/gallery')" href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push('/gallery')" href="#" class="footer-menu__item">
                             Gallery
                         </a>
-                        <a @click="$router.push('/contacts')" href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push('/contact')" href="#" class="footer-menu__item">
                             Contact
                         </a>
-                        <a @click="$router.push('/policy')" href="#" class="footer-menu__item">
+                        <a @click.prevent="$router.push('/policy')" href="#" class="footer-menu__item">
                             Privacy and Data Policy
                         </a>
                     </div>
@@ -172,7 +172,8 @@ export default {
 
     computed: {
         ...mapState({
-            contacts: state => state.contacts.contacts
+            contacts: state => state.contacts.contacts,
+            special: state => state.special.special
         })
     }
 }

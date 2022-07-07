@@ -8,7 +8,7 @@
                 <span class="menu__burger-item"/>
                 </span>
                 <transition>
-                    <span  class="menu__title">{{menuMessage}}</span>
+                    <span class="menu__title">{{ menuMessage }}</span>
                 </transition>
             </button>
             <button class="head__language">En</button>
@@ -95,10 +95,11 @@
     </div>
     <div class="dropdown-menu">
         <div class="dropdown-menu__wrapper">
-            <ul :class="['dropdown-menu__list']">
-                <li v-for="(link, index) of links" :key="index" >
-                    <button :class="link.class" @click="$router.push(link.link), toggleActive(), scrollToTop()">
-                         <span>{{ link.title }}</span>
+            <ul v-if="links" :class="['dropdown-menu__list']">
+                <li v-for="(link, index) of links" :key="index">
+                    <button :class="link.class" :data-link="link"
+                            @click="$router.push(link.link), toggleActive(), scrollToTop()">
+                        <span>{{ link.title }}</span>
                     </button>
                 </li>
             </ul>
@@ -107,8 +108,11 @@
                 <ul class="dropdown-menu__contact-list">
                     <li>
                         <span>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.6002 18.6668C12.8784 18.6633 10.269 17.5805 8.34443 15.6558C6.41982 13.7312 5.33702 11.1219 5.3335 8.40012C5.3335 7.58679 5.65659 6.80677 6.2317 6.23166C6.80681 5.65654 7.58683 5.33345 8.40016 5.33345C8.57239 5.33214 8.74433 5.34777 8.9135 5.38012C9.07704 5.40432 9.23781 5.44451 9.3935 5.50012C9.503 5.53854 9.60057 5.60487 9.67657 5.69257C9.75257 5.78026 9.80436 5.88627 9.82683 6.00012L10.7402 10.0001C10.7648 10.1087 10.7618 10.2217 10.7315 10.3288C10.7013 10.436 10.6446 10.5338 10.5668 10.6135C10.4802 10.7068 10.4735 10.7135 9.6535 11.1401C10.3102 12.5807 11.4623 13.7376 12.9002 14.4001C13.3335 13.5735 13.3402 13.5668 13.4335 13.4801C13.5131 13.4023 13.611 13.3457 13.7181 13.3154C13.8252 13.2851 13.9383 13.2822 14.0468 13.3068L18.0468 14.2201C18.157 14.2457 18.2589 14.2989 18.3429 14.3747C18.4269 14.4505 18.4902 14.5464 18.5268 14.6535C18.5831 14.8117 18.6255 14.9745 18.6535 15.1401C18.6803 15.3077 18.6937 15.4771 18.6935 15.6468C18.6812 16.4566 18.349 17.2287 17.7695 17.7946C17.1899 18.3604 16.4101 18.6739 15.6002 18.6668ZM8.40016 6.66678C7.94099 6.66854 7.50113 6.85172 7.17645 7.17641C6.85177 7.50109 6.66859 7.94095 6.66683 8.40012C6.6686 10.7688 7.61035 13.04 9.28529 14.715C10.9602 16.3899 13.2314 17.3317 15.6002 17.3335C16.0593 17.3317 16.4992 17.1485 16.8239 16.8238C17.1486 16.4991 17.3317 16.0593 17.3335 15.6001V15.3801L14.2402 14.6668L14.0468 15.0335C13.7468 15.6135 13.5268 16.0335 12.9668 15.8068C11.8621 15.4114 10.8593 14.7748 10.0313 13.9434C9.20334 13.1119 8.57098 12.1065 8.18016 11.0001C7.94016 10.4801 8.3935 10.2401 8.96683 9.94012L9.3335 9.76012L8.62016 6.66678H8.40016Z" fill="white"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+<path
+    d="M15.6002 18.6668C12.8784 18.6633 10.269 17.5805 8.34443 15.6558C6.41982 13.7312 5.33702 11.1219 5.3335 8.40012C5.3335 7.58679 5.65659 6.80677 6.2317 6.23166C6.80681 5.65654 7.58683 5.33345 8.40016 5.33345C8.57239 5.33214 8.74433 5.34777 8.9135 5.38012C9.07704 5.40432 9.23781 5.44451 9.3935 5.50012C9.503 5.53854 9.60057 5.60487 9.67657 5.69257C9.75257 5.78026 9.80436 5.88627 9.82683 6.00012L10.7402 10.0001C10.7648 10.1087 10.7618 10.2217 10.7315 10.3288C10.7013 10.436 10.6446 10.5338 10.5668 10.6135C10.4802 10.7068 10.4735 10.7135 9.6535 11.1401C10.3102 12.5807 11.4623 13.7376 12.9002 14.4001C13.3335 13.5735 13.3402 13.5668 13.4335 13.4801C13.5131 13.4023 13.611 13.3457 13.7181 13.3154C13.8252 13.2851 13.9383 13.2822 14.0468 13.3068L18.0468 14.2201C18.157 14.2457 18.2589 14.2989 18.3429 14.3747C18.4269 14.4505 18.4902 14.5464 18.5268 14.6535C18.5831 14.8117 18.6255 14.9745 18.6535 15.1401C18.6803 15.3077 18.6937 15.4771 18.6935 15.6468C18.6812 16.4566 18.349 17.2287 17.7695 17.7946C17.1899 18.3604 16.4101 18.6739 15.6002 18.6668ZM8.40016 6.66678C7.94099 6.66854 7.50113 6.85172 7.17645 7.17641C6.85177 7.50109 6.66859 7.94095 6.66683 8.40012C6.6686 10.7688 7.61035 13.04 9.28529 14.715C10.9602 16.3899 13.2314 17.3317 15.6002 17.3335C16.0593 17.3317 16.4992 17.1485 16.8239 16.8238C17.1486 16.4991 17.3317 16.0593 17.3335 15.6001V15.3801L14.2402 14.6668L14.0468 15.0335C13.7468 15.6135 13.5268 16.0335 12.9668 15.8068C11.8621 15.4114 10.8593 14.7748 10.0313 13.9434C9.20334 13.1119 8.57098 12.1065 8.18016 11.0001C7.94016 10.4801 8.3935 10.2401 8.96683 9.94012L9.3335 9.76012L8.62016 6.66678H8.40016Z"
+    fill="white"/>
 </svg>
 
                         </span>
@@ -116,8 +120,11 @@
                     </li>
                     <li>
                         <span>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.9 7H7.1C6.54305 7 6.0089 7.2173 5.61508 7.60409C5.22125 7.99089 5 8.51549 5 9.0625V15.9375C5 16.4845 5.22125 17.0091 5.61508 17.3959C6.0089 17.7827 6.54305 18 7.1 18H16.9C17.457 18 17.9911 17.7827 18.3849 17.3959C18.7788 17.0091 19 16.4845 19 15.9375V9.0625C19 8.51549 18.7788 7.99089 18.3849 7.60409C17.9911 7.2173 17.457 7 16.9 7ZM16.431 8.375L12 11.6406L7.569 8.375H16.431ZM16.9 16.625H7.1C6.91435 16.625 6.7363 16.5526 6.60503 16.4236C6.47375 16.2947 6.4 16.1198 6.4 15.9375V9.23438L11.58 13.05C11.7012 13.1393 11.8485 13.1875 12 13.1875C12.1515 13.1875 12.2988 13.1393 12.42 13.05L17.6 9.23438V15.9375C17.6 16.1198 17.5263 16.2947 17.395 16.4236C17.2637 16.5526 17.0857 16.625 16.9 16.625Z" fill="white"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+<path
+    d="M16.9 7H7.1C6.54305 7 6.0089 7.2173 5.61508 7.60409C5.22125 7.99089 5 8.51549 5 9.0625V15.9375C5 16.4845 5.22125 17.0091 5.61508 17.3959C6.0089 17.7827 6.54305 18 7.1 18H16.9C17.457 18 17.9911 17.7827 18.3849 17.3959C18.7788 17.0091 19 16.4845 19 15.9375V9.0625C19 8.51549 18.7788 7.99089 18.3849 7.60409C17.9911 7.2173 17.457 7 16.9 7ZM16.431 8.375L12 11.6406L7.569 8.375H16.431ZM16.9 16.625H7.1C6.91435 16.625 6.7363 16.5526 6.60503 16.4236C6.47375 16.2947 6.4 16.1198 6.4 15.9375V9.23438L11.58 13.05C11.7012 13.1393 11.8485 13.1875 12 13.1875C12.1515 13.1875 12.2988 13.1393 12.42 13.05L17.6 9.23438V15.9375C17.6 16.1198 17.5263 16.2947 17.395 16.4236C17.2637 16.5526 17.0857 16.625 16.9 16.625Z"
+    fill="white"/>
 </svg>
                         </span>
                         <a href="mailto:info@marhotel.co.uk">info@marhotel.co.uk</a>
@@ -154,33 +161,39 @@
 
 <script>
 import {debounce} from "lodash";
+import {mapActions, mapState} from "vuex";
 
 export default {
     name: "Header",
+    setup() {
+
+    },
     data() {
         return {
             fillOpacity: 0,
             isActive: false,
             isUpWords: false,
-            links: [
-                {link: '/rooms', title:'Rooms', class: []},
-                {link: '/special-offer', title:'Special offers', class: []},
-                {link: '/events', title:'Events', class: []},
-                {link: '/location', title:'Location', class: []},
-                {link: '/about', title:'About Marylebone', class: []},
-                {link: '/gallery', title:'Gallery', class: []},
-                {link: '/contact', title:'Contact', class: []},
-            ]
+            isLoadingSpecial: true,
+            links: []
         }
     },
     computed: {
         menuMessage: function () {
-            return this.isActive? 'Close' : 'Menu'
-        }
+            return this.isActive ? 'Close' : 'Menu'
+        },
+        ...mapState({
+            special: state => state.special.special
+        })
     },
     methods: {
+
+
+        ...mapActions({
+            fetchSpecial: 'special/fetchSpecial'
+        }),
+
         scrollToTop() {
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         },
         handlerLinksAnimation(bool) {
             let counter = 125
@@ -191,8 +204,7 @@ export default {
                     }, counter)
                     console.log(counter)
                     counter += 125
-                }
-                else item.class.shift()
+                } else item.class.shift()
             })
         },
         toggleActive() {
@@ -203,19 +215,47 @@ export default {
                 setTimeout(() => {
                     this.handlerLinksAnimation(true)
                 }, 450)
-            }
-            else {
-                setTimeout( () => {
+            } else {
+                setTimeout(() => {
                     this.handlerLinksAnimation(false)
                 }, 1000)
             }
         },
+        async fetchUrl() {
+            try {
+                const response = await fetch('/api/special-offer');
+                const json = await response.json();
+                console.log(json, 'json')
+                return `${json.slug}`
+
+            } catch (e) {
+                console.log(e)
+                return '404'
+            } finally {
+                this.isLoadingSpecial = false
+            }
+        },
+
+        async setLinks() {
+            // const special = await this.fetchUrl()
+            await this.fetchSpecial()
+            this.links = [
+                {link: '/rooms', title: 'Rooms', class: []},
+                {link: `/rooms/${this.special}`, title: 'Special offer', class: []},
+                {link: '/events', title: 'Events', class: []},
+                {link: '/location', title: 'Location', class: []},
+                {link: '/about', title: 'About Marylebone', class: []},
+                {link: '/gallery', title: 'Gallery', class: []},
+                {link: '/contact', title: 'Contact', class: []},
+            ]
+        },
+
         handleScroll(e) {
             const heightFirstScreen = document.querySelector('header').clientHeight
             const scroll = window.scrollY
             if (scroll < heightFirstScreen) {
-                const opacity =  Math.round(scroll/(heightFirstScreen * 0.01))/100
-                this.fillOpacity =  opacity
+                const opacity = Math.round(scroll / (heightFirstScreen * 0.01)) / 100
+                this.fillOpacity = opacity
                 console.log(opacity)
             } else {
                 this.fillOpacity = 1
@@ -225,6 +265,7 @@ export default {
 
     },
     mounted() {
+        this.setLinks()
         this.debounceHandleScroll = debounce(this.handleScroll, 100)
         window.addEventListener('scroll', this.debounceHandleScroll)
     },

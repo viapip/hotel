@@ -22,7 +22,7 @@
                 <div class="room__wrapper-img">
                     <div
                         class="room__img"
-                        :style="[`background-image: url(${item})`]"
+                        :style="[`background-image: url(/${item})`]"
                     ></div>
                 </div>
             </SwiperSlide>

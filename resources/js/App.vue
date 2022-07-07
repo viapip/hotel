@@ -18,10 +18,12 @@ export default {
     methods: {
         ...mapActions({
             fetchContacts: 'contacts/fetchContacts',
-            fetchDiscovery: 'discovery/fetchDiscovery'
+            fetchDiscovery: 'discovery/fetchDiscovery',
+            fetchSpecial: 'special/fetchSpecial'
         })
     },
     mounted() {
+        // this.fetchSpecial();
         this.fetchContacts();
         this.fetchDiscovery();
     },
