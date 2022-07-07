@@ -3,8 +3,12 @@
 @section('content')
 
 
-    <form id="test123" action="/admin">
+    <form id="test123" data-method="POST" action="/admin/image">
         <input name="image" type="file">
+        <button>оптправка</button>
+    </form>
+    <form id="test321" data-method="DELETE" action="/admin/image">
+        <input name="images[]" id="delete" type="text">
         <button>оптправка</button>
     </form>
     <input style="width: 100%" id="dragZoneInput" type="text" value="https://klike.net/uploads/posts/2019-03/medium/1551511866_11.jpg,https://klike.net/uploads/posts/2019-03/1551511801_1.jpg,https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg,https://klike.net/uploads/posts/2019-03/1551511774_9.jpg">
@@ -15,52 +19,65 @@
     <ul id="dragZone" class="drag-zone">
     </ul>
 
-    <script src="{{ 'adminJS/uploaderDragZone.js' }}">
+{{--    <script src="{{ 'adminJS/uploaderDragZone.js' }}">--}}
 
-    </script>
+{{--    </script>--}}
     <script>
 
-        const test = new DragDrop({zone: '#dragZone', input: '#dragZoneInput', uploadZone: '#uploadZone'})
+        // const test = new DragDrop({zone: '#dragZone', input: '#dragZoneInput', uploadZone: '#uploadZone'})
 
 
-        // const getToken = (name) => {
-        //     let matches = document.cookie.match(new RegExp(
-        //         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-        //     ));
-        //     return matches ? decodeURIComponent(matches[1]) : undefined;
-        // }
-        //
-        // const fetchData = async (data, url) => {
-        //     try {
-        //         const response = fetch(url, {
-        //             method: "POST",
-        //             headers: {
-        //                 'X-XSRF-TOKEN':  getToken('XSRF-TOKEN')
-        //             },
-        //             body: data,
-        //         })
-        //         return true
-        //     } catch (e) {
-        //         console.log(e)
-        //         return false;
-        //     }
-        // }
-        // document.querySelector('#test123')
-        //     .addEventListener('submit', async (e) => {
-        //         e.preventDefault()
-        //         const target = e.currentTarget
-        //         target.querySelector('button').innerText = 'грузим'
-        //         const formData = new FormData(target);
-        //         const url = target.getAttribute('action')
-        //         const response = await fetchData(formData, url)
-        //         if(!response) {
-        //             target.querySelector('button').innerText = 'неудачно'
-        //             return false;
-        //         }
-        //
-        //         target.querySelector('button').innerText = 'отправилось'
-        //
-        //     })
+        const getToken = (name) => {
+            let matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        const fetchData = async (data, url, method) => {
+            const isPost = method === "POST"
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'X-XSRF-TOKEN':  getToken('XSRF-TOKEN')
+                    },
+                    body: data,
+                })
+                console.log(isPost, 'isPost')
+                if (isPost) {
+                    const url = await response.text()
+                    document.querySelector('#delete').value = url
+                    console.log(url)
+                    return true
+                }
+                return true
+            } catch (e) {
+                console.log(e)
+                return false;
+            }
+        }
+
+        document.querySelectorAll('form').forEach(form => {
+
+            form
+            .addEventListener('submit', async (e) => {
+                e.preventDefault()
+                const target = e.currentTarget
+                target.querySelector('button').innerText = 'грузим'
+                const method = target.dataset.method
+                const formData = new FormData(target);
+                const url = target.getAttribute('action')
+                const response = await fetchData(formData, url, method)
+                if(!response) {
+                    target.querySelector('button').innerText = 'неудачно'
+                    return false;
+                }
+
+                target.querySelector('button').innerText = 'отправилось'
+
+            })
+        })
     </script>
 
     <style>
