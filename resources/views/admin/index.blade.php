@@ -53,6 +53,7 @@
                     console.log(url)
                     return true
                 }
+                if (!response.ok) return false;
                 return true
             } catch (e) {
                 console.log(e)
