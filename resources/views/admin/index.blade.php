@@ -29,73 +29,73 @@
         // const test = new DragDrop({zone: '#dragZone', input: '#dragZoneInput', uploadZone: '#uploadZone'})
 
 
-        const getToken = (name) => {
-            let matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
-
-        const fetchData = async (data, url, method) => {
-            const isPost = method === "POST"
-            try {
-                const response = await fetch(url, {
-                    method: method,
-                    headers: {
-                        'X-XSRF-TOKEN': getToken('XSRF-TOKEN'),
-                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        'Content-Type': 'application/json'
-                    },
-                    body: data,
-                })
-                console.log(isPost, 'isPost')
-                if (isPost) {
-                    const url = await response.text()
-                    document.querySelector('#delete').value = url
-                    console.log(url)
-                    return true
-                }
-                if (!response.ok) return false;
-                return true
-            } catch (e) {
-                console.log(e)
-                return false;
-            }
-        }
-        const handlerFormData = (data, method) => {
-            if (method === "POST") return new FormData(data);
-
-            const obj = [data.querySelector('input').value]
-
-            // const formData = new FormData();
-            // formData.append('images', JSON.stringify(obj))
-            // console.log(Object.fromEntries(formData))
-            // return formData
-            return JSON.stringify({images: obj})
-        }
-
-        document.querySelectorAll('form').forEach(form => {
-
-            form
-                .addEventListener('submit', async (e) => {
-                    e.preventDefault()
-                    const target = e.currentTarget
-                    target.querySelector('button').innerText = 'грузим'
-                    const method = target.dataset.method
-                    console.log(target, 'target')
-                    const formData = handlerFormData(target, method)
-                    const url = target.getAttribute('action')
-                    console.log(formData)
-                    const response = await fetchData(formData, url, method)
-                    if (!response) {
-                        target.querySelector('button').innerText = 'неудачно'
-                        return false;
-                    }
-
-                    target.querySelector('button').innerText = 'отправилось'
-
-                })
-        })
+        // const getToken = (name) => {
+        //     let matches = document.cookie.match(new RegExp(
+        //         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        //     ));
+        //     return matches ? decodeURIComponent(matches[1]) : undefined;
+        // }
+        //
+        // const fetchData = async (data, url, method) => {
+        //     const isPost = method === "POST"
+        //     try {
+        //         const response = await fetch(url, {
+        //             method: method,
+        //             headers: {
+        //                 'X-XSRF-TOKEN': getToken('XSRF-TOKEN'),
+        //                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //                 // 'Content-Type': 'application/json'
+        //             },
+        //             body: data,
+        //         })
+        //         console.log(isPost, 'isPost')
+        //         if (isPost) {
+        //             const url = await response.text()
+        //             document.querySelector('#delete').value = url
+        //             console.log(url)
+        //             return true
+        //         }
+        //         if (!response.ok) return false;
+        //         return true
+        //     } catch (e) {
+        //         console.log(e)
+        //         return false;
+        //     }
+        // }
+        // const handlerFormData = (data, method) => {
+        //     if (method === "POST") return new FormData(data);
+        //
+        //     const obj = [data.querySelector('input').value]
+        //
+        //     // const formData = new FormData();
+        //     // formData.append('images', JSON.stringify(obj))
+        //     // console.log(Object.fromEntries(formData))
+        //     // return formData
+        //     return JSON.stringify({images: obj})
+        // }
+        //
+        // document.querySelectorAll('form').forEach(form => {
+        //
+        //     form
+        //         .addEventListener('submit', async (e) => {
+        //             e.preventDefault()
+        //             const target = e.currentTarget
+        //             target.querySelector('button').innerText = 'грузим'
+        //             const method = target.dataset.method
+        //             console.log(target, 'target')
+        //             const formData = handlerFormData(target, method)
+        //             const url = target.getAttribute('action')
+        //             console.log(formData)
+        //             const response = await fetchData(formData, url, method)
+        //             if (!response) {
+        //                 target.querySelector('button').innerText = 'неудачно'
+        //                 return false;
+        //             }
+        //
+        //             target.querySelector('button').innerText = 'отправилось'
+        //
+        //         })
+        // })
     </script>
 
     <style>

@@ -30,7 +30,8 @@ class ApiWorker {
             const response = await fetch(url, {
                 method: 'DELETE',
                 headers: {
-                    'X-XSRF-TOKEN': CookiesWorker.getCookie('XSRF-TOKEN')
+                    'X-XSRF-TOKEN': CookiesWorker.getCookie('XSRF-TOKEN'),
+                    'Content-Type': 'application/json'
                 },
                 body: data,
             })
@@ -84,6 +85,7 @@ class HandlerDragZone {
 
     parsingInputItems() {
         this.detectInput()
+        if (!this.input.value) return false;
         this.array = this.input.value.split(',');
         this.newArray.push(...this.array)
     }
@@ -156,16 +158,21 @@ class DragDrop extends HandlerDragZone {
     async deletingImages(deletingArray) {
         // const array = this.deleteArray
         if (!deletingArray.length) return false;
-        let formData = new FormData()
-        deletingArray.forEach(item => formData.append('images[]', item))
-        await ApiWorker.delete('/admin/image', formData)
+        let formData = {
+            images: deletingArray,
+        }
+        // let formData = new FormData()
+        // deletingArray.forEach(item => formData.append('images[]', item))
+        await ApiWorker.delete('/admin/image', JSON.stringify(formData))
     }
 
     listenerForm() {
         document.querySelectorAll('form').forEach(function(form){
             form.addEventListener('submit', async function(e){
-               await this.deleteImagesSubmitForm()
+
+                this.setValueInput();
                 window.removeEventListener('beforeunload', this.handlerDelete)
+               await this.deleteImagesSubmitForm()
                 console.log('delete success')
 
             }.bind(this))
@@ -281,6 +288,8 @@ class DragDrop extends HandlerDragZone {
     }
 
     renderInitItems() {
+        if (this.array.length === 0) return false;
+        console.log(this.array ,'renderInitItems')
         this.array.forEach(function (item, index) {
             const template = this.templateRender(item);
 
