@@ -174,7 +174,14 @@ export default {
             isActive: false,
             isUpWords: false,
             isLoadingSpecial: true,
-            links: []
+            links: [
+                {link: '/rooms', title: 'Rooms', class: []},
+                {link: '/events', title: 'Events', class: []},
+                {link: '/location', title: 'Location', class: []},
+                {link: '/about', title: 'About Marylebone', class: []},
+                {link: '/gallery', title: 'Gallery', class: []},
+                {link: '/contact', title: 'Contact', class: []},
+            ]
         }
     },
     computed: {
@@ -237,17 +244,10 @@ export default {
         },
 
         async setLinks() {
-            // const special = await this.fetchUrl()
             await this.fetchSpecial()
-            this.links = [
-                {link: '/rooms', title: 'Rooms', class: []},
-                {link: `/rooms/${this.special}`, title: 'Special offer', class: []},
-                {link: '/events', title: 'Events', class: []},
-                {link: '/location', title: 'Location', class: []},
-                {link: '/about', title: 'About Marylebone', class: []},
-                {link: '/gallery', title: 'Gallery', class: []},
-                {link: '/contact', title: 'Contact', class: []},
-            ]
+            // this.splice( index, 0, item );
+            const link =  {link: `/rooms/${this.special}`, title: 'Special offer', class: []};
+            if (this.special) this.links.splice(1, 0, link)
         },
 
         handleScroll(e) {

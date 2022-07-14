@@ -1,5 +1,6 @@
 <template>
     <div
+        v-if="!room?.special_offer"
         class="room">
         <div class="room__overtitle">
             Room Only

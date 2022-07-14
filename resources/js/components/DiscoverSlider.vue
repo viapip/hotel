@@ -67,15 +67,13 @@
                     <div class="modal-discover__content">
                         <img :src="modalContent?.image" alt="" class="modal-discover__img">
                         <div class="modal-discover__content-wrapper">
-                            <div class="modal-discover__title"> {{ modalContent?.title }}</div>
-                            <div v-html="modalContent?.description" class="modal-discover__text">
-                            </div>
+
                             <div class="modal-discover__footer">
                                 <div class="modal-discover__footer-title">{{ modalContent?.from }}</div>
                                 <div class="modal-discover__footer-buttons">
                                     <div class="modal-discover__footer-button active">
                                         <input  type="radio" value="DRIVING" id="type1" name="mode"
-                                               @change="changeMode"/>
+                                                @change="changeMode"/>
                                         <label for="type1">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg"
@@ -116,6 +114,9 @@
 
                                     </div>
                                 </div>
+                            </div>
+                            <div class="modal-discover__title"> {{ modalContent?.title }}</div>
+                            <div v-html="modalContent?.description" class="modal-discover__text">
                             </div>
                         </div>
                     </div>

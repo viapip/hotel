@@ -1,41 +1,51 @@
 .rooms-main
-  margin-bottom: 180px
-  h2
-    margin-bottom: 40px
-  &__text
-    +ralewayReg18
-    color: $dark
-    margin-bottom: 40px
-  &__cards
-    display: flex
-    justify-content: space-between
-    align-items: flex-start
-    margin-bottom: 46px
-    .room-card-small
-      &:not(:last-of-type)
-        margin-right: 30px
-  &__view-more
-    display: flex
-    justify-content: flex-end
+    margin-bottom: 180px
+
+    h2
+        margin-bottom: 40px
+
+    &__text
+        +ralewayReg18
+        color: $dark
+        margin-bottom: 40px
+
+    &__cards
+        display: flex
+        //justify-content: space-between
+        align-items: flex-start
+        margin-bottom: 46px
+        width: 100%
+        .room-card-small
+            &:not(:last-of-type)
+                margin-right: 30px
+
+    &__view-more
+        display: flex
+        justify-content: flex-end
 
 @media (max-width: 992px)
-  .rooms-main
-    margin-bottom: 63px
-    h2
-      margin-bottom: 20px
-    &__text
-      margin-bottom: 30px
-    &__cards
-      margin-bottom: 62px
-      .room-card-small
-        &:not(:last-of-type)
-          margin-right: 20px
+    .rooms-main
+        margin-bottom: 63px
+
+        h2
+            margin-bottom: 20px
+
+        &__text
+            margin-bottom: 30px
+
+        &__cards
+            margin-bottom: 62px
+
+            .room-card-small
+                &:not(:last-of-type)
+                    margin-right: 20px
 
 @media (max-width: 575px)
-  .rooms-main
-    &__cards
-      flex-direction: column
-      .room-card-small
-        &:not(:last-of-type)
-          margin-bottom: 80px
-          margin-right: 0
+    .rooms-main
+        &__cards
+            flex-direction: column
+
+            .room-card-small
+                &:not(:last-of-type)
+                    margin-bottom: 80px
+                    margin-right: 0

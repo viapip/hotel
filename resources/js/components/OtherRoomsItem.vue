@@ -23,7 +23,7 @@
                                 {{ feature.title }}
                             </li>
                         </ul>
-                        <a @click="$router.push('/' + room.slug)"
+                        <a @click="$router.push('/rooms/' + room.slug)"
                            class="collapse-room__more view-more">
                             <svg width="57" height="57" viewBox="0 0 57 57" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
