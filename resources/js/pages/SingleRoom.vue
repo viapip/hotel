@@ -39,11 +39,12 @@
 <script>
 import DiscoverSlider from "../components/DiscoverSlider";
 import {useFetchData} from "../hooks/useFetchData";
-import {useRoute, useRouter} from "vue-router";
+import {onBeforeRouteUpdate, useRoute, useRouter} from "vue-router";
 import router from "../router/router";
 import RoomsItem from "../components/RoomsItem";
 import OtherRooms from "../components/OtherRooms";
 import linkTo from "../mixins/linkTo";
+import {watch} from "vue";
 
 export default {
     name: "SingleRoom",
@@ -52,7 +53,25 @@ export default {
     setup(props, context) {
         const route = useRoute()
         console.log(route.params)
-        const {data, isLoading} = useFetchData('/api/room/' + route.params.slug)
+        let {data, isLoading} = useFetchData('/api/room/' + route.params.slug)
+
+        // watch(
+        //     () => route.params.slug,
+        //     async newId => {
+        //         console.log('updated url', route)
+        //         let response = await useFetchData('/api/room/' + route.params.slug)
+        //         console.log(response, 'response from watch')
+        //         data.value = response.data.value
+        //     }
+        // )
+        onBeforeRouteUpdate(async (to, from) => {
+            // only fetch the user if the id changed as maybe only the query or the hash changed
+            if (to.params.slug !== from.params.slug) {
+                console.log('updated url', to.params.slug)
+                 data.value = await (await fetch('/api/room/' + to.params.slug )).json()
+                // data.value = response.data
+            }
+        })
         return {
             data, isLoading
         }
@@ -65,7 +84,7 @@ export default {
     // }
     mounted() {
         console.log(this.$router.getRoutes(), 'router');
-    }
+    },
 }
 </script>
 
