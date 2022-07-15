@@ -37,6 +37,7 @@
 </template>
 
 <script>
+
 import DiscoverSlider from "../components/DiscoverSlider";
 import {useFetchData} from "../hooks/useFetchData";
 import {onBeforeRouteUpdate, useRoute, useRouter} from "vue-router";
@@ -45,11 +46,12 @@ import RoomsItem from "../components/RoomsItem";
 import OtherRooms from "../components/OtherRooms";
 import linkTo from "../mixins/linkTo";
 import {watch} from "vue";
+import animationScroll from "../mixins/animationScroll";
 
 export default {
     name: "SingleRoom",
     components: {OtherRooms, RoomsItem, DiscoverSlider},
-    mixins: [linkTo],
+    mixins: [linkTo, animationScroll],
     setup(props, context) {
         const route = useRoute()
         console.log(route.params)
@@ -65,11 +67,9 @@ export default {
         //     }
         // )
         onBeforeRouteUpdate(async (to, from) => {
-            // only fetch the user if the id changed as maybe only the query or the hash changed
             if (to.params.slug !== from.params.slug) {
                 console.log('updated url', to.params.slug)
                  data.value = await (await fetch('/api/room/' + to.params.slug )).json()
-                // data.value = response.data
             }
         })
         return {

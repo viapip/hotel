@@ -1,5 +1,5 @@
 <template>=
-    <section class="about">
+    <section class="about element-animation">
         <div class="container">
             <div class="about__wrapper">
                 <div class="about__left">
