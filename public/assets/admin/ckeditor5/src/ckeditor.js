@@ -87,7 +87,9 @@ Editor.builtinPlugins = [
 	TableProperties,
 	TableToolbar,
 	TextTransformation,
-	WordCount
+	WordCount,
+    Image,
+    ImageUpload,
 ];
 
 export default Editor;

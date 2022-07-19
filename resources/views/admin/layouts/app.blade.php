@@ -145,6 +145,7 @@
                     'outdent',
                     'indent',
                     '|',
+                    'CKFinder',
                     'blockQuote',
                     'insertTable',
                     'mediaEmbed',
