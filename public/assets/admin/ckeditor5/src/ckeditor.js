@@ -43,6 +43,9 @@ import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
+
+
 
 class Editor extends ClassicEditor {}
 
@@ -90,6 +93,7 @@ Editor.builtinPlugins = [
 	WordCount,
     Image,
     ImageUpload,
+    Base64UploadAdapter
 ];
 
 export default Editor;

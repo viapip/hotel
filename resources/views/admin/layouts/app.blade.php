@@ -128,9 +128,6 @@
     ClassicEditor
         .create( document.querySelector( '.full-editor' ), {
             toolbar: {
-                ckfinder: {
-                    uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
-                },
                 items: [
                     'heading',
                     '|',
@@ -148,7 +145,7 @@
                     'outdent',
                     'indent',
                     '|',
-                    'CKFinder',
+                    'imageUpload',
                     'blockQuote',
                     'insertTable',
                     'mediaEmbed',
