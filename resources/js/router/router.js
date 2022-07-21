@@ -20,7 +20,7 @@ const Location = () => import("../pages/Location")
 const Policy = () => import("../pages/Policy")
 const Rooms = () => import("../pages/Rooms")
 const SingleRoom = () => import("../pages/SingleRoom")
-const SpecialOffer = () => import("../pages/SpecialOffer")
+// const SpecialOffer = () => import("../pages/SpecialOffer")
 const Gallery = () => import("../pages/Gallery")
 const NotFound = () => import("../pages/NotFound")
 
@@ -58,10 +58,10 @@ const routes = [
         path: '/rooms/:slug',
         component: SingleRoom,
     },
-    {
-        path: '/special-offer',
-        component: SpecialOffer,
-    },
+    // {
+    //     path: '/special-offer',
+    //     component: SpecialOffer,
+    // },
     {
         path: '/gallery',
         component: Gallery,

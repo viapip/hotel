@@ -12,7 +12,7 @@ export const useFetchData =  (url, dynamic = false) => {
     const fetchingData = async (url) => {
         try {
             const response = await fetch(newUrl.value);
-            if (response.status === 404) await router.push('/rooms');
+            if (response.status === 404) await router.push('/');
 
             data.value = await response.json();
             console.log(data.value)

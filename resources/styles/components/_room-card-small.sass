@@ -1,6 +1,7 @@
 .room-card-small
     max-width: 450px
     cursor: pointer
+    width: 100%
     .image-wrapper-full-width
         width: 100%
         max-height: 351px
@@ -31,8 +32,18 @@
 
 @media (max-width: 992px)
     .room-card-small
+
         img
             margin-bottom: 10px
 
         h6
             margin-bottom: 6px
+@media (max-width: 575px)
+    .room-card-small
+        max-width: none
+        .image-wrapper-full-width
+            overflow: initial
+        &__img
+            width: 100vw
+            left: 50%
+            transform: translateX(-50%)
