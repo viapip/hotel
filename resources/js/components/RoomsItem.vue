@@ -1,6 +1,6 @@
 <template>
     <div
-        v-if="!room?.special_offer"
+        v-if="!isHidden"
         class="room">
         <div class="room__overtitle">
             Room Only
@@ -70,10 +70,17 @@ export default {
     props: {
         room: {
             type: Object
+        },
+
+        isHidden: {
+            type: Boolean,
+            default: false,
         }
     },
     data() {
         return {
+            props: {
+            },
             modules: [EffectFade, Pagination, Navigation, Autoplay],
             pagination: {
                 clickable: true,

@@ -21,6 +21,7 @@
                 <rooms-item
                     v-for="room in data?.items"
                     :key="room.id"
+                    :is-hidden="room.special_offer === 1"
                     :room="room"
                 />
             </div>
