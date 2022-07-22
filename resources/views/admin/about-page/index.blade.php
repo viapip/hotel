@@ -35,7 +35,12 @@
                                 @foreach($aboutpage as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->description }}</td><td>{{ $item->description_bottom }}</td>
+                                        <style>
+                                            .descr-admin img{
+                                                width: 100%;
+                                            }
+                                        </style>
+                                        <td>{{ $item->title }}</td><td class="descr-admin" style="max-width: 300px">{!! $item->description !!}</td><td>{{ $item->description_bottom }}</td>
                                         <td>
 
                                             {{--<a href="{{ url('/admin/about-page/' . $item->id) }}" title="Просмотр AboutPage"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
