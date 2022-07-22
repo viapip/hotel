@@ -15,7 +15,7 @@ class CreateAboutPagesTable extends Migration
         Schema::create('about_pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->text('description_bottom')->nullable();
             $table->text('images')->nullable();
             $table->string('title_seo')->nullable();
