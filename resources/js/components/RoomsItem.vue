@@ -1,15 +1,15 @@
 <template>
     <div
         v-if="!isHidden"
-        class="room">
-        <div class="room__overtitle">
+        class="room scroll-animation">
+        <div class="room__overtitle scroll-animation__child">
             Room Only
         </div>
-        <h3
+        <h3 class="scroll-animation__child"
             @click="$router.push(`/rooms/` + room.slug)"
         >{{room?.title}}</h3>
         <Swiper
-            class="room__swiper"
+            class="room__swiper scroll-animation__child"
             :slidesPerView="1"
             :modules="modules"
             :pagination="pagination"
@@ -30,11 +30,11 @@
 
         </Swiper>
 
-        <div class="room__description">
+        <div class="room__description scroll-animation__child">
             <span>{{ room?.meters }} sq.m.</span>
             <span v-html="room?.description"></span>
         </div>
-        <div class="room-features">
+        <div class="room-features scroll-animation__child">
             <div class="room-features__title">Room Features:</div>
             <ul class="room-features__ul">
                 <li class="room-features__li"
@@ -45,7 +45,7 @@
                 </li>
             </ul>
         </div>
-        <div class="room__bottom">
+        <div class="room__bottom scroll-animation__child">
             <a :href="room?.link" class="button">Book Now</a>
             <div class="room__price">
                 <span>RATES FROM</span>
@@ -59,10 +59,12 @@
 
 import {EffectFade, Navigation, Pagination, Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
+import animationScroll from "../mixins/animationScroll";
 
 
 export default {
     name: "RoomsItem",
+    mixins: [animationScroll],
     components: {
         Swiper,
         SwiperSlide

@@ -1,5 +1,5 @@
 <template>
-    <div @click="$router.push('/rooms/'+ room.slug)" class="room-card-small">
+    <div @click="$router.push('/rooms/'+ room.slug)" class="room-card-small scroll-animation__child">
         <div class="image-wrapper-full-width">
             <div class="room-card-small__img" :style="[`backgroundImage : url('${room.preview_image}')`]">
                 </div>

@@ -126,7 +126,7 @@
                             {{ contacts?.address }}
                         </a>
                         <div class="footer-menu__social">
-                            <a :href="contacts?.twitter">
+                            <a :href="contacts?.twitter" target="_blank">
                                 <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -134,7 +134,7 @@
                                           fill="white"/>
                                 </svg>
                             </a>
-                            <a :href="contacts?.facebook">
+                            <a :href="contacts?.facebook" target="_blank">
                                 <svg width="9" height="18" viewBox="0 0 9 18" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5.77437 17.3078V9.72909H8.22427L8.58992 6.77507H5.77437V4.89179C5.77437 4.03369 6.00108 3.45655 7.18581 3.45655H8.6923V0.806291C8.42903 0.768322 7.53683 0.692383 6.49837 0.692383C4.32638 0.692383 2.84182 2.06687 2.84182 4.59563V6.77507H0.384613V9.72909H2.84182V17.3078H5.77437Z"

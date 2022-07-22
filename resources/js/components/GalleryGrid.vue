@@ -6,8 +6,8 @@
                 <div class="gallery__title">{{ item.category_title }}</div>
             </div>
             <div v-if="item.images" class="gallery__wrapper">
-                <div v-for="(image, index) of item.images.split(',')" :key="index" class="gallery__item item-gallery">
-                    <div :style="{paddingBottom: computedPadding(index)}" class="item-gallery__wrapper">
+                <div v-for="(image, index) of item.images.split(',')" :key="index" class="gallery__item item-gallery scroll-animation ">
+                    <div :style="{paddingBottom: computedPadding(index)}" class="item-gallery__wrapper scroll-animation__child slowly">
                         <a :href='image' :data-fancybox="['gallery-' + item.id]" class="item-gallery__img"
                            :style="{backgroundImage: `url(${image})`}">
                         </a>
@@ -22,6 +22,7 @@
 
 import MagicGrid from "magic-grid";
 import {Fancybox} from '@fancyapps/ui'
+import animationScroll from "../mixins/animationScroll";
 
 export default {
     name: "GalleryGrid",
@@ -31,6 +32,7 @@ export default {
           required: true,
       }
     },
+    mixins: [animationScroll],
     data () {
         return {
             ruleGrid: [325, 471, 416, 576, 359, 485, 473, 454, 567, 576, 359, 346, 473, 454, 428],

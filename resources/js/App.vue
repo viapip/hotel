@@ -9,6 +9,7 @@ import ExampleComponent from "./components/ExampleComponent";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import {mapActions} from "vuex";
+import animationScroll from "./mixins/animationScroll";
 export default {
     components: {
         Footer,

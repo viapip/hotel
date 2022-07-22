@@ -30,6 +30,7 @@ import DiscoverSlider from "../components/DiscoverSlider";
 import GalleryGrid from "../components/GalleryGrid";
 import {useFetchData} from "../hooks/useFetchData";
 import linkTo from "../mixins/linkTo";
+import animationScroll from "../mixins/animationScroll";
 
 export default {
     name: "Gallery",

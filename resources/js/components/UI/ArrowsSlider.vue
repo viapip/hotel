@@ -1,5 +1,5 @@
 <template>
-    <div :class="['buttons-slider', isDouble ? 'is-double':'is-long']">
+    <div :class="['buttons-slider', isDouble ? 'is-double':'is-long', propClasses]">
         <div :class="['buttons-slider__wrapper']">
             <button @click="$emit('clickPrev')" class="buttons-slider__item is-prev">
                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,6 +22,10 @@ export default {
         isDouble: {
             type: Boolean,
             default: true,
+        },
+        propClasses: {
+            type: String,
+            default: ''
         }
     },
     methods: {

@@ -36,6 +36,7 @@ import DiscoverSlider from "../components/DiscoverSlider";
 import RoomsItem from "../components/RoomsItem";
 import {useFetchData} from "../hooks/useFetchData";
 import linkTo from "../mixins/linkTo";
+import animationScroll from "../mixins/animationScroll";
 
 export default {
     name: "Rooms",

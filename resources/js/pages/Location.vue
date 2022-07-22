@@ -16,11 +16,11 @@
     </header>
 
     <main>
-        <section class="location">
+        <section class="location scroll-animation">
             <div class="container container--sm">
-                <div v-html="data?.description" class="location__text">
+                <div v-html="data?.description" class="location__text scroll-animation__child">
                 </div>
-                <div class="location__get" @click="openModal">Get directions</div>
+                <div class="location__get scroll-animation__child" @click="openModal">Get directions</div>
             </div>
         </section>
         <DiscoverSlider/>
@@ -39,10 +39,11 @@ import DiscoverSlider from "../components/DiscoverSlider";
 import {useFetchData} from "../hooks/useFetchData";
 import loaderGoogleMaps from "../mixins/loaderGoogleMaps";
 import linkTo from "../mixins/linkTo";
+import animationScroll from "../mixins/animationScroll";
 export default {
     name: "Location",
     components: {DiscoverSlider},
-    mixins: [loaderGoogleMaps, linkTo],
+    mixins: [loaderGoogleMaps, linkTo, animationScroll],
     setup(props) {
         const {data, isLoading} = useFetchData('/api/location-page');
         return {

@@ -1,9 +1,9 @@
 <template>
 
-    <section v-if="rooms" class="rooms-main">
+    <section  class="rooms-main scroll-animation">
         <div class="container">
-            <h2>{{ title }}</h2>
-            <div class="rooms-main__text">
+            <h2 class="scroll-animation__child">{{ title }}</h2>
+            <div class="rooms-main__text scroll-animation__child">
                 {{ description }}
             </div>
             <div class="rooms-main__cards">
@@ -12,7 +12,7 @@
                     :room="room"
                 />
             </div>
-            <div @click.prevent="$router.push('/rooms')" class="rooms-main__view-more">
+            <div @click.prevent="$router.push('/rooms')" class="rooms-main__view-more scroll-animation__child">
                 <a href="#" class="view-more">
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path

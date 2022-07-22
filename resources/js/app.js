@@ -12,6 +12,9 @@ import store from "./store/index";
 
 const app = createApp(App)
 
+app.config.optionMergeStrategies.custom = (to, from) => {
+    return from || to
+}
 
 app.use(router)
 app.use(store)

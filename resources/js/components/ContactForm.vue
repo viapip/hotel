@@ -1,11 +1,11 @@
 <template>
-
-    <section :class="['contact', {'other-page' : !isContactPage}]">
-        <div class="container container--sm">
-            <h2 class="contact__title">
+<div class="scroll-animation">
+    <section :class="['contact', {'other-page' : !isContactPage}, 'scroll-animation__child']">
+        <div class="container container--sm scroll-animation__child">
+            <h2 class="contact__title scroll-animation__child">
                 Contact
             </h2>
-            <div class="contact__text">
+            <div class="contact__text scroll-animation__child">
                 <span v-html="contacts?.name"></span>
                 <br>
                 {{ contacts?.address }}
@@ -14,7 +14,7 @@
                 <br>
                 {{ contacts?.email }}
             </div>
-            <form action="#" class="contact-form" v-on:submit="onSubmit">
+            <form action="#" class="contact-form scroll-animation__child" v-on:submit="onSubmit">
                 <div class="contact-form__line">
                     <div class="form-group required">
                         <input
@@ -127,6 +127,7 @@
             </form>
         </div>
     </section>
+</div>
 </template>
 
 <script>
