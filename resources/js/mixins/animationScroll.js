@@ -11,7 +11,7 @@ export default {
             const time = counter * 0.001
             return `opacity ${time}s linear, transform ${time}s ease-in`
         },
-        childAnimation(children) {
+        childAnimation(children, parent) {
             let counter = this.delayAnimation
             for (let child of children) {
                 child.style.transition = this.settingsAnimation(counter)
@@ -19,6 +19,8 @@ export default {
                 setTimeout(() => child.style.opacity = '1', counter)
                 counter += this.delayAnimation
             }
+            setTimeout(() => parent.classList.add('scroll-animation__full-ready'), counter)
+
         },
         onEntry(entry) {
             entry.forEach(change => {
@@ -26,7 +28,7 @@ export default {
                 if (change.isIntersecting) {
                     const target = change.target;
                     const targetChildren = Array.from(target.querySelectorAll('.scroll-animation__child'))
-                    this.childAnimation(targetChildren)
+                    this.childAnimation(targetChildren, target)
                     target.classList.add('scroll-animation__show');
                 }
             });
