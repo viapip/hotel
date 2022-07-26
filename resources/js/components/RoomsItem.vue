@@ -14,6 +14,10 @@
             :modules="modules"
             :pagination="pagination"
             :speed="1000"
+            :autoplay="{
+          delay: 2000,
+          disableOnInteraction: true,
+    }"
         >
             <SwiperSlide
                 class="room__swiper-slide"
