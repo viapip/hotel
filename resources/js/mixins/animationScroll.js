@@ -3,7 +3,7 @@
 export default {
     data() {
         return {
-            delayAnimation: 240
+            delayAnimation: 200
         }
     },
     methods: {
