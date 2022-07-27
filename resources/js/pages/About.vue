@@ -6,10 +6,10 @@
     />
 
     <main>
-        <section class="about-page">
+        <section class="about-page scroll-animation">
             <div class="container container--sm container--content-sm">
-                <h2>{{ data?.title }}</h2>
-                <div v-html="data?.description" class="about-page__text">
+                <h2 class="scroll-animation__child">{{ data?.title }}</h2>
+                <div v-html="data?.description" class="about-page__text scroll-animation__child">
                 </div>
             </div>
 
@@ -21,7 +21,7 @@
 
 
             <div class="container container--sm">
-                <div class="events__text">
+                <div class="events__text scroll-animation__child">
                     {{ data?.description_bottom }}
                 </div>
             </div>
@@ -38,8 +38,10 @@ import {Swiper, SwiperSlide} from "swiper/vue";
 import AboutSlider from "../components/AboutSlider";
 import {useFetchData} from "../hooks/useFetchData";
 import ContactForm from "../components/ContactForm";
+import animationScroll from "../mixins/animationScroll";
 export default {
     name: "About",
+    mixins: [animationScroll],
     components: {
         ContactForm,
         AboutSlider,

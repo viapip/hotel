@@ -29,6 +29,7 @@
 
         <other-rooms
             :rooms="data?.[0].others"
+            :is-hidden="data"
         />
 
         <discover-slider/>

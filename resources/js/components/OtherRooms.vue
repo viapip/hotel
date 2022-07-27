@@ -1,12 +1,12 @@
 <template>
 
-    <section class="other-rooms">
+    <section v-if="isHidden" class="other-rooms scroll-animation">
         <div class="container container--sm">
             <div class="other-rooms__wrapper">
-                <div class="other-rooms__title">
+                <div class="other-rooms__title scroll-animation__child">
                     Other Rooms
                 </div>
-                <div class="other-rooms__wrapper">
+                <div class="other-rooms__wrapper scroll-animation__child">
                     <other-rooms-item
                         v-for="room of rooms"
                         :room="room"
@@ -27,6 +27,10 @@ export default {
         rooms: {
             type: Array,
             required: true,
+        },
+        isHidden: {
+            type: Boolean,
+            default: false
         }
     },
     data () {

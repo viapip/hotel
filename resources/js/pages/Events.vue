@@ -6,18 +6,18 @@
     />
 
     <main>
-        <section class="events">
+        <section class="events scroll-animation">
             <div class="container">
-                <h2>{{ data?.title }}</h2>
-                <div v-html="data?.description" class="events__text">
+                <h2 class="scroll-animation__child">{{ data?.title }}</h2>
+                <div v-html="data?.description" class="events__text scroll-animation__child">
                 </div>
             </div>
         </section>
 
-        <section class="events-links">
+        <section class="events-links scroll-animation">
             <div class="container">
                 <ul class="events-links_list">
-                    <li class="events-links__item" v-for="item of data?.events">
+                    <li class="events-links__item scroll-animation__child" v-for="item of data?.events">
                         <a :href="item.link" target="_blank" class="events-links__link">{{ item.title }}</a>
                     </li>
                 </ul>
@@ -33,9 +33,11 @@ import DiscoverSlider from "../components/DiscoverSlider";
 import FirstScreenSlider from "../components/FirstScreenSlider";
 import MainScreenSlider from "../components/FirstScreenSlider";
 import {useFetchData} from "../hooks/useFetchData";
+import animationScroll from "../mixins/animationScroll";
 
 export default {
     name: "Events",
+    mixins: [animationScroll],
     components: {MainScreenSlider, FirstScreenSlider, DiscoverSlider},
     setup() {
         const {data, isLoading} = useFetchData('/api/events-page')

@@ -29,10 +29,11 @@ import ContactForm from "../components/ContactForm";
 import linkTo from "../mixins/linkTo";
 
 import {mapState} from "vuex";
+import animationScroll from "../mixins/animationScroll";
 export default {
     name: "Contact",
     components: {ContactForm, DiscoverSlider, VSelect},
-    mixins: [linkTo],
+    mixins: [linkTo, animationScroll],
     data(){
         return {
             options: [

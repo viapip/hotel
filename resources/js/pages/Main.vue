@@ -22,7 +22,6 @@
         />
 
         <main-advantages
-            v-if="data?.location"
             :title="data?.location[0]?.title"
             :text="data?.location[0]?.text"
             :images="data?.location[0]?.image.split(',')"

@@ -20,7 +20,7 @@
                 </svg>
             </a>
         </div>
-        <a @click="$router.push('/')" class="head__logotype">
+        <a @click.prevent="$router.push('/'); isActive?toggleActive(): false" class="head__logotype">
             <svg width="270" height="44" viewBox="0 0 270 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M15.5359 4.5758V9.40473C15.5359 10.7937 15.5761 11.7413 15.6565 12.2476C15.7503 12.7538 15.8776 13.0719 16.0384 13.2017C16.3466 13.4483 16.8356 13.5716 17.5056 13.5716L17.5457 13.8053H12.1594L12.1996 13.5716C12.8562 13.5716 13.3385 13.4548 13.6467 13.2211C13.9013 13.0264 14.0487 12.3904 14.0889 11.3129C14.1157 10.8846 14.129 10.2485 14.129 9.40473V1.16829L8.50155 13.6106L2.69316 3.0765V9.36578C2.69316 10.6639 2.75346 11.605 2.87405 12.1892C3.00803 12.7603 3.21572 13.1368 3.49709 13.3185C3.77847 13.4872 4.24742 13.5716 4.90397 13.5716L4.94416 13.8053H0L0.0401964 13.5716C0.535953 13.5716 0.90442 13.5392 1.1456 13.4743C1.40018 13.3964 1.61456 13.2017 1.78874 12.8901C1.96293 12.5786 2.07012 12.1632 2.11031 11.6439C2.16391 11.1247 2.19071 10.3653 2.19071 9.36578V4.59527C2.19071 3.59574 2.16391 2.83635 2.11031 2.31711C2.07012 1.79787 1.96293 1.38248 1.78874 1.07093C1.61456 0.759388 1.40018 0.571164 1.1456 0.506259C0.90442 0.428373 0.535953 0.38943 0.0401964 0.38943L0 0.175243H2.69316L8.90351 11.5271L14.0286 0.175243H17.5457L17.5056 0.38943C16.8356 0.38943 16.3466 0.51275 16.0384 0.759389C15.7034 1.03199 15.5359 2.30413 15.5359 4.5758Z"
@@ -98,7 +98,7 @@
             <ul v-if="links" :class="['dropdown-menu__list']">
                 <li v-for="(link, index) of links" :key="index">
                     <button :class="link.class" :data-link="link"
-                            @click="$router.push(link.link), toggleActive(), scrollToTop()">
+                            @click="$router.push(link.link); toggleActive(); scrollToTop()">
                         <span>{{ link.title }}</span>
                     </button>
                 </li>
@@ -116,7 +116,7 @@
 </svg>
 
                         </span>
-                        <a href="tel:+4402074867872">+44 (0) 207 486 7872</a>
+                        <a :href="`tel:${ contacts?.phone }`">{{ contacts?.phone }}</a>
                     </li>
                     <li>
                         <span>
@@ -127,12 +127,12 @@
     fill="white"/>
 </svg>
                         </span>
-                        <a href="mailto:info@marhotel.co.uk">info@marhotel.co.uk</a>
+                        <a :href="`mailto:${ contacts?.email }}`">{{ contacts?.email }}</a>
                     </li>
                     <li>
                         <ul>
                             <li>
-                                <a href="https://twitter.com/">
+                                <a :href="contacts?.twitter" target="_blank">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -142,7 +142,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.facebook.com/">
+                                <a :href="contacts?.facebook" target="_blank">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -189,7 +189,8 @@ export default {
             return this.isActive ? 'Close' : 'Menu'
         },
         ...mapState({
-            special: state => state.special.special
+            special: state => state.special.special,
+            contacts: state => state.contacts.contacts
         })
     },
     methods: {

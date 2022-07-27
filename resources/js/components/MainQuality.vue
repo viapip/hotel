@@ -1,12 +1,12 @@
 <template>
-    <section class="quality">
+    <section class="quality scroll-animation">
         <div class="container">
             <div class="quality__wrapper">
-                <h2>{{ title }}</h2>
-                <div class="quality__text">
+                <h2 class="scroll-animation__child">{{ title }}</h2>
+                <div class="quality__text scroll-animation__child">
                     {{ text }}
                 </div>
-                <a @click="$router.push(buttonLink)" href="#" class="button">
+                <a @click="$router.push(buttonLink)" href="#" class="button scroll-animation__child">
                     {{ buttonText }}
                 </a>
             </div>

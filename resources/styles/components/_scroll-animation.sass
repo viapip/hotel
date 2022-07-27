@@ -1,0 +1,15 @@
+.scroll-animation
+    &__child
+        opacity: 0
+        transform: translateY(200px)
+        will-change: transform, opacity
+        &.slowly
+            transition: opacity 1.5s, transform 1.5s !important
+        &--show
+            opacity: .3
+            transform: translateY(0)
+    &__full-ready
+        .scroll-animation
+            &__child
+                transform: translateY(0)
+

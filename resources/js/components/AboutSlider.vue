@@ -7,12 +7,13 @@
         :speed="1000"
         @swiper="onSwiper"
     >
-        <SwiperSlide v-for="image in images">
+        <SwiperSlide v-for="image in images" class="scroll-animation__child">
             <div class="about-slider__img" :style="[`background: url(${image}) center/cover no-repeat`]">
             </div>
         </SwiperSlide>
     <div class="container">
         <arrows-slider
+            :prop-classes="'scroll-animation__child'"
             @clickPrev="swiper.slidePrev()"
             @clickNext="swiper.slideNext()"/>
     </div>

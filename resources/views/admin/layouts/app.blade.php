@@ -6,7 +6,7 @@
     <title>Администратичная панель</title>
     <!-- Google Font: Source Sans Pro -->
 {{--    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />--}}
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+{{--    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>--}}
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">

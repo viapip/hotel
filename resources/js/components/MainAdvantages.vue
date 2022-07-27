@@ -1,6 +1,6 @@
 <template>
 
-    <section class="advantages">
+    <section class="advantages scroll-animation">
         <Swiper
             ref="swiper"
             class=""
@@ -9,25 +9,26 @@
             :speed="1000"
             @swiper="onSwiper"
         >
-            <SwiperSlide v-for="(image, index) in images" :key="index">
+            <SwiperSlide class="scroll-animation__child" v-for="(image, index) in images" :key="index">
                 <div class="advantages__wrapper" :style="[`background: url(${image}) center/cover no-repeat`]">
                 </div>
             </SwiperSlide>
         </Swiper>
 
-        <div class="advantages__block">
+        <div class="advantages__block scroll-animation__child">
+            <div class="advantages__background scroll-animation__child"></div>
             <div class="container">
                 <div class="advantages__block-wrapper">
-                    <h2>{{ title }}</h2>
-                    <div v-html="text" class="advantages__text"></div>
+                    <h2 class="scroll-animation__child">{{ title }}</h2>
+                    <div v-html="text" class="advantages__text scroll-animation__child"></div>
                 </div>
                 <ArrowsSlider
                     :isDouble="true"
+                    :prop-classes="'scroll-animation__child'"
                     @clickPrev="swiper.slidePrev()"
                     @clickNext="swiper.slideNext()"
                 />
             </div>
-            <div class="advantages__background"></div>
         </div>
     </section>
 

@@ -1,13 +1,13 @@
 <template>
 
-    <section class="discover">
+    <section class="discover scroll-animation">
 
         <!--        <div ref="margin" class="container" style="width:100%; overflow: hidden;"></div>-->
         <div class="discover__wrapper container">
-            <div class="discover__overtitle">{{ discovery?.under_title }}</div>
+            <div class="discover__overtitle scroll-animation__child">{{ discovery?.under_title }}</div>
             <div class="discover__head">
-                <h2>{{ discovery?.title }}</h2>
-                <div class="discover__remote">
+                <h2 class="scroll-animation__child">{{ discovery?.title }}</h2>
+                <div class="discover__remote scroll-animation__child">
                     <ArrowsSlider
                         :isDouble="false"
                         @clickPrev="swiper.slidePrev()"
@@ -42,7 +42,7 @@
 
                     <SwiperSlide
                         @click="openModal(item)"
-                        class="discover-slider__item"
+                        class="discover-slider__item scroll-animation__child"
                         v-for="item of discovery?.items"
                     >
                         <div class="discover-slider__inner">
