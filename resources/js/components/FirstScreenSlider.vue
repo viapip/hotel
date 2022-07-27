@@ -20,8 +20,10 @@
     <header :class="['header','header--big', {'multiple': isMultipleTitle }]"
             :style="{
         background: `url(${isMultipleTitle ? item.image : item}) center/cover no-repeat`,
-        backgroundPosition: 'calc(50% + '+ moveX + ') calc(50% + ' + moveY + ')',
-        transform: 'scale(1.1)'
+        // backgroundPosition: 'calc(50% + '+ moveX + ') calc(50% + ' + moveY + ')',
+        // backgroundPosition: 'calc(50% + '+ moveX + ') calc(50% + ' + moveY + ')',
+        transform: `translate3d(${moveX}, ${moveY}, 0px)` + `scale(${scale})`,
+
     }">
         <div class="header__gradient"></div>
         <div class="container">
@@ -78,6 +80,7 @@ export default {
             modules: [EffectFade, Pagination, Navigation, Autoplay],
             moveX: 0,
             moveY: 0,
+            scale: 1.1,
             isMobile: window.innerWidth <= 992,
             pagination: {
                 clickable: true,
@@ -93,6 +96,7 @@ export default {
             if (this.isMobile) return false;
             this.moveX = e.pageX * -1 / 25 + 'px'
             this.moveY = e.pageY * -1 / 25 + 'px'
+            console.log(this.moveY, this.moveX)
         },
     },
     mounted () {

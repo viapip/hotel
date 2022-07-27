@@ -46,7 +46,8 @@
         display: flex
     .swiper-slide
     .header
-        transition: background-position 1s ease-out
+        will-change: transform
+        transition: transform 1s ease-out
         min-width: 100vw
     .swiper-pagination-bullets
         bottom: 16px !important
@@ -57,6 +58,7 @@
         height: 2px !important
         opacity: initial !important
         background-color: transparent
+        overflow: hidden
         i
             position: absolute
             bottom: 0
@@ -73,26 +75,32 @@
             width: 100%
             background: #fff !important
             opacity: 1 !important
+            will-change: transform
 
 
     .swiper-pagination-bullet.swiper-pagination-bullet-active
         b
-            animation-name: filling
-            animation-duration: 5s
-            animation-timing-function: ease-in
-            animation-iteration-count: 1
-            animation-direction: alternate
-            animation-fill-mode: forwards
+            //animation-name: filling
+            //animation-duration: 5s
+            //animation-timing-function: ease-in
+            //animation-iteration-count: 1
+            //animation-direction: alternate
+            //animation-fill-mode: forwards
+            transform: translateX(0)
+            transition: transform 5s linear
         &~.swiper-pagination-bullet
             b
-                width: 0
+                //width: 0
+                transform: translateX(-100%)
             i
                 opacity: .3 !important
-@keyframes filling
-    0%
-        width: 0
-    100%
-        width: 100%
+//@keyframes filling
+//    0%
+//        //width: 0
+//        transform: translateX(-100%)
+//    100%
+//        //width: 100%
+//        transform: translateX(0)
 @media (max-width: 1650px)
     .header
         &.header--big

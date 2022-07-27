@@ -9,7 +9,7 @@
                 <div class="breadcrumb">
                     <a @click.prevent="linkTo('/')" href="#" class="breadcrumb__item">Home</a>
                     <a @click.prevent="linkTo('/rooms')" href="#" class="breadcrumb__item">Rooms</a>
-                    <a href="#" class="breadcrumb__item">Single room</a>
+                    <a href="#" class="breadcrumb__item">{{ data?.[0].title }}</a>
                 </div>
             </div>
         </div>
