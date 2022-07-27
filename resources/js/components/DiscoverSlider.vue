@@ -65,7 +65,7 @@
             <div v-if="isOpenModal" @click="closeModal" class="discover__modal modal-discover">
                 <div class="modal-discover__wrapper">
                     <div class="modal-discover__content">
-                        <img :src="modalContent?.image" alt="" class="modal-discover__img">
+                        <img :src="'/'+ modalContent?.image" alt="" class="modal-discover__img">
                         <div class="modal-discover__content-wrapper">
 
                             <div class="modal-discover__footer">
