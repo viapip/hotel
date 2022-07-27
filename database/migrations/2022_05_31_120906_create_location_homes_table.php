@@ -16,7 +16,7 @@ class CreateLocationHomesTable extends Migration
             $table->increments('id');
             $table->string('title')->nullable();
             $table->text('text')->nullable();
-            $table->string('image')->nullable();
+            $table->text('image')->nullable();
             $table->timestamps();
             });
     }
