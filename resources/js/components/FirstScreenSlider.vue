@@ -16,7 +16,11 @@
 
     <SwiperSlide v-for="(item, index) of banner" :key="index"
     >
-        <div style="overflow: hidden">
+        <div style="overflow: hidden; position: relative">
+
+            <div class="container">
+                <h1>{{ isMultipleTitle ? item.title : title }}</h1>
+            </div>
     <header :class="['header','header--big', {'multiple': isMultipleTitle }]"
             :style="{
         background: `url(${isMultipleTitle ? item.image : item}) center/cover no-repeat`,
@@ -26,9 +30,6 @@
 
     }">
         <div class="header__gradient"></div>
-        <div class="container">
-            <h1>{{ isMultipleTitle ? item.title : title }}</h1>
-        </div>
         <a href="#" class="button-blur">Book Now</a>
     </header>
         </div>
