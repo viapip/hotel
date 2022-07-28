@@ -35,7 +35,7 @@
                                 @foreach($locationpage as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->description }}</td><td><img src="{{ asset($item->banner) }}" width="200px" alt=""></td>
+                                        <td>{{ $item->title }}</td><td>{!! $item->description !!}</td><td><img src="{{ asset($item->banner) }}" width="200px" alt=""></td>
                                         <td>
 
                                             {{--<a href="{{ url('/admin/location-page/' . $item->id) }}" title="Просмотр LocationPage"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
