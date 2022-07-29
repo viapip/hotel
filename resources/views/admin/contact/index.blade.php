@@ -35,7 +35,7 @@
                                 @foreach($contact as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td><td><img src="{{ asset($item->image) }}" width="200px" alt=""></td><td>{{ $item->name }}</td>
+                                        <td>{{ $item->title }}</td><td><img src="{{ asset($item->image) }}" width="200px" alt=""></td><td>{!! $item->name !!}</td>
                                         <td>
 
                                             {{--<a href="{{ url('/admin/contact/' . $item->id) }}" title="Просмотр Contact"><UI class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Просмотр</UI></a>--}}
