@@ -34,7 +34,8 @@ export default {
             });
         },
         watchObserver() {
-            let options = { threshold: [0.4] };
+            const threshold = window.innerWidth < 800 ? [0.2] : [0.4]
+            let options = { threshold: threshold };
             let observer = new IntersectionObserver(this.onEntry, options);
             let elements = Array.from(document.querySelectorAll('.scroll-animation'));
             console.log(elements)
