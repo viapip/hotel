@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Администратичная панель</title>
     <!-- Google Font: Source Sans Pro -->
-{{--    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />--}}
-{{--    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>--}}
+    {{--    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />--}}
+    {{--    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>--}}
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/uploadZone.css') }}">
     <link rel="stylesheet" href="{{ asset('/adminStyles/uploaderZone.css') }}">
     <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+          href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <script src="{{ '/adminJS/uploaderDragZone.js' }}">
     </script>
@@ -36,11 +36,11 @@
         <ul class="navbar-nav ml-auto">
 
             <!-- Messages Dropdown Menu -->
-{{--            <li class="nav-item dropdown" title="Очистить кеш">--}}
-{{--                <a class="nav-link" href="{{ route('admin.cacheClear') }}">--}}
-{{--                    <i class="fas fa-sync-alt"></i>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            {{--            <li class="nav-item dropdown" title="Очистить кеш">--}}
+            {{--                <a class="nav-link" href="{{ route('admin.cacheClear') }}">--}}
+            {{--                    <i class="fas fa-sync-alt"></i>--}}
+            {{--                </a>--}}
+            {{--            </li>--}}
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -64,8 +64,8 @@
         <div class="sidebar">
 
             <!-- Sidebar Menu -->
-            @include('admin.layouts.inc.menu')
-            <!-- /.sidebar-menu -->
+        @include('admin.layouts.inc.menu')
+        <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
 
@@ -100,7 +100,6 @@
     </div>
 
 
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
@@ -125,61 +124,62 @@
 <script src="{{ asset('assets/admin/ckfinder/ckfinder.js') }}"></script>
 
 <script type="text/javascript">
-    ClassicEditor
-        .create( document.querySelector( '.full-editor' ), {
-            toolbar: {
-                items: [
-                    'heading',
-                    '|',
-                    'fontSize',
-                    'fontColor',
-                    'fontBackgroundColor',
-                    'bold',
-                    'italic',
-                    'link',
-                    'bulletedList',
-                    'numberedList',
-                    'specialCharacters',
-                    '|',
-                    'alignment',
-                    'outdent',
-                    'indent',
-                    '|',
-                    'imageUpload',
-                    'blockQuote',
-                    'insertTable',
-                    'mediaEmbed',
-                    'undo',
-                    'redo',
-                    '|',
-                    'highlight',
-                    'codeBlock',
-                    'code',
-                    'htmlEmbed',
-                    'horizontalLine',
-                ]
-            },
-            language: 'en',
-            image: {
-                toolbar: [
-                    'imageTextAlternative',
-                    'imageStyle:inline',
-                    'imageStyle:block',
-                    'imageStyle:side'
-                ]
-            },
-            table: {
-                contentToolbar: [
-                    'tableColumn',
-                    'tableRow',
-                    'mergeTableCells'
-                ]
-            },
-        } )
-        .catch( function( error ) {
-            console.error( error );
-        } );
-
+    document.querySelectorAll('.full-editor').forEach(item => {
+        ClassicEditor
+            .create(item, {
+                toolbar: {
+                    items: [
+                        'heading',
+                        '|',
+                        'fontSize',
+                        'fontColor',
+                        'fontBackgroundColor',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        'specialCharacters',
+                        '|',
+                        'alignment',
+                        'outdent',
+                        'indent',
+                        '|',
+                        'imageUpload',
+                        'blockQuote',
+                        'insertTable',
+                        'mediaEmbed',
+                        'undo',
+                        'redo',
+                        '|',
+                        'highlight',
+                        'codeBlock',
+                        'code',
+                        'htmlEmbed',
+                        'horizontalLine',
+                    ]
+                },
+                language: 'en',
+                image: {
+                    toolbar: [
+                        'imageTextAlternative',
+                        'imageStyle:inline',
+                        'imageStyle:block',
+                        'imageStyle:side'
+                    ]
+                },
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    })
 
 </script>
 

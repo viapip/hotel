@@ -18,3 +18,4 @@ yarn-error.log
 /public/uploads
 /public/uploads/*
 /public/js/
+.DS_Store
