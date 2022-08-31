@@ -19,6 +19,7 @@ class ImageController extends Controller
 
     public function deleteAll(Request $request): JsonResponse
     {
+        dd($request->all());
         return Image::deleteAll($request->images);
     }
 }
