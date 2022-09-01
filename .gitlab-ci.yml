@@ -17,6 +17,7 @@ building:
     - php artisan down || true
     - git reset --hard
     - git pull origin main
+    - npm run prod
     - composer update
     - composer install
     - php artisan migrate --force
