@@ -15,7 +15,6 @@ export const useFetchData =  (url, dynamic = false) => {
             if (response.status === 404) await router.push('/');
 
             data.value = await response.json();
-            console.log(data.value)
         } catch (e) {
             console.log(e)
            // await router.push('/rooms')

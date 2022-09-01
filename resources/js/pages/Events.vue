@@ -34,6 +34,7 @@ import FirstScreenSlider from "../components/FirstScreenSlider";
 import MainScreenSlider from "../components/FirstScreenSlider";
 import {useFetchData} from "../hooks/useFetchData";
 import animationScroll from "../mixins/animationScroll";
+import {mapState} from "vuex";
 
 export default {
     name: "Events",
@@ -44,7 +45,7 @@ export default {
         return {
             data, isLoading,
         }
-    }
+    },
 }
 </script>
 

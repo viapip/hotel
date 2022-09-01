@@ -251,9 +251,6 @@ export default {
         }
     },
     methods: {
-        log() {
-            console.log(123)
-        },
         setModalContent(content) {
             this.modalContent = content;
         },
@@ -272,7 +269,6 @@ export default {
         },
 
         closeModal(e) {
-            console.log(e)
             if (!e.target.closest('.modal-discover__wrapper')) {
                 this.isOpenModal = false
                 document.body.classList.remove('openModal');
@@ -313,7 +309,6 @@ export default {
         },
 
         calculateAndDisplayRoute(directionsService, directionsRenderer) {
-            console.log(this.modalContent.latitude_a)
             const start = {
                 location: {lat: Number(this.modalContent.latitude_a), lng: Number(this.modalContent.longitude_a)},
                 icon: this.startPoint,
@@ -360,19 +355,6 @@ export default {
             discovery: state => state.discovery.discovery
         })
     },
-    mounted() {
-
-        // this.loadGoogleMaps()
-    },
-    // setup() {
-    //     return {
-    //         modules: [Scrollbar, Navigation],
-    //     };
-    // },
 }
 </script>
 
-<style scoped>
-
-/*@import "swiper/swiper.min.css";*/
-</style>

@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="button-blur">Book Now</a>
+        <a :href="booking" class="button-blur">Book Now</a>
     </header>
 
     <gallery-grid
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-// import {MagicGrid} from 'magic-grid/dist/magic-grid.min.js'
 
 import MagicGrid from "magic-grid";
 import {Fancybox} from '@fancyapps/ui'
@@ -31,6 +30,7 @@ import GalleryGrid from "../components/GalleryGrid";
 import {useFetchData} from "../hooks/useFetchData";
 import linkTo from "../mixins/linkTo";
 import animationScroll from "../mixins/animationScroll";
+import {mapState} from "vuex";
 
 export default {
     name: "Gallery",
@@ -45,7 +45,11 @@ export default {
     data() {
         return {}
     },
-    computed: {},
+    computed: {
+        ...mapState({
+            booking: state => state.booking.booking,
+        })
+    },
     methods: {
 
         test(item) {
@@ -58,11 +62,7 @@ export default {
             }).listen()
         },
     },
+
     mounted() {}
 }
 </script>
-
-<style scoped>
-/*@import "@fancyapps/ui/dist/fancybox.css";*/
-
-</style>

@@ -18,7 +18,6 @@ class ApiWorker {
                 },
                 body: data,
             })
-            console.log(response)
             return await response.text()
         } catch (err) {
             console.log(err)
@@ -35,7 +34,6 @@ class ApiWorker {
                 },
                 body: data,
             })
-            console.log(await response.text())
             return true
         } catch (err) {
             console.log(err)
@@ -86,7 +84,6 @@ class HandlerDragZone {
     parsingInputItems() {
         this.detectInput()
         if (!this.input.value) return false;
-        console.log(this.input.value, 'input value')
         this.array = this.input.value.split(',');
         this.newArray.push(...this.array)
     }
@@ -116,7 +113,6 @@ class HandlerDragZone {
                 this.newArray.push(img);
             }
         }, this)
-        console.log(this.newArray, 'newArrayParse')
         this.setValueInput()
     }
 
@@ -148,7 +144,6 @@ class DragDrop extends HandlerDragZone {
        await this.deletingImages(this.deleteArray)
     }
     deleteSelectedImage(item) {
-        console.log(item)
         const link = item.dataset.content;
         // this.newArray = this.newArray.filter(item => item !== link)
         this.deleteArray.push(link);
@@ -174,7 +169,6 @@ class DragDrop extends HandlerDragZone {
                 this.setValueInput();
                 window.removeEventListener('beforeunload', this.handlerDelete)
                await this.deleteImagesSubmitForm()
-                console.log('delete success')
 
             }.bind(this))
         }, this)
@@ -187,11 +181,9 @@ class DragDrop extends HandlerDragZone {
         if (!filteredArray.length) return false;
         this.input.value = this.array.join(',')
         await this.deletingImages(filteredArray)
-        console.log('exit pages')
     }
 
     init() {
-        console.log('init')
         super.setDragZone(this.zone)
         this.detectUploadZone(this.uploadZone)
         this.uploadZone.addEventListener('click', this.createInput.bind(this))
@@ -222,9 +214,7 @@ class DragDrop extends HandlerDragZone {
         const url = await ApiWorker.send('/admin/image', formData)
         this.renderUploadedItem(url)
         this.newArray.push(url)
-        console.log(this.newArray, 'newArray');
         super.setValueInput()
-        console.log(this.array, 'Array');
     }
 
     async handlerInputImages(e) {

@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="button-blur">Book Now</a>
+        <a :href="booking" class="button-blur">Book Now</a>
     </header>
 
     <main>
@@ -59,7 +59,8 @@ export default {
     },
     computed: {
         ...mapState({
-            contacts: state => state.contacts.contacts
+            contacts: state => state.contacts.contacts,
+            booking: state => state.booking.booking,
         })
     }
 }

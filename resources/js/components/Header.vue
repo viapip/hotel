@@ -12,7 +12,7 @@
                 </transition>
             </button>
             <button class="head__language">En</button>
-            <a href="#" class="head__phone">
+            <a :href="`tel:${ contacts?.phone }`" class="head__phone">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M13.05 16.4998C9.98797 16.4959 7.05249 15.2777 4.8873 13.1125C2.72211 10.9474 1.50397 8.01187 1.5 4.94984C1.5 4.03484 1.86348 3.15732 2.51048 2.51032C3.15748 1.86332 4.035 1.49984 4.95 1.49984C5.14376 1.49837 5.33719 1.51595 5.5275 1.55234C5.71148 1.57957 5.89235 1.62478 6.0675 1.68734C6.19069 1.73056 6.30046 1.80519 6.38596 1.90385C6.47146 2.0025 6.52973 2.12176 6.555 2.24984L7.5825 6.74984C7.6102 6.87199 7.60686 6.99913 7.5728 7.11965C7.53874 7.24018 7.47503 7.35026 7.3875 7.43984C7.29 7.54484 7.2825 7.55234 6.36 8.03234C7.09875 9.65298 8.3949 10.9545 10.0125 11.6998C10.5 10.7698 10.5075 10.7623 10.6125 10.6648C10.7021 10.5773 10.8122 10.5136 10.9327 10.4795C11.0532 10.4455 11.1804 10.4421 11.3025 10.4698L15.8025 11.4973C15.9265 11.5261 16.0411 11.5859 16.1356 11.6712C16.23 11.7565 16.3012 11.8644 16.3425 11.9848C16.4058 12.1629 16.4535 12.3461 16.485 12.5323C16.5152 12.7208 16.5302 12.9114 16.53 13.1023C16.5162 14.0134 16.1425 14.882 15.4905 15.5186C14.8385 16.1551 13.9612 16.5079 13.05 16.4998ZM4.95 2.99984C4.43344 3.00182 3.93859 3.2079 3.57332 3.57317C3.20806 3.93843 3.00198 4.43328 3 4.94984C3.00199 7.61466 4.06146 10.1698 5.94577 12.0541C7.83008 13.9384 10.3852 14.9979 13.05 14.9998C13.5666 14.9979 14.0614 14.7918 14.4267 14.4265C14.7919 14.0612 14.998 13.5664 15 13.0498V12.8023L11.52 11.9998L11.3025 12.4123C10.965 13.0648 10.7175 13.5373 10.0875 13.2823C8.84466 12.8375 7.71652 12.1214 6.78505 11.186C5.85358 10.2506 5.14217 9.11953 4.7025 7.87484C4.4325 7.28984 4.9425 7.01984 5.5875 6.68234L6 6.47984L5.1975 2.99984H4.95Z"
@@ -89,7 +89,7 @@
             </svg>
         </a>
         <div class="head__right">
-            <a href="#">Book Now</a>
+            <a :href="booking">Book Now</a>
             <button class="head__language head__language--mobile">En</button>
         </div>
     </div>
@@ -190,7 +190,8 @@ export default {
         },
         ...mapState({
             special: state => state.special.special,
-            contacts: state => state.contacts.contacts
+            contacts: state => state.contacts.contacts,
+            booking: state => state.booking.booking,
         })
     },
     methods: {
@@ -210,7 +211,6 @@ export default {
                     setTimeout(() => {
                         item.class.push('up-words')
                     }, counter)
-                    console.log(counter)
                     counter += 125
                 } else item.class.shift()
             })
@@ -233,7 +233,6 @@ export default {
             try {
                 const response = await fetch('/api/special-offer');
                 const json = await response.json();
-                console.log(json, 'json')
                 return `${json.slug}`
 
             } catch (e) {
@@ -257,7 +256,6 @@ export default {
             if (scroll < heightFirstScreen) {
                 const opacity = Math.round(scroll / (heightFirstScreen * 0.01)) / 100
                 this.fillOpacity = opacity
-                console.log(opacity)
             } else {
                 this.fillOpacity = 1
             }

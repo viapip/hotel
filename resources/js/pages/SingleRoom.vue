@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="button-blur">Book Now</a>
+        <a :href="data?.[0].link" class="button-blur">Book Now</a>
     </header>
 
     <main>
@@ -55,7 +55,6 @@ export default {
     mixins: [linkTo, animationScroll],
     setup(props, context) {
         const route = useRoute()
-        console.log(route.params)
         let {data, isLoading} = useFetchData('/api/room/' + route.params.slug)
 
         // watch(
@@ -84,7 +83,6 @@ export default {
     //     this.params = this.$router.params
     // }
     mounted() {
-        console.log(this.$router.getRoutes(), 'router');
     },
 }
 </script>

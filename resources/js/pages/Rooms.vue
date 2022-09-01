@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="button-blur">Book Now</a>
+        <a :href="booking" class="button-blur">Book Now</a>
     </header>
 
     <main>
@@ -37,6 +37,7 @@ import RoomsItem from "../components/RoomsItem";
 import {useFetchData} from "../hooks/useFetchData";
 import linkTo from "../mixins/linkTo";
 import animationScroll from "../mixins/animationScroll";
+import {mapState} from "vuex";
 
 export default {
     name: "Rooms",
@@ -44,7 +45,6 @@ export default {
     mixins: [linkTo],
     setup(props) {
         const {data, isLoading} = useFetchData('/api/rooms-page')
-        console.log(data)
         return {
             data, isLoading
         }
@@ -53,6 +53,11 @@ export default {
         return {
             // data: null,
         }
+    },
+    computed: {
+        ...mapState({
+            booking: state => state.booking.booking,
+        })
     },
     methods: {
     },

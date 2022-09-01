@@ -46,7 +46,6 @@ export default {
     mounted() {
     },
     updated() {
-        console.log(this.rooms, 'rooms')
     }
 }
 </script>

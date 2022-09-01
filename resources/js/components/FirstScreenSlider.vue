@@ -30,7 +30,7 @@
 
     }">
         <div class="header__gradient"></div>
-        <a href="#" class="button-blur">Book Now</a>
+        <a :href="booking" class="button-blur">Book Now</a>
     </header>
         </div>
     </SwiperSlide>
@@ -42,6 +42,7 @@
 import {EffectFade, Navigation, Pagination, Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import {debounce} from "lodash";
+import {mapState} from "vuex";
 
 // import "swiper/css";
 // import "swiper/css/pagination";
@@ -97,11 +98,14 @@ export default {
             if (this.isMobile) return false;
             this.moveX = e.pageX * -1 / 25 + 'px'
             this.moveY = e.pageY * -1 / 25 + 'px'
-            console.log(this.moveY, this.moveX)
         },
     },
+    computed: {
+        ...mapState({
+            booking: state => state.booking.booking,
+        })
+    },
     mounted () {
-        console.log(this.isMobile)
     },
 }
 </script>

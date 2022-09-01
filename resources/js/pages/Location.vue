@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="button-blur">Book Now</a>
+        <a :href="booking" class="button-blur">Book Now</a>
     </header>
 
     <main>
@@ -40,6 +40,7 @@ import {useFetchData} from "../hooks/useFetchData";
 import loaderGoogleMaps from "../mixins/loaderGoogleMaps";
 import linkTo from "../mixins/linkTo";
 import animationScroll from "../mixins/animationScroll";
+import {mapState} from "vuex";
 export default {
     name: "Location",
     components: {DiscoverSlider},
@@ -84,6 +85,11 @@ export default {
                 map: map
             });
         },
+    },
+    computed: {
+        ...mapState({
+            booking: state => state.booking.booking,
+        })
     },
     mounted() {
     },

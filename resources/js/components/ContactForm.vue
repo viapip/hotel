@@ -177,9 +177,6 @@ export default {
             formData.type_issue = this.typeOfIssueSelected.title
             formData.country = this.countrySelected.title
             let data = JSON.stringify(formData)
-
-            // console.log(data)
-            console.log(window.location)
             try {
                 const url = new URL(window.location.origin + '/api/form')
                 url.search = new URLSearchParams(data).toString()

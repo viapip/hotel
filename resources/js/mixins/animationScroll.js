@@ -24,7 +24,6 @@ export default {
         },
         onEntry(entry) {
             entry.forEach(change => {
-                console.log(change.isIntersecting)
                 if (change.isIntersecting) {
                     const target = change.target;
                     const targetChildren = Array.from(target.querySelectorAll('.scroll-animation__child'))
@@ -38,7 +37,6 @@ export default {
             let options = { threshold: threshold };
             let observer = new IntersectionObserver(this.onEntry, options);
             let elements = Array.from(document.querySelectorAll('.scroll-animation'));
-            console.log(elements)
             for (let elm of elements) {
                 observer.observe(elm);
             }

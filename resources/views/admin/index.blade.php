@@ -4,14 +4,14 @@
 
 
 
-    <form style="margin-bottom: 50px" id="test123" data-method="POST" action="/admin/image">
-        <input name="image" type="file">
-        <button>оптправка</button>
-    </form>
-    <form id="test321" data-method="DELETE" action="/admin/image">
-        <input name="images[]" id="delete" type="text">
-        <button>удалить</button>
-    </form>
+{{--    <form style="margin-bottom: 50px" id="test123" data-method="POST" action="/admin/image">--}}
+{{--        <input name="image" type="file">--}}
+{{--        <button>оптправка</button>--}}
+{{--    </form>--}}
+{{--    <form id="test321" data-method="DELETE" action="/admin/image">--}}
+{{--        <input name="images[]" id="delete" type="text">--}}
+{{--        <button>удалить</button>--}}
+{{--    </form>--}}
 
     {{--    <input style="width: 100%" id="dragZoneInput" type="text" value="https://klike.net/uploads/posts/2019-03/medium/1551511866_11.jpg,https://klike.net/uploads/posts/2019-03/1551511801_1.jpg,https://klike.net/uploads/posts/2019-03/medium/1551511784_4.jpg,https://klike.net/uploads/posts/2019-03/1551511774_9.jpg">--}}
 
@@ -24,86 +24,86 @@
     {{--    <script src="{{ 'adminJS/uploaderDragZone.js' }}">--}}
 
     {{--    </script>--}}
-    <script>
+{{--    <script>--}}
 
-        // const test = new DragDrop({zone: '#dragZone', input: '#dragZoneInput', uploadZone: '#uploadZone'})
+{{--        // const test = new DragDrop({zone: '#dragZone', input: '#dragZoneInput', uploadZone: '#uploadZone'})--}}
 
 
-        const getToken = (name) => {
-            let matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
+{{--        const getToken = (name) => {--}}
+{{--            let matches = document.cookie.match(new RegExp(--}}
+{{--                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"--}}
+{{--            ));--}}
+{{--            return matches ? decodeURIComponent(matches[1]) : undefined;--}}
+{{--        }--}}
 
-        const fetchData = async (data, url, method) => {
-            const isPost = method === "POST"
-            try {
-                let content;
-                if(!isPost) {
-                    content = {
-                        'Content-Type': 'application/json'
-                    }
-                }
-                const response = await fetch(url, {
-                    method: method,
-                    headers: {
-                        'X-XSRF-TOKEN': getToken('XSRF-TOKEN'),
-                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        ...content
-                         // 'Content-Type': 'application/json'
-                    },
-                    body: data,
-                })
-                console.log(isPost, 'isPost')
-                if (isPost) {
-                    const url = await response.text()
-                    document.querySelector('#delete').value = url
-                    console.log(url)
-                    return true
-                }
-                if (!response.ok) return false;
-                return true
-            } catch (e) {
-                console.log(e)
-                return false;
-            }
-        }
-        const handlerFormData = (data, method) => {
-            if (method === "POST") return new FormData(data);
+{{--        const fetchData = async (data, url, method) => {--}}
+{{--            const isPost = method === "POST"--}}
+{{--            try {--}}
+{{--                let content;--}}
+{{--                if(!isPost) {--}}
+{{--                    content = {--}}
+{{--                        'Content-Type': 'application/json'--}}
+{{--                    }--}}
+{{--                }--}}
+{{--                const response = await fetch(url, {--}}
+{{--                    method: method,--}}
+{{--                    headers: {--}}
+{{--                        'X-XSRF-TOKEN': getToken('XSRF-TOKEN'),--}}
+{{--                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!--}}
+{{--                        ...content--}}
+{{--                         // 'Content-Type': 'application/json'--}}
+{{--                    },--}}
+{{--                    body: data,--}}
+{{--                })--}}
+{{--                console.log(isPost, 'isPost')--}}
+{{--                if (isPost) {--}}
+{{--                    const url = await response.text()--}}
+{{--                    document.querySelector('#delete').value = url--}}
+{{--                    console.log(url)--}}
+{{--                    return true--}}
+{{--                }--}}
+{{--                if (!response.ok) return false;--}}
+{{--                return true--}}
+{{--            } catch (e) {--}}
+{{--                console.log(e)--}}
+{{--                return false;--}}
+{{--            }--}}
+{{--        }--}}
+{{--        const handlerFormData = (data, method) => {--}}
+{{--            if (method === "POST") return new FormData(data);--}}
 
-            const obj = [data.querySelector('input').value]
+{{--            const obj = [data.querySelector('input').value]--}}
 
-            // const formData = new FormData();
-            // formData.append('images', JSON.stringify(obj))
-            // console.log(Object.fromEntries(formData))
-            // return formData
-            return JSON.stringify({images: obj})
-        }
+{{--            // const formData = new FormData();--}}
+{{--            // formData.append('images', JSON.stringify(obj))--}}
+{{--            // console.log(Object.fromEntries(formData))--}}
+{{--            // return formData--}}
+{{--            return JSON.stringify({images: obj})--}}
+{{--        }--}}
 
-        document.querySelectorAll('form').forEach(form => {
+{{--        document.querySelectorAll('form').forEach(form => {--}}
 
-            form
-                .addEventListener('submit', async (e) => {
-                    e.preventDefault()
-                    const target = e.currentTarget
-                    target.querySelector('button').innerText = 'грузим'
-                    const method = target.dataset.method
-                    console.log(target, 'target')
-                    const formData = handlerFormData(target, method)
-                    const url = target.getAttribute('action')
-                    console.log(formData)
-                    const response = await fetchData(formData, url, method)
-                    if (!response) {
-                        target.querySelector('button').innerText = 'неудачно'
-                        return false;
-                    }
+{{--            form--}}
+{{--                .addEventListener('submit', async (e) => {--}}
+{{--                    e.preventDefault()--}}
+{{--                    const target = e.currentTarget--}}
+{{--                    target.querySelector('button').innerText = 'грузим'--}}
+{{--                    const method = target.dataset.method--}}
+{{--                    console.log(target, 'target')--}}
+{{--                    const formData = handlerFormData(target, method)--}}
+{{--                    const url = target.getAttribute('action')--}}
+{{--                    console.log(formData)--}}
+{{--                    const response = await fetchData(formData, url, method)--}}
+{{--                    if (!response) {--}}
+{{--                        target.querySelector('button').innerText = 'неудачно'--}}
+{{--                        return false;--}}
+{{--                    }--}}
 
-                    target.querySelector('button').innerText = 'отправилось'
+{{--                    target.querySelector('button').innerText = 'отправилось'--}}
 
-                })
-        })
-    </script>
+{{--                })--}}
+{{--        })--}}
+{{--    </script>--}}
 
     <style>
         .container {

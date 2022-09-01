@@ -6,7 +6,7 @@
                 <div class="quality__text scroll-animation__child">
                     {{ text }}
                 </div>
-                <a @click="$router.push(buttonLink)" href="#" class="button scroll-animation__child">
+                <a :href="buttonLink"  class="button scroll-animation__child">
                     {{ buttonText }}
                 </a>
             </div>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
     name: "MainQuality",
     props: {
@@ -34,6 +36,11 @@ export default {
             type: String,
             default: "/",
         },
+    },
+    computed: {
+        ...mapState({
+            booking: state => state.booking.booking,
+        })
     },
 }
 </script>

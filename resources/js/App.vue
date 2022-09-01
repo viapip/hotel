@@ -20,13 +20,15 @@ export default {
         ...mapActions({
             fetchContacts: 'contacts/fetchContacts',
             fetchDiscovery: 'discovery/fetchDiscovery',
-            fetchSpecial: 'special/fetchSpecial'
+            fetchSpecial: 'special/fetchSpecial',
+            fetchBooking: 'booking/fetchBooking'
         })
     },
     mounted() {
         // this.fetchSpecial();
         this.fetchContacts();
         this.fetchDiscovery();
+        this.fetchBooking();
     },
 }
 </script>
