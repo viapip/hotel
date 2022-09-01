@@ -1,0 +1,34 @@
+variables:
+  PATH_TO_PROJECTS: ''
+
+workflow:
+  rules:
+    #    - if: $CI_COMMIT_BRANCH == "dev"
+    #      variables:
+    #        PATH_TO_PROJECTS: cd /var/www/deployer/data/www/dev.bbs-studio.ru
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      variables:
+        PATH_TO_PROJECTS: cd /var/www/deployer/data/www/marhotel.co.uk
+before_script:
+  - $PATH_TO_PROJECTS
+building:
+  stage: build
+  script:
+    - php artisan down || true
+    - git reset --hard
+    - git pull origin main
+    - composer update
+    - composer install
+    - php artisan migrate --force
+    - php artisan cache:clear
+    - php artisan config:clear
+    - php artisan route:clear
+    - php artisan up
+testing:
+  stage: test
+  script:
+    - echo "test"
+deploying:
+  stage: deploy
+  script:
+    - echo "Deployed"
