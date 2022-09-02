@@ -1,11 +1,7 @@
 {
     "fields": [
         {
-            "name": "homepage_id",
-            "type": "string"
-        },
-        {
-            "name": "room_id",
+            "name": "link",
             "type": "string"
         }
     ]

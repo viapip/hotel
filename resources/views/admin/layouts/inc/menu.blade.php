@@ -165,6 +165,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ route('admin.book-now.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-link"></i>
+                <p>Book Now</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('admin.privacy.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>Privacy and Data Policy </p>

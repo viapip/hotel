@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\AboutController;
+use App\Http\Controllers\API\V1\BookNowController;
 use App\Http\Controllers\API\V1\ContactController;
 use App\Http\Controllers\API\V1\DiscoverController;
 use App\Http\Controllers\API\V1\EventsController;
@@ -37,3 +38,4 @@ Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/privacy', [PrivacyController::class, 'index']);
 Route::post('/form', [FormController::class, 'default']);
 Route::get('/about-page', [AboutController::class, 'index']);
+Route::get('/book-now', [BookNowController::class, 'index']);
