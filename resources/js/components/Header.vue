@@ -231,9 +231,9 @@ export default {
         },
         async fetchUrl() {
             try {
-                const response = await fetch('/api/special-offer');
-                const json = await response.json();
-                return `${json.slug}`
+                // const response = await fetch('/api/special-offer');
+                // const json = await response.json();
+                // return `${json.slug}`
 
             } catch (e) {
                 console.log(e)
