@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutBannersController;
 use App\Http\Controllers\Admin\AboutPageController;
+use App\Http\Controllers\Admin\BookNowController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DiscoverBlockController;
@@ -59,6 +60,7 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function () {
     Route::resource('/discover-block', DiscoverBlockController::class, ['as' => 'admin']);
     Route::resource('/gallery-page', GalleryPageController::class, ['as' => 'admin']);
     Route::resource('/gallery', GalleryController::class, ['as' => 'admin']);
+    Route::resource('/book-now', BookNowController::class, ['as' => 'admin']);
 
     Route::post('/image', [ImageController::class, 'upload']);
     Route::delete('/image', [ImageController::class, 'deleteAll']);
